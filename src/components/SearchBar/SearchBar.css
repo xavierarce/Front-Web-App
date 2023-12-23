@@ -1,0 +1,31 @@
+.search-bar {
+  align-items: center;
+  border: 1px solid;
+  border-color: #4062da;
+  border-radius: 40px;
+  display: flex;
+  gap: 8px;
+  height: 50px;
+  padding: 15px 20px;
+  position: relative;
+  width: 700px;
+
+  .search-bar-input {
+      color: var(--neutral-500);
+      font-family: "Manrope-Regular", Helvetica;
+      font-size: 25px;
+      font-weight: 400;
+      width: 90%; /* Adjusted width */
+      ::placeholder {
+          text-align: center;
+      }
+  }
+}
+
+.icon-lupa {
+  height: 35px;
+  margin-bottom: -7.5px;
+  margin-top: -7.5px;
+  position: relative;
+  width: 35px;
+}

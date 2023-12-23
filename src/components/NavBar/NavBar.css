@@ -1,0 +1,53 @@
+.NavBar {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    padding: 31px 50px;
+}
+
+.NavBar-Name {
+    color: #4062da;
+    font: 500 32px/32px "Newsreader-Medium", Helvetica;
+}
+
+.Nav-Links {
+    display: inline-flex;
+    gap: 60px;
+}
+
+
+.Eres-Propietario {
+  background-color: #4062da;
+  border-radius: 8px;
+  padding: 14px 11px;
+}
+
+.Nav-Sections {
+  display: inline-flex;
+}
+
+.NavBar-Sections-Item{
+  color: #000;
+  font: 400 16px/20.8px "Inter-Regular", Helvetica;
+  height: 21px;
+  padding: 1rem;
+}
+
+.NavBar-Buttons{
+  display: inline-flex;
+  gap: 1rem;
+}
+
+.NavBar-SignIn-Container{
+  background-color: #4062da;
+  border-radius: 8px;
+  height: 48px;
+  padding: 0 1rem 0 1rem;
+}
+
+.NavBar-SignIn-Button {
+  color: #fff;
+  font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
+}

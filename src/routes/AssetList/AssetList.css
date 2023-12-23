@@ -1,0 +1,59 @@
+.AssetListContainer {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: center;
+  padding: 0px 30px;
+  position: relative;
+}
+
+.slogan {
+  align-items: center;
+  border-radius: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  position: relative;
+}
+
+.slogan .seguro-comodo-y {
+  color: #000000;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-size: 64px;
+  font-weight: 400;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.lista-y-mapa {
+  align-items: flex-start;
+  display: flex;
+  gap: 40px;
+  position: relative;
+}
+
+.lista-de-bienes {
+  align-items: flex-start;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 30px;
+  height: 1385px;
+  position: relative;
+}
+
+.lista-de-bienes {
+  align-items: flex-start;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 30px;
+  height: 1385px;
+  position: relative;
+}

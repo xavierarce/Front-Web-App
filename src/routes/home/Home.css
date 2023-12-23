@@ -1,0 +1,54 @@
+
+.titulo-searchbar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  justify-content: center;
+  position: relative;
+}
+
+.titulo-searchbar .titulo-home {
+  color: #000000;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-size: 64px;
+  font-weight: 400;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  width: 1020px;
+}
+
+.texto-bellow {
+  align-items: flex-start;
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  position: relative;
+}
+
+.texto-bellow .encuentra-tu-proximo {
+  color: #000000;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.56px;
+  line-height: 22.4px;
+  margin-top: -1px;
+  position: relative;
+  width: 181px;
+}
+
+.texto-bellow .lorem-ipsum-dolor {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 32px;
+  margin-top: -1px;
+  position: relative;
+  width: 822px;
+}
