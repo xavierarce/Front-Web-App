@@ -14,7 +14,7 @@ function AssetPage() {
   const { id } = useParams();
 
   const asset = ASSETSFAKEDATA.find((item) => item.id === parseInt(id, 10));
-  const { title, description, value } = asset;
+  const { title, description } = asset;
 
   return (
     <div className="asset-page">
