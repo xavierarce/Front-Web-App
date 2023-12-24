@@ -1,0 +1,45 @@
+.top-eres-propietario {
+  padding-top: 2rem;
+  width: 1188px;
+  display: inline-flex;
+  gap: 10rem;
+}
+
+.top-eres-propietario-texto {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.eres-porpietario-titulo {
+  color: #4062da;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-size: 50px;
+  font-weight: 400;
+  margin-top: 0;
+  width: fit-content;
+}
+
+.eres-propietario-description {
+  align-items: flex-start;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.eres-propietario-text {
+  color: #000000;
+  font-family: "Newsreader-Regular", Helvetica;
+  text-align: start;
+  font-size: 18px;
+  font-weight: 400;
+  width: 100%;
+}
+
+
+.eres-propietario-image {
+  height: 15rem;
+  object-fit: cover;
+}

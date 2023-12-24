@@ -14,7 +14,7 @@ function NavBar() {
           Bienes disponibles
         </Link>
         <Link className="NavBar-Sections-Item">Quienes somos</Link>
-        <Link className="NavBar-Sections-Item">Articuos</Link>
+        <Link className="NavBar-Sections-Item">Articulos</Link>
         <Link className="NavBar-Sections-Item">Contactanos</Link>
       </div>
       <div className="NavBar-Buttons">

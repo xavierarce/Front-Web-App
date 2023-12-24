@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./routes/home/Home";
 import AssetList from "./routes/AssetList/AssetList";
 import AssetPage from "./routes/AssetPage/AssetPage";
+import EresPropietario from "./routes/EresPropietario/EresPropietario";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "bienes", element: <AssetList /> },
       { path: "bienes/:id", element: <AssetPage/> },
+      { path: "eres-propietario", element: <EresPropietario/> },
     ],
   },
 ]);
