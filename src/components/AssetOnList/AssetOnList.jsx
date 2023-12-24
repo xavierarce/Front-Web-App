@@ -34,7 +34,7 @@ function AssetOnList({id, title, address, description, value, imgUrl }) {
           <div>
             <b>{value}</b>
           </div>
-          <CustomButton color={"blue"} content={"Detalles"} onClick={navigateTo}/>
+          <CustomButton pattern={"blue"} content={"Detalles"} onClick={navigateTo}/>
         </div>
       </div>
       <img className="asset-on-list-image" alt={imgUrl} src={imgUrl} />

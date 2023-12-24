@@ -18,8 +18,8 @@ function NavBar() {
         <Link className="NavBar-Sections-Item">Contactanos</Link>
       </div>
       <div className="NavBar-Buttons">
-        <CustomButton content={"Eres propietario?"} color={"blue"} />
-        <CustomButton content={"Inicia Secion"} color={"white"} />
+        <CustomButton content={"Eres propietario?"} pattern={"blue"} />
+        <CustomButton content={"Inicia Secion"} pattern={"white"} />
       </div>
       {/* </div> */}
     </div>

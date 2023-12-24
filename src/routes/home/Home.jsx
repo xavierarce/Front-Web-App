@@ -1,13 +1,30 @@
+import { useNavigate } from "react-router-dom";
 import ImagesCuadruple from "../../components/ImagesCuadruple/ImagesCuadruple";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import "./Home.css";
+import { useState } from "react";
 
 function Home() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm === "") {
+      navigate(`/bienes`);
+    } else {
+      navigate(`/bienes?buscar=${searchTerm}`);
+    }
+  };
+
   return (
     <div className="home">
       <div className="tiulo-searchBar">
         <h2 className="titulo-home">Realiza todo desde tu casa</h2>
-        <SearchBar />
+        <SearchBar
+          onSubmit={handleSearch}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
       <ImagesCuadruple />
       <div className="texto-bellow">

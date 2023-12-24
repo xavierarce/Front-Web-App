@@ -12,6 +12,22 @@
   font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
 }
 
+/*? Blue Small */
+.custom-button-blue-small {
+  background-color: #4062da;
+  border-radius: 8px;
+  height: fit-content;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-button-text-blue-small {
+  color: #fff;
+  font: 600 10px/15px "Inter-SemiBold", Helvetica;
+  margin: 0;
+}
+
 .custom-button-white {
   background-color: #fff;
   border-radius: 8px;
@@ -22,6 +38,11 @@
 }
 
 .custom-button-text-white {
+  color: #4062da;
+  font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
+}
+
+.custom-button-text-white-small {
   color: #4062da;
   font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
 }
