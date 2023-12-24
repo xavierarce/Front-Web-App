@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./routes/home/Home";
 import AssetList from "./routes/AssetList/AssetList";
+import AssetPage from "./routes/AssetPage/AssetPage";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "listado", element: <AssetList /> },
+      { path: "bienes", element: <AssetList /> },
+      { path: "bienes/:id", element: <AssetPage/> },
     ],
   },
 ]);

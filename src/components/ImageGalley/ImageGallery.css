@@ -1,0 +1,51 @@
+/* ImageGallery.css */
+
+.image-gallery-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid;
+justify-content: center;
+  border-color: #000000;
+  height: fit-content;
+  width: fit-content;
+  padding: 1rem;
+}
+
+.image-and-arrows{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main-image {
+  height: 25rem;
+  object-fit: cover;
+  width: 50rem;
+}
+
+.thumbnail-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  width: 50px;
+  height: 50px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.thumbnail-active {
+  border: 2px solid #4062da;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+

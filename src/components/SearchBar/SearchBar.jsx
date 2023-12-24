@@ -1,19 +1,18 @@
 import "./SearchBar.css";
 
-function SearchBar() {
+function SearchBar({onChange}) {
   return (
     <div className="search-bar">
       <img
         className="icon-lupa"
         alt="icon-lupa"
-        src={require("../../assets/Lupa.svg").default}
+        src={require("../../assets/icons/Lupa.svg").default}
       />
-      <div className="search-bar-input">
         <input
           className="search-bar-input"
           placeholder="Busca por ciudades (Guayaquil, Cuenca, Quito)"
+          onChange={onChange}
         />
-      </div>
     </div>
   );
 }

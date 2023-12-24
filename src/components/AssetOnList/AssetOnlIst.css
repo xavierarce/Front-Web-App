@@ -1,210 +1,93 @@
-.bien-en-lista {
+.asset-on-list {
   align-items: flex-start;
   border: 3px solid;
   border-color: #d9d9d9;
   display: inline-flex;
   gap: 38px;
   padding: 19px 16px;
-  position: relative;
+  width: 45rem
 }
 
-.bien-en-lista .texto-bien {
+.asset-on-list-description {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
   gap: 9px;
-  position: relative;
-  width: 382px;
+  width: 100%;
 }
 
-.bien-en-lista .title-description {
+.asset-on-list-title-description {
   align-items: flex-start;
   align-self: stretch;
   display: flex;
   flex: 0 0 auto;
   flex-direction: column;
-  gap: 1px;
-  position: relative;
   width: 100%;
 }
 
-.bien-en-lista .titulo-direccion {
+.asset-on-list-title-address {
   align-items: flex-start;
-  align-self: stretch;
   display: flex;
-  flex: 0 0 auto;
   flex-direction: column;
-  position: relative;
   width: 100%;
+  gap: 0.2rem;
 }
 
-.bien-en-lista .nombre-principal {
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  align-self: stretch;
+.asset-on-list-title {
   color: #000000;
-  display: -webkit-box;
   font-family: "Inter-SemiBold", Helvetica;
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.96px;
-  line-height: 38.4px;
-  margin-top: -1px;
+  white-space: nowrap;
   overflow: hidden;
-  position: relative;
   text-overflow: ellipsis;
+  max-width:22rem; /* Set a fixed or max-width as needed */
 }
 
-.bien-en-lista .div {
-  align-self: stretch;
+.asset-on-list-address {
   color: #000000;
   font-family: "Inter-Medium", Helvetica;
   font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.6px;
-  line-height: 24px;
-  position: relative;
+  margin: 0;
 }
 
-.bien-en-lista .lorem-ipsum-dolor {
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  align-self: stretch;
+.asset-on-list-description-text {
   color: #000000;
-  display: -webkit-box;
   font-family: "Inter-Light", Helvetica;
   font-size: 12px;
   font-weight: 300;
-  height: 58px;
+  height: 2rem;
   letter-spacing: 0.24px;
   line-height: 14.4px;
+  text-align: start;
   overflow: hidden;
-  position: relative;
   text-overflow: ellipsis;
 }
 
-.bien-en-lista .icons {
+.icons {
   height: 54.01px;
-  position: relative;
-  width: 123.87px;
+  width: 140px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.bien-en-lista .icon-car-list-instance {
-  height: 20px !important;
-  left: 0 !important;
-  position: absolute !important;
-  top: 1px !important;
-  width: 20px !important;
+.asset-on-list-icon {
+  height: 20px;
 }
 
-.bien-en-lista .design-component-instance-node {
-  font-size: 18px !important;
-  letter-spacing: 0.72px !important;
-  line-height: 28.8px !important;
-  margin-bottom: -2.5px !important;
-  margin-left: -4.5px !important;
-  margin-right: -4.5px !important;
-  margin-top: -6.5px !important;
-}
-
-.bien-en-lista .icon-car-list-2 {
-  height: 20px !important;
-  left: 34px !important;
-  position: absolute !important;
-  top: 0 !important;
-  width: 20px !important;
-}
-
-.bien-en-lista .icon-car-list-3 {
-  height: 20px !important;
-  left: 0 !important;
-  position: absolute !important;
-  top: 34px !important;
-  width: 20px !important;
-}
-
-.bien-en-lista .icon-car-list-4 {
-  height: 20px !important;
-  left: 34px !important;
-  position: absolute !important;
-  top: 34px !important;
-  width: 20px !important;
-}
-
-.bien-en-lista .icon-car-list-5 {
-  height: 20px !important;
-  left: 69px !important;
-  position: absolute !important;
-  top: 0 !important;
-  width: 20px !important;
-}
-
-.bien-en-lista .icon-car-list-6 {
-  height: 20px !important;
-  left: 69px !important;
-  position: absolute !important;
-  top: 33px !important;
-  width: 20px !important;
-}
-
-.bien-en-lista .icon-car-list-7 {
-  height: 20px !important;
-  left: 104px !important;
-  position: absolute !important;
-  top: 0 !important;
-  width: 20px !important;
-}
-
-.bien-en-lista .icon-car-list-8 {
-  height: 20px !important;
-  left: 104px !important;
-  position: absolute !important;
-  top: 33px !important;
-  width: 20px !important;
-}
-
-.bien-en-lista .botones {
-  height: 30.83px;
-  position: relative;
-  width: 281px;
-}
-
-.bien-en-lista .car-button {
-  display: flex !important;
-  height: 31px !important;
-  left: 127px !important;
-  position: absolute !important;
-  top: 0 !important;
-  width: 154px !important;
-}
-
-.bien-en-lista .cart-button-instance {
-  margin-bottom: -8.08px !important;
-  margin-top: -10.08px !important;
-}
-
-.bien-en-lista .price-tag {
-  background-color: unset !important;
-  border: 3px solid !important;
-  border-color: #d9d9d9 !important;
-  display: flex !important;
-  height: 31px !important;
-  left: 0 !important;
-  position: absolute !important;
-  top: 0 !important;
-  width: 116px !important;
-}
-
-.bien-en-lista .price-tag-2 {
-  color: #000000 !important;
-  margin-bottom: -6.08px !important;
-  margin-top: -12.08px !important;
-}
-
-.bien-en-lista .rectangle {
-  height: 184px;
+.asset-on-list-image {
+  height: 15em;
   object-fit: cover;
   position: relative;
-  width: 330px;
+  width: 25rem;
 }
 
+.asset-on-list-buttons{
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0 1rem 0rem 1rem;
+}

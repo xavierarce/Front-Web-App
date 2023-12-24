@@ -1,15 +1,13 @@
 .imagenes {
-    align-items: flex-start;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 38px 38px;
-    position: relative;
-    width: 1140px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em; /* Adjust the gap as needed */
+  max-width: 1140px; /* Use max-width instead of width */
 }
-
-.imagenes .rectangle {
-    height: 382px;
-    object-fit: cover;
-    position: relative;
-    width: 551px;
+.rectangle {
+  flex: 0 0 calc((100% - 100px) / 3); /* Adjust the width calculation for 3 images per line */
+  height: 11rem;
+  object-fit: cover;
 }

@@ -7,6 +7,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   box-sizing: border-box;
+  background: rgb(64, 98, 218);
+  background: linear-gradient(
+    90deg,
+    rgba(64, 98, 218, 0.5523459383753502) 0%,
+    rgba(255, 255, 255, 1) 10%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 1) 90%,
+    rgba(64, 98, 218, 0.55) 100%
+  );
 }
 
 code {

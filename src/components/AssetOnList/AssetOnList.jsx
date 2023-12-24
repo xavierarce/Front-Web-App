@@ -1,72 +1,43 @@
-import CartButton from "./CartButton";
-import IconCarList from "./IconCartList";
-import './AssetOnlIst.css'
+import "./AssetOnlIst.css";
+import WifiIcon from "../../assets/icons/wifi-svgrepo-com.svg";
+import CustomButton from "../CustomButton/CustomButton";
+import { useNavigate } from "react-router-dom";
 
-function AssetOnList() {
+function AssetOnList({id, title, address, description, value, imgUrl }) {
+  const navigate =useNavigate()
+  
+  function navigateTo (){
+    navigate(`${id}`)
+  } 
+
   return (
-    <div className="bien-en-lista">
-      <div className="texto-bien">
-        <div className="title-description">
-          <div className="titulo-direccion">
-            <div className="nombre-principal">Nombre Principal</div>
-            <div className="div">Area (aprox)</div>
+    <div className="asset-on-list">
+      <div className="asset-on-list-description">
+        <div className="asset-on-list-title-description">
+          <div className="asset-on-list-title-address">
+            <b className="asset-on-list-title">{title}{id}</b>
+            <p className="asset-on-list-address">{address}</p>
           </div>
-          <p className="lorem-ipsum-dolor">
-            Lorem Ipsum Dolor Sit Amet Consectetur. Semper Nulla Tortor
-            Imperdiet Et Etiam. Leo Nunc Quam Purus Magnis Quis Justo. Lorem
-            Ipsum Dolor Sit Amet Consectetur. Semper Nulla Tortor Imperdiet Et
-            Etiam. Leo Nunc Quam Purus Magnis Quis Justo.
-          </p>
+          <p className="asset-on-list-description-text">{description} </p>
         </div>
         <div className="icons">
-          <IconCarList
-            className="icon-car-list-instance"
-            divClassName="design-component-instance-node"
-          />
-          <IconCarList
-            className="icon-car-list-2"
-            divClassName="design-component-instance-node"
-          />
-          <IconCarList
-            className="icon-car-list-3"
-            divClassName="design-component-instance-node"
-          />
-          <IconCarList
-            className="icon-car-list-4"
-            divClassName="design-component-instance-node"
-          />
-          <IconCarList
-            className="icon-car-list-5"
-            divClassName="design-component-instance-node"
-          />
-          <IconCarList
-            className="icon-car-list-6"
-            divClassName="design-component-instance-node"
-          />
-          <IconCarList
-            className="icon-car-list-7"
-            divClassName="design-component-instance-node"
-          />
-          <IconCarList
-            className="icon-car-list-8"
-            divClassName="design-component-instance-node"
-          />
+          {Array.from({ length: 10 }).map((_, index) => (
+            <img
+              className="asset-on-list-icon"
+              key={index}
+              src={WifiIcon}
+              alt={`icons${index}`}
+            />
+          ))}
         </div>
-        <div className="botones">
-          <CartButton
-            className="car-button"
-            divClassName="cart-button-instance"
-            text="Caracteristicas"
-          />
-          
-          <CartButton
-            className="price-tag"
-            divClassName="price-tag-2"
-            text="$000"
-          />
+        <div className="asset-on-list-buttons">
+          <div>
+            <b>{value}</b>
+          </div>
+          <CustomButton color={"blue"} content={"Detalles"} onClick={navigateTo}/>
         </div>
       </div>
-      <img className="rectangle" alt="Rectangle" src="rectangle-13.png" />
+      <img className="asset-on-list-image" alt={imgUrl} src={imgUrl} />
     </div>
   );
 }

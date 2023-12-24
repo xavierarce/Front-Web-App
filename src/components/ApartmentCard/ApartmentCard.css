@@ -1,0 +1,50 @@
+.apartment-card {
+  align-items: flex-start;
+  background-color: #4062da4c;
+  border-radius: 20px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.apartment-card-image {
+  height: 200px;
+  border-radius: 5px;
+  object-fit: cover;
+  position: relative;
+  width: 315px;
+}
+
+.apartment-card-title {
+  color: #000000;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.apartment-card-title-description {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.apartment-card-ciudad {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  position: relative;
+}

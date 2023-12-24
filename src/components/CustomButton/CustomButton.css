@@ -1,0 +1,46 @@
+.custom-button-blue {
+  background-color: #4062da;
+  border-radius: 8px;
+  height: 48px;
+  padding: 0 1rem 0 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-button-text-blue {
+  color: #fff;
+  font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
+}
+
+.custom-button-white {
+  background-color: #fff;
+  border-radius: 8px;
+  height: 48px;
+  padding: 0 1rem 0 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-button-text-white {
+  color: #4062da;
+  font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
+}
+
+.custom-button-arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #4062da;
+  color: #fff;
+  border: none;
+  margin: 0 5px;
+}
+
+.custom-button-text-arrow {
+  color: #fff;
+  font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
+}
