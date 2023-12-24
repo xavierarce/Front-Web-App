@@ -20,13 +20,13 @@ const ImageGallery = ({ images }) => {
   return (
     <div className="image-gallery-container">
       <div className="image-and-arrows">
-        <CustomButton content={"<"} color={"arrow"} onClick={previousImage} />
+        <CustomButton content={"<"} pattern={"arrow"} onButtonClick={previousImage} />
         <img
           className="main-image"
           src={images[currentImageIndex]}
           alt={images[currentImageIndex]}
         />
-        <CustomButton content={">"} color={"arrow"} onClick={nextImage} />
+        <CustomButton content={">"} pattern={"arrow"} onButtonClick={nextImage} />
       </div>
 
       <div className="thumbnail-container">

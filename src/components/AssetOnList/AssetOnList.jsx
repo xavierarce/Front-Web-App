@@ -15,7 +15,7 @@ function AssetOnList({id, title, address, description, value, imgUrl }) {
       <div className="asset-on-list-description">
         <div className="asset-on-list-title-description">
           <div className="asset-on-list-title-address">
-            <b className="asset-on-list-title">{title}{id}</b>
+            <b className="asset-on-list-title">{title}</b>
             <p className="asset-on-list-address">{address}</p>
           </div>
           <p className="asset-on-list-description-text">{description} </p>
@@ -34,7 +34,7 @@ function AssetOnList({id, title, address, description, value, imgUrl }) {
           <div>
             <b>{value}</b>
           </div>
-          <CustomButton pattern={"blue"} content={"Detalles"} onClick={navigateTo}/>
+          <CustomButton pattern={"blue"} content={"Detalles"} onButtonClick={navigateTo}/>
         </div>
       </div>
       <img className="asset-on-list-image" alt={imgUrl} src={imgUrl} />

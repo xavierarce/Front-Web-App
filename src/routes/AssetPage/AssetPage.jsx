@@ -42,11 +42,11 @@ function AssetPage() {
                 <input />
               </div>
             </div>
-            <CustomButton content={"Solicitar Visita"} color={"blue"} />
+            <CustomButton content={"Solicitar Visita"} pattern={"blue"} />
           </div>
           <div className="asset-page-question-endingbox">
             <p className="asset-page-question">Tienes una pregunta?</p>
-            <CustomButton color={"blue"} content={"Consultanos!"} />
+            <CustomButton pattern={"blue"} content={"Consultanos!"} />
           </div>
         </div>
       </div>
