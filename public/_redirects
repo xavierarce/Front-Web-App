@@ -1,1 +1,14 @@
-/*    /index.html   200 
+# Redirect from /old-route to /new-route
+/old-route    /new-route    301
+
+# Redirect from /legacy-url to /bienes
+/legacy-url    /bienes    301
+
+# Redirect from /bienes-old/:id to /bienes/:id
+/bienes-old/:id    /bienes/:id    301
+
+# Redirect from /bienes-page to /bienes
+/bienes-page    /bienes    301
+
+# Redirect from / to /bienes (default route)
+/    /bienes    301
