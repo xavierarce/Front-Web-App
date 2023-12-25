@@ -7,7 +7,7 @@ function NavBar() {
 
   return (
     <div className="NavBar">
-      <h2 onClick={()=>{navigate('/')}} className="NavBar-Name">Hogar Seguro</h2>
+      <h2 onClick={()=>{navigate('/')}} className="NavBar-Name">Renta Segura</h2>
       {/* <div className="Nav-Links"> */}
       <div className="Nav-Sections">
         <Link className="NavBar-Sections-Item" to={"/bienes"}>
