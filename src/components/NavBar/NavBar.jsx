@@ -2,10 +2,18 @@ import { Link, useNavigate } from "react-router-dom";
 import CustomButton from "../CustomButton/CustomButton";
 import "./NavBar.css";
 import HogarSeguro from "../../assets/Hogar Seguro.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/Login.context";
 
-function NavBar({openLogin}) {
+function NavBar() {
   const navigate = useNavigate();
   const goHome = () => navigate("/");
+  const {openLogin, setLogOff, currentUser} = useContext(AuthContext)
+
+  const onLogOff = ()=>{
+    setLogOff()
+    alert('Has cerrado seción \nVuelve Pronto!')
+  }
 
   return (
     <div className="NavBar">
@@ -27,7 +35,12 @@ function NavBar({openLogin}) {
         <Link to={'/eres-propietario'}>
           <CustomButton content={"¿Eres propietario?"} pattern={"blue"} />
         </Link>
-          <CustomButton content={"Inicia Secion"} pattern={"white"} onButtonClick={openLogin}/>
+          {!currentUser ?
+            <CustomButton content={"Inicia Secion"} pattern={"white"} onButtonClick={openLogin}/>
+:
+<CustomButton content={"Cerrar Secion"} pattern={"white"} onButtonClick={onLogOff}/>
+
+          }
       </div>
     </div>
   );

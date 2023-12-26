@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CustomButton from "../CustomButton/CustomButton";
 import DateInput from "../DateInput/DateInput";
 import "./VisitForm.css";
+import { AuthContext } from "../../Context/Login.context";
 
 const EmptyVisitForm = {
   visitDate: "",
@@ -10,10 +11,23 @@ const EmptyVisitForm = {
 
 const VisitForm = ({ onButtonClick }) => {
   const [visitDates, setVisitDates] = useState(EmptyVisitForm);
-  const { visitDate, entryDate } = visitDates;
+  const { visitDate } = visitDates;
+  const { currentUser, openLogin } = useContext(AuthContext);
 
   const onVisitRequest = (e) => {
     e.preventDefault();
+    if (!visitDate ) {
+      alert("Porfavor selecciona una fecha de visita");
+      return;
+    }
+    if( new Date(visitDate) < new Date()){
+      alert("Porfavor selecciona una fecha valida");
+      return
+    }
+    if (!currentUser) {
+      openLogin();
+      return;
+    }
     alert(`Perfecto! Has solicitado una visita el ${visitDate}`);
   };
   const onDateSelection = (e) => {
@@ -42,13 +56,13 @@ const VisitForm = ({ onButtonClick }) => {
       </form>
       <div className="asset-page-question-endingbox">
         <p className="asset-page-question">Tienes una pregunta?</p>
-        <a href="#QuestionPopUp">
-          <CustomButton
-            pattern={"blue-small"}
-            content={"Consultanos!"}
-            onButtonClick={onButtonClick}
-          />
-        </a>
+        {/* <a href="#QuestionPopUp"> */}
+        <CustomButton
+          pattern={"blue-small"}
+          content={"Consultanos!"}
+          onButtonClick={onButtonClick}
+        />
+        {/* </a> */}
       </div>
     </div>
   );

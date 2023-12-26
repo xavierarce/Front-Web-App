@@ -8,6 +8,7 @@ import Home from "./routes/home/Home";
 import AssetList from "./routes/AssetList/AssetList";
 import AssetPage from "./routes/AssetPage/AssetPage";
 import EresPropietario from "./routes/EresPropietario/EresPropietario";
+import { AuthProvider } from "./Context/Login.context";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "bienes", element: <AssetList /> },
-      { path: "bienes/:id", element: <AssetPage/> },
-      { path: "eres-propietario", element: <EresPropietario/> },
+      { path: "bienes/:id", element: <AssetPage /> },
+      { path: "eres-propietario", element: <EresPropietario /> },
     ],
   },
 ]);
@@ -25,7 +26,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
 

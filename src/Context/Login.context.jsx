@@ -1,20 +1,28 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
-// Step 1: Create the context
-const MyContext = createContext();
+export const AuthContext = createContext();
 
-// Step 2: Create the provider component
-export const MyContextProvider = ({ children }) => {
-  const [state, setState] = useState(/* initial state */);
+export const AuthProvider = ({ children }) => {
+  const [authOpen, setAuthOpen] = useState(false);
+  const [currentUser, setcurrentUser] = useState(null);
 
-  const updateState = (newState) => {
-    setState(newState);
+  const openLogin = () => setAuthOpen(true);
+  const closeLogin = () => setAuthOpen(false);
+  const setLogIn = () => {
+    const tryUser = { name: "Xavier" };
+    setcurrentUser(tryUser);
+    return tryUser;
+  };
+  const setLogOff = async () => await setcurrentUser(null);
+
+  const value = {
+    authOpen,
+    openLogin,
+    closeLogin,
+    setLogIn,
+    setLogOff,
+    currentUser,
   };
 
-  // Provide the context value to the children
-  return (
-    <MyContext.Provider value={{ state, updateState }}>
-      {children}
-    </MyContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
