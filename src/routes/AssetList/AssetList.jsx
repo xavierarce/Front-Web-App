@@ -38,7 +38,7 @@ function AssetList() {
 
   return (
     <div className="asset-list-page">
-      <h2 className="slogan">Encuentra tu hogar , Sin Preocupaciones</h2>
+      <h2 className="slogan">Encuentra tu hogar, sin preocupaciones</h2>
       <SearchBar
         value={searchInput}
         onChange={onSearchChange}
