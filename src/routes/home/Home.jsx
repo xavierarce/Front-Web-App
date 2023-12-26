@@ -20,7 +20,7 @@ function Home() {
   return (
     <div className="home">
       <div className="tiulo-searchBar">
-        <h2 className="titulo-home">Realiza todo <br/> desde tu casa</h2>
+        <h2 className="slogan">Encuentra tu hogar<br/> Sin Preocupaciones</h2>
         <SearchBar
           onSubmit={handleSearch}
           onChange={(e) => setSearchTerm(e.target.value)}

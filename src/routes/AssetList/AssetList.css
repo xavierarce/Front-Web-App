@@ -8,15 +8,6 @@
   position: relative;
 }
 
-.slogan {
-  color: #000000;
-  font-family: "Newsreader-Regular", Helvetica;
-  font-size: 3rem;
-  font-weight: 400;
-  letter-spacing: -1.28px;
-  margin: 0;
-}
-
 .asset-list-and-map {
   align-items: flex-start;
   display: flex;

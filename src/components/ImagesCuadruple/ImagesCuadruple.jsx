@@ -9,10 +9,12 @@ function ImagesCuadruple() {
   const IMAGES = [Room1, Room2, Room3, Room4, Room4, Room4];
 
   return (
-    <div className="imagenes">
-      {IMAGES.map((image, idx) => (
-        <ApartmentCard key={idx} image={image} />
-      ))}
+    <div className="home-imagenes-container">
+      <div className="home-imagenes">
+        {IMAGES.map((image, idx) => (
+          <ApartmentCard key={idx} image={image} />
+        ))}
+      </div>
     </div>
   );
 }

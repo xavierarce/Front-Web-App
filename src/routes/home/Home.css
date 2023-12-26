@@ -13,12 +13,12 @@
   gap: 1rem;
 }
 
-.titulo-home {
+.slogan {
   color: #000000;
   font-family: "Newsreader-Regular", Helvetica;
   font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -1.28px;
+  font-weight: normal;
+  letter-spacing: 1;
   margin: 0;
 }
 

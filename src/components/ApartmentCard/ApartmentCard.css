@@ -1,6 +1,7 @@
 .apartment-card {
   align-items: flex-start;
-  background-color: #4062da4c;
+  /* background-color: #4062da4c; */
+  background-color: #ffffff;
   border-radius: 20px;
   display: inline-flex;
   flex-direction: column;
