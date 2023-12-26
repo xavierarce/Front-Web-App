@@ -1,22 +1,27 @@
 .NavBar {
-    display: flex;
-    flex-direction: row;
-    gap: 4em;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 4em;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #4062da; /* Add this line */
 }
 
 .NavBar-Name {
-    color: #4062da;
-    font: 700 50px/50px "Newsreader-Medium", Helvetica;
-    cursor: pointer;
-  }
-
-.Nav-Links {
-    display: inline-flex;
-    gap: 3em;
+  color: #4062da;
+  font: 700 50px/50px "Newsreader-Medium", Helvetica;
+  cursor: pointer;
 }
 
+.NavBar-Logo {
+  padding: .2rem;
+  cursor: pointer;
+}
+
+.Nav-Links {
+  display: inline-flex;
+  gap: 3em;
+}
 
 .Eres-Propietario {
   background-color: #4062da;
@@ -29,7 +34,7 @@
   gap: 1.5rem;
 }
 
-.NavBar-Sections-Item{
+.NavBar-Sections-Item {
   color: #000;
   font: 400 16px/20.8px "Inter-Regular", Helvetica;
   height: 21px;
@@ -37,7 +42,7 @@
   text-decoration: none;
 }
 
-.NavBar-Buttons{
+.NavBar-Buttons {
   display: inline-flex;
   gap: 0.5rem;
 }
