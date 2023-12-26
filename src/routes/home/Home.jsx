@@ -23,7 +23,8 @@ function Home() {
       <div className="tiulo-searchBar">
         <h2 className="slogan">
           Encuentra tu hogar
-          <br /> Sin Preocupaciones
+          <br />
+          Sin Preocupaciones
         </h2>
         <SearchBar
           onSubmit={handleSearch}

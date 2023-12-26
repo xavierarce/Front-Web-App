@@ -38,7 +38,7 @@ function AssetList() {
 
   return (
     <div className="asset-list-page">
-      <h2 className="slogan">Seguro, comodo y nuevo</h2>
+      <h2 className="slogan">Encuentra tu hogar , Sin Preocupaciones</h2>
       <SearchBar
         value={searchInput}
         onChange={onSearchChange}
@@ -46,7 +46,7 @@ function AssetList() {
       />
       <div className="asset-list-and-map">
         <div className="asset-list-container">
-          {filterResults.length===0 ? (
+          {filterResults.length === 0 ? (
             <h2>Lo siento! Prueba otra ubicación</h2>
           ) : (
             filterResults.map((asset, idx) => {
