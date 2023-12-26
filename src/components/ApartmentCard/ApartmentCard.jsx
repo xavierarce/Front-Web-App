@@ -1,19 +1,23 @@
 import "./ApartmentCard.css";
 import Location from "../../assets/icons/locationIcon.svg";
+import { Link } from "react-router-dom";
 
-function ApartmentCard({ image }) {
+function ApartmentCard({ asset }) {
+  console.log(asset);
+  const { id, title, city, address, imageURL } = asset;
+  
   return (
-    <div className="apartment-card">
-      <img className="apartment-card-image" alt="Rectangle" src={image} />
-      <div className="apartment-card-title">Titulo del apartamento</div>
-      <div className="apartment-card-description">
-        Direccion del Apartamento
+    <Link className='apartment-card-Link'  to={`/bienes/${id}`}>
+      <div className="apartment-card">
+        <img className="apartment-card-image" alt="Rectangle" src={imageURL} />
+        <div className="apartment-card-title">{title}</div>
+        <div className="apartment-card-description">{address} </div>
+        <div className="apartment-card-ciudad">
+          <img className="icon-location" alt="icon-lupa" src={Location} />
+          <div className="ciudad-teext">{city}</div>
+        </div>
       </div>
-      <div className="apartment-card-ciudad">
-        <img className="icon-location" alt="icon-lupa" src={Location} />
-        <div className="ciudad-teext">Ciudad</div>
-      </div>
-    </div>
+    </Link>
   );
 }
 

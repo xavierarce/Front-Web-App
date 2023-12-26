@@ -19,10 +19,6 @@
   cursor: pointer;
 }
 
-.Nav-Links {
-  display: inline-flex;
-  gap: 3em;
-}
 
 .Eres-Propietario {
   background-color: #4062da;

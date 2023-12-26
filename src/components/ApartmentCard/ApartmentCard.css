@@ -11,6 +11,11 @@
   position: relative;
 }
 
+.apartment-card-Link {
+  text-decoration: none;
+  color: #000000;
+}
+
 .apartment-card-image {
   height: 200px;
   border-radius: 5px;
@@ -26,9 +31,10 @@
   font-weight: 600;
   letter-spacing: 0;
   line-height: normal;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
+  max-width: 19.7rem;
+  white-space: nowrap; /* Prevents the title from breaking into multiple lines */
+  overflow: hidden; /* Hides any content that overflows the container */
+  text-overflow: ellipsis;
 }
 
 .apartment-card-title-description {

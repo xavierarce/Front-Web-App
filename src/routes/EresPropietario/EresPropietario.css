@@ -43,3 +43,10 @@
   height: 15rem;
   object-fit: cover;
 }
+
+
+.eres-propietario-page{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

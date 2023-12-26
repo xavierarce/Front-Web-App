@@ -3,6 +3,7 @@ import ImagesCuadruple from "../../components/ImagesCuadruple/ImagesCuadruple";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import "./Home.css";
 import { useState } from "react";
+import ASSETSFAKEDATA from "../../AssetsFakeData";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,13 +21,16 @@ function Home() {
   return (
     <div className="home">
       <div className="tiulo-searchBar">
-        <h2 className="slogan">Encuentra tu hogar<br/> Sin Preocupaciones</h2>
+        <h2 className="slogan">
+          Encuentra tu hogar
+          <br /> Sin Preocupaciones
+        </h2>
         <SearchBar
           onSubmit={handleSearch}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
-      <ImagesCuadruple />
+      <ImagesCuadruple assets={ASSETSFAKEDATA} />
       <div className="texto-bellow">
         <div className="encuentra-tu-proximo">ENCUENTRA TU PROXIMO HOGAR</div>
         <p className="lorem-ipsum-dolor">

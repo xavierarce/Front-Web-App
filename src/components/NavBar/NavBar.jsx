@@ -3,7 +3,7 @@ import CustomButton from "../CustomButton/CustomButton";
 import "./NavBar.css";
 import HogarSeguro from "../../assets/Hogar Seguro.svg";
 
-function NavBar() {
+function NavBar({openLogin}) {
   const navigate = useNavigate();
   const goHome = () => navigate("/");
 
@@ -15,7 +15,6 @@ function NavBar() {
         onClick={goHome}
         className="NavBar-Logo"
       />
-      {/* <div className="Nav-Links"> */}
       <div className="Nav-Sections">
         <Link className="NavBar-Sections-Item" to={"/bienes"}>
           Bienes disponibles
@@ -25,10 +24,11 @@ function NavBar() {
         <Link className="NavBar-Sections-Item">Contactanos</Link>
       </div>
       <div className="NavBar-Buttons">
-        <CustomButton content={"Eres propietario?"} pattern={"blue"} />
-        <CustomButton content={"Inicia Secion"} pattern={"white"} />
+        <Link to={'/eres-propietario'}>
+          <CustomButton content={"¿Eres propietario?"} pattern={"blue"} />
+        </Link>
+          <CustomButton content={"Inicia Secion"} pattern={"white"} onButtonClick={openLogin}/>
       </div>
-      {/* </div> */}
     </div>
   );
 }

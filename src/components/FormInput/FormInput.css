@@ -1,0 +1,26 @@
+.DateInput {
+  padding: 0.25rem;
+  font-size: 0.75rem;
+  border-radius: 3px;
+}
+
+.Form-Input-Section {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.Form-Input-Section-Authenticate {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.text-input {
+  border: 0.1rem solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+.text-input:focus {
+  border-color: rgba(0, 123, 255, 0.5); /* Semi-transparent blue color */
+}

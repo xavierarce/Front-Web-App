@@ -14,14 +14,21 @@
 .search-bar-input {
   color: var(--neutral-500);
   font-family: "Manrope-Regular", Helvetica;
-  border: 0;
+  border: 0.1rem solid white;
   font-size: 25px;
   font-weight: 400;
   width: 100%; /* Adjusted width */
   height: 30px;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+  outline: none;
   ::placeholder {
     text-align: center;
   }
+}
+
+.search-bar-input:focus {
+  border-color: rgba(0, 123, 255, 0.5); /* Semi-transparent blue color */
 }
 
 .icon-lupa {

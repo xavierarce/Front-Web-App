@@ -65,3 +65,21 @@
   color: #fff;
   font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
 }
+
+
+.custom-button-close-white {
+  background-color: #fff;
+  border-radius: 8px;
+  height: 48px;
+  padding: 0rem 0.2rem 0 0.2rem;
+  border: 2px #4062da solid ;
+  cursor: pointer;
+  text-align: center;
+}
+
+.custom-button-text-close-white {
+  color: #4062da;
+  margin: 0rem;
+  padding: 0rem;
+  font: 600 .8rem/.8rem "Inter-SemiBold", Helvetica;
+}
