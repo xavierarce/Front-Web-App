@@ -11,6 +11,7 @@ import EresPropietario from "./routes/EresPropietario/EresPropietario";
 import { AuthProvider } from "./Context/Login.context";
 import ArticulosPage from "./routes/ArticulosPage/ArticulosPage";
 import ContactanosPage from "./routes/ContactanosPage/ContactanosPage";
+import QuienesSomosPage from "./routes/QuienesSomosPage/QuienesSomosPage";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       { path: "eres-propietario", element: <EresPropietario /> },
       { path: "articulos", element: <ArticulosPage /> },
       { path: "contactanos", element: <ContactanosPage /> },
-      { path: "quienes-somos", element: <ContactanosPage /> },
+      { path: "quienes-somos", element: <QuienesSomosPage /> },
     ],
   },
 ]);

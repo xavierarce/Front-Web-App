@@ -1,0 +1,37 @@
+.quienes-somos-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quienes-somos-title {
+  font-size: 3em;
+  color: var(--main-custom-blue-pastel);
+  text-align: center;
+}
+
+.quienes-somos-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.quienes-somos-description {
+  flex: 1;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.quienes-somos-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-left: 20px;
+}
+
+/* Adjust styles as needed */

@@ -4,22 +4,27 @@ import "./EresPropietarioForm.css";
 import FormInput from "../FormInput/FormInput";
 
 const EmptyEresPropietarioForm = {
-  Subject: "",
+  Name: "",
+  Email: "",
+  Phone: "",
+  AssetType: "",
   Message: "",
 };
 
 function EresPropietarioForm({ closeQuestion }) {
   const [questionForm, setQuestionForm] = useState(EmptyEresPropietarioForm);
-  const { Subject } = questionForm;
+  const { Name, Email, Phone, AssetType, Message } = questionForm;
 
-  const onMessageChange = (e) => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     setQuestionForm({ ...questionForm, [name]: value });
   };
 
   const onSubmitQuestion = (e) => {
     e.preventDefault();
-    alert(`Tu pregunta '${Subject}' se ha enviado\nTe responderemos en breve!`);
+    alert(
+      `Tu pregunta '${Message}' se ha enviado. ¡Te responderemos en breve!`
+    );
   };
 
   return (
@@ -27,30 +32,38 @@ function EresPropietarioForm({ closeQuestion }) {
       <FormInput
         label={"Nombre:"}
         divClassName={"Form-Input-Section"}
-        placeholder={"Como te llamas?"}
-        name={"name"}
+        placeholder={"¿Cómo te llamas?"}
+        name={"Name"}
         pattern={"text-input"}
+        value={Name}
+        onChange={onInputChange}
       />
       <FormInput
         label={"Email:"}
         divClassName={"Form-Input-Section"}
         placeholder={"Para poder contactarte"}
-        name={"email"}
-        pattern={"text-input"}
+        name={"Email"}
+        pattern={"email"}
+        value={Email}
+        onChange={onInputChange}
       />
       <FormInput
-        label={"Telefono:"}
+        label={"Teléfono:"}
         divClassName={"Form-Input-Section"}
         placeholder={"Para poder contactarte"}
-        name={"phone"}
+        name={"Phone"}
         pattern={"text-input"}
+        value={Phone}
+        onChange={onInputChange}
       />
       <FormInput
         label={"Tipo de bien:"}
         divClassName={"Form-Input-Section"}
-        placeholder={"Tipo de Bien"}
-        name={"assetType"}
+        placeholder={"Tipo de bien"}
+        name={"AssetType"}
         pattern={"text-input"}
+        value={AssetType}
+        onChange={onInputChange}
       />
       <div className="eres-propietario-form-section">
         <label>Mensaje</label>
@@ -58,7 +71,8 @@ function EresPropietarioForm({ closeQuestion }) {
           className="eres-propietario-form-message"
           maxLength={255}
           name="Message"
-          onChange={onMessageChange}
+          value={Message}
+          onChange={onInputChange}
         />
       </div>
       <CustomButton content={"Enviar"} pattern={"blue"} />

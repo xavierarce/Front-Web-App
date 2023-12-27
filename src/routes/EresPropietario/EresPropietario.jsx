@@ -10,17 +10,14 @@ function EresPropietario() {
           <div className="eres-propietario-description">
             <p className="eres-propietario-text">Forma parte de nuestra red.</p>
             <p className="eres-propietario-text">
-              Comentanos sobre tu apartamento o casa y nos pondremos en contacto
-              en breve para ayudarte con tu bien!
+              Cuéntanos sobre tu apartamento o casa y nos pondremos en contacto en breve para ayudarte con tu bien.
             </p>
           </div>
         </div>
         <img
           className="eres-propietario-image"
-          alt={'Eres Propietario?'}
-          src={
-            "https://www.accountingweb.co.uk/sites/default/files/happyclient.jpg"
-          }
+          alt={'¿Eres Propietario?'}
+          src={"https://www.accountingweb.co.uk/sites/default/files/happyclient.jpg"}
         />
       </div>
       <EresPropietarioForm />

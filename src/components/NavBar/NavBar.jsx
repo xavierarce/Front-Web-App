@@ -7,40 +7,53 @@ import { AuthContext } from "../../Context/Login.context";
 
 function NavBar() {
   const navigate = useNavigate();
-  const goHome = () => navigate("/");
-  const {openLogin, setLogOff, currentUser} = useContext(AuthContext)
+  const navigateHome = () => navigate("/");
+  const { openLogin, setLogOff, currentUser } = useContext(AuthContext);
 
-  const onLogOff = ()=>{
-    setLogOff()
-    alert('Has cerrado seción \nVuelve Pronto!')
-  }
+  const onLogOff = () => {
+    setLogOff();
+    alert("Has cerrado sesión\n¡Vuelve Pronto!");
+  };
 
   return (
     <div className="NavBar">
       <img
         src={HogarSeguro}
         alt="Hogar Seguro"
-        onClick={goHome}
+        onClick={navigateHome}
         className="NavBar-Logo"
       />
       <div className="Nav-Sections">
         <Link className="NavBar-Sections-Item" to={"/bienes"}>
           Bienes disponibles
         </Link>
-        <Link to={'quienes-somos'} className="NavBar-Sections-Item">Quienes somos</Link>
-        <Link to={'articulos'} className="NavBar-Sections-Item">Articulos</Link>
-        <Link to={'contactanos'} className="NavBar-Sections-Item">Contactanos</Link>
+        <Link to={"quienes-somos"} className="NavBar-Sections-Item">
+          Quiénes somos
+        </Link>
+        <Link to={"articulos"} className="NavBar-Sections-Item">
+          Artículos
+        </Link>
+        <Link to={"contactanos"} className="NavBar-Sections-Item">
+          Contáctanos
+        </Link>
       </div>
       <div className="NavBar-Buttons">
-        <Link to={'/eres-propietario'}>
+        <Link to={"/eres-propietario"}>
           <CustomButton content={"¿Eres propietario?"} pattern={"blue"} />
         </Link>
-          {!currentUser ?
-            <CustomButton content={"Inicia Secion"} pattern={"white"} onButtonClick={openLogin}/>
-:
-<CustomButton content={"Cerrar Secion"} pattern={"white"} onButtonClick={onLogOff}/>
-
-          }
+        {!currentUser ? (
+          <CustomButton
+            content={"Inicia Sesión"}
+            pattern={"white"}
+            onButtonClick={openLogin}
+          />
+        ) : (
+          <CustomButton
+            content={"Cerrar Sesión"}
+            pattern={"white"}
+            onButtonClick={onLogOff}
+          />
+        )}
       </div>
     </div>
   );
