@@ -1,5 +1,5 @@
 .custom-button-blue {
-  background-color: #4062da;
+  background-color: var(--main-custom-blue);
   border-radius: 8px;
   height: 48px;
   padding: 0 1rem 0 1rem;
@@ -14,7 +14,7 @@
 
 /*? Blue Small */
 .custom-button-blue-small {
-  background-color: #4062da;
+  background-color: var(--main-custom-blue);
   border-radius: 8px;
   height: fit-content;
   padding: 0.5rem;
@@ -38,12 +38,12 @@
 }
 
 .custom-button-text-white {
-  color: #4062da;
+  color: var(--main-custom-blue);
   font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
 }
 
 .custom-button-text-white-small {
-  color: #4062da;
+  color: var(--main-custom-blue);
   font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
 }
 
@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background-color: #4062da;
+  background-color: var(--main-custom-blue);
   color: #fff;
   border: none;
   margin: 0 5px;
@@ -72,13 +72,13 @@
   border-radius: 8px;
   height: 48px;
   padding: 0rem 0.2rem 0 0.2rem;
-  border: 2px #4062da solid ;
+  border: 2px var(--main-custom-blue) solid ;
   cursor: pointer;
   text-align: center;
 }
 
 .custom-button-text-close-white {
-  color: #4062da;
+  color: var(--main-custom-blue);
   margin: 0rem;
   padding: 0rem;
   font: 600 .8rem/.8rem "Inter-SemiBold", Helvetica;

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import CustomButton from "../CustomButton/CustomButton";
 import "./NavBar.css";
-import HogarSeguro from "../../assets/Hogar Seguro.svg";
+import HogarSeguro from "../../assets/Logo-Completo.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/Login.context";
 

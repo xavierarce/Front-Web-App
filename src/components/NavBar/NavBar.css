@@ -4,24 +4,20 @@
   gap: 4em;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid #4062da; /* Add this line */
+  border-bottom: 2px solid var(--main-custom-blue); /* Add this line */
   width: 100%;
 }
 
-.NavBar-Name {
-  color: #4062da;
-  font: 700 50px/50px "Newsreader-Medium", Helvetica;
-  cursor: pointer;
-}
+
 
 .NavBar-Logo {
-  padding: .2rem;
   cursor: pointer;
+  max-height: 64px;
 }
 
 
 .Eres-Propietario {
-  background-color: #4062da;
+  background-color: var(--main-custom-blue);
   border-radius: 8px;
   padding: 14px 11px;
 }
