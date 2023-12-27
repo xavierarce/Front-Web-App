@@ -7,6 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   box-sizing: border-box;
+
+
 }
 
 code {
@@ -17,5 +19,4 @@ code {
 :root{
   --main-custom-blue: #0020ff;
   --main-custom-blue-50: rgba(0, 32, 255, 0.5) ;
-
 }

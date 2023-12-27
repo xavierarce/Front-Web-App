@@ -1,5 +1,4 @@
 .home-imagenes-container {
-  position: relative;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -7,6 +6,7 @@
   box-shadow: inset 0 0 2rem 2rem white;
   margin: 0;
   padding: 5rem;
+  max-width: 100vw;
 }
 
 .home-imagenes {
@@ -17,8 +17,11 @@
   gap: 2em; /* Adjust the gap as needed */
   max-width: 1140px; /* Use max-width instead of width */
 }
-.rectangle {
-  flex: 0 0 calc((100% - 100px) / 3); /* Adjust the width calculation for 3 images per line */
-  height: 11rem;
-  object-fit: cover;
+
+@media only screen and (max-width: 800px) {
+  .home-imagenes-container {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
 }

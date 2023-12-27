@@ -16,18 +16,22 @@
   color: #000000;
 }
 
+.icon-location {
+  max-width: 20px;
+}
+
 .apartment-card-image {
-  height: 200px;
+  max-height: 13em;
   border-radius: 5px;
   object-fit: cover;
   position: relative;
-  width: 315px;
+  width: 20em;
 }
 
 .apartment-card-title {
   color: #000000;
   font-family: "Inter-SemiBold", Helvetica;
-  font-size: 20px;
+  font-size: 1.22em;
   font-weight: 600;
   letter-spacing: 0;
   line-height: normal;
@@ -54,4 +58,54 @@
   display: inline-flex;
   gap: 10px;
   position: relative;
+}
+
+@media only screen and (max-width: 800px) {
+  .apartment-card {
+  background-color: #4062da4c;
+  }
+
+  .icon-location {
+    max-width: 20px;
+  }
+
+  .apartment-card-image {
+    max-height: 10em;
+    border-radius: 10px;
+    object-fit: cover;
+    position: relative;
+    width: 20em;
+  }
+
+  .apartment-card-title {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 1.22em;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    max-width: 16rem;
+    white-space: nowrap; /* Prevents the title from breaking into multiple lines */
+    overflow: hidden; /* Hides any content that overflows the container */
+    text-overflow: ellipsis;
+  }
+
+  .apartment-card-title-description {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+
+  .apartment-card-ciudad {
+    align-items: center;
+    display: inline-flex;
+    gap: 10px;
+    position: relative;
+  }
 }

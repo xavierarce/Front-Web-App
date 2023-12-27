@@ -9,6 +9,7 @@
   padding: 15px 20px;
   position: relative;
   width: 700px;
+  max-width: 80vw;
 }
 
 .search-bar-input {

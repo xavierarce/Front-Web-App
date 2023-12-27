@@ -1,25 +1,17 @@
 .NavBar {
   display: flex;
   flex-direction: row;
-  gap: 4em;
+  gap: 4vw;
   justify-content: center;
   align-items: center;
   border-bottom: 2px solid var(--main-custom-blue); /* Add this line */
-  width: 100%;
+  max-width: 100vw;
+  min-width: 100%;
 }
-
-
 
 .NavBar-Logo {
   cursor: pointer;
   max-height: 64px;
-}
-
-
-.Eres-Propietario {
-  background-color: var(--main-custom-blue);
-  border-radius: 8px;
-  padding: 14px 11px;
 }
 
 .Nav-Sections {
@@ -38,4 +30,14 @@
 .NavBar-Buttons {
   display: inline-flex;
   gap: 0.5rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .NavBar {
+    /* max-width: 50vw; */
+    /* font-size: 0.1rem; */
+  }
+  .Nav-Sections{
+    overflow-x: auto;
+  }
 }

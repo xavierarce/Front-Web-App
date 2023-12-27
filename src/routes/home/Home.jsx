@@ -32,9 +32,9 @@ function Home() {
         />
       </div>
       <ImagesCuadruple assets={ASSETSFAKEDATA} />
-      <div className="texto-bellow">
-        <div className="encuentra-tu-proximo">ENCUENTRA TU PROXIMO HOGAR</div>
-        <p className="lorem-ipsum-dolor">
+      <div className="home-page-description">
+        <div className="home-page-description-title">ENCUENTRA TU PROXIMO HOGAR</div>
+        <p className="home-page-description-text">
           Lorem ipsum dolor sit amet consectetur. Et augue vitae natoque lorem
           donec vestibulum eu lacinia. Nisl tempor hendrerit posuere amet
           semper. Senectus imperdiet bibendum sit ut pharetra tristique sed. Mi

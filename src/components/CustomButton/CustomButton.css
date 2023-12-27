@@ -1,7 +1,7 @@
 .custom-button-blue {
   background-color: var(--main-custom-blue);
   border-radius: 8px;
-  height: 48px;
+  max-height: 48px;
   padding: 0 1rem 0 1rem;
   border: none;
   cursor: pointer;
@@ -9,14 +9,14 @@
 
 .custom-button-text-blue {
   color: #fff;
-  font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
+  font: 600 1rem/1.1em "Inter-SemiBold", Helvetica;
 }
 
 /*? Blue Small */
 .custom-button-blue-small {
   background-color: var(--main-custom-blue);
   border-radius: 8px;
-  height: fit-content;
+  max-height: fit-content;
   padding: 0.5rem;
   border: none;
   cursor: pointer;
@@ -24,14 +24,14 @@
 
 .custom-button-text-blue-small {
   color: #fff;
-  font: 600 10px/15px "Inter-SemiBold", Helvetica;
+  font: 600 .6rem "Inter-SemiBold", Helvetica;
   margin: 0;
 }
 
 .custom-button-white {
   background-color: #fff;
   border-radius: 8px;
-  height: 48px;
+  max-height: 48px;
   padding: 0 1rem 0 1rem;
   border: none;
   cursor: pointer;
@@ -49,7 +49,7 @@
 
 .custom-button-arrow {
   width: 30px;
-  height: 30px;
+  max-height: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -66,13 +66,12 @@
   font: 600 16px/20.8px "Inter-SemiBold", Helvetica;
 }
 
-
 .custom-button-close-white {
   background-color: #fff;
   border-radius: 8px;
-  height: 48px;
+  max-height: 48px;
   padding: 0rem 0.2rem 0 0.2rem;
-  border: 2px var(--main-custom-blue) solid ;
+  border: 2px var(--main-custom-blue) solid;
   cursor: pointer;
   text-align: center;
 }
@@ -81,5 +80,30 @@
   color: var(--main-custom-blue);
   margin: 0rem;
   padding: 0rem;
-  font: 600 .8rem/.8rem "Inter-SemiBold", Helvetica;
+  font: 600 0.8rem/.8rem "Inter-SemiBold", Helvetica;
+}
+
+
+/* !Media q */
+@media only screen and (max-width: 800px) {
+  
+  .custom-button-text-blue {
+    color: #fff;
+    font: 600 .9em "Inter-SemiBold", Helvetica;
+  }
+  
+  
+  .custom-button-text-blue-small {
+    color: #fff;
+    font: 600 .6rem "Inter-SemiBold", Helvetica;
+    margin: 0;
+  }
+  
+
+  .custom-button-text-white {
+    color: var(--main-custom-blue);
+    font: 600 .9em "Inter-SemiBold", Helvetica;
+  }
+
+  
 }

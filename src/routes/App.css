@@ -5,6 +5,15 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  min-height: 100vh;
-  margin: 0 auto; /* Add this line to center the container horizontally */
+  max-width: 100vw;
+  width:  100%;
+
+}
+
+@media only screen and (max-width: 800px) {
+  .App {
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+  }
 }
