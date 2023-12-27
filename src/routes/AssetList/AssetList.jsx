@@ -2,7 +2,7 @@ import AssetOnList from "../../components/AssetOnList/AssetOnList";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import "./AssetList.css";
 import Map from "../../assets/Map.png";
-import ASSETSFAKEDATA from "../../AssetsFakeData";
+import {ASSETSFAKEDATA} from "../../AssetsFakeData";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 

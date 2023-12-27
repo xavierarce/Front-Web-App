@@ -1,0 +1,17 @@
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 2em;
+  width: 80em;
+}
+
+.contact-page-title {
+  margin: 0;
+  font-size: 3em;
+  color: var(--main-custom-blue-pastel);
+}
+
+.contact-page-subtitle {
+  margin: 0;
+}

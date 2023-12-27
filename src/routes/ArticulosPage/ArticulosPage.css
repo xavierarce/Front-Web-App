@@ -1,0 +1,54 @@
+.articulos-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.articulos-page-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.articulos-page-title{
+  /* color: var(--main-custom-blue); */
+  color: var(--main-custom-blue-pastel);
+  font-size: 3em;
+  /* margin: 0; */
+
+}
+
+.articulos-page-subtitle{
+  font-size: 1.1em;
+}
+
+
+.articulos-page-sections-container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4em; /* Adjust the gap as needed */
+  max-width: 60em;
+}
+
+.article-page-section {
+  width: 20em;
+  height: 20em;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin: 10px; /* Adjust margin as needed */
+}
+
+.section-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7); /* Adjust background color and opacity as needed */
+  color: white;
+  text-align: center;
+}

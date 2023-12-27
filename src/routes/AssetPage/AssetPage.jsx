@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import ASSETSFAKEDATA from "../../AssetsFakeData";
+import {ASSETSFAKEDATA} from "../../AssetsFakeData";
 import ImageGallery from "../../components/ImageGalley/ImageGallery";
 import "./AssetPage.css";
 import VisitForm from "../../components/VisitForm/VisitForm";

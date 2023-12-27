@@ -1,4 +1,4 @@
-const ASSETSFAKEDATA = [
+export const ASSETSFAKEDATA = [
   {
     id: 1,
     title: "Casa Colonial en Quito",
@@ -101,4 +101,26 @@ const ASSETSFAKEDATA = [
   },
 ];
 
-export default ASSETSFAKEDATA;
+
+export const ArticleSections = [
+  {
+    name: "Ciudadelas",
+    imgUrl:
+      "https://c4.wallpaperflare.com/wallpaper/674/595/714/house-architecture-modern-neighborhood-street-hd-wallpaper-preview.jpg",
+  },
+  {
+    name: "Informacion Sobre Casa",
+    imgUrl:
+      "https://static.vecteezy.com/ti/vecteur-libre/p1/20247214-technique-document-icone-contour-vecteur-manuel-papier-vectoriel.jpg",
+  },
+  {
+    name: "Supermercados",
+    imgUrl:
+      "https://cdn-icons-png.flaticon.com/512/384/384999.png",
+  },
+  {
+    name: "Procesos",
+    imgUrl:
+      "https://cdn-icons-png.flaticon.com/512/4149/4149678.png",
+  },
+];

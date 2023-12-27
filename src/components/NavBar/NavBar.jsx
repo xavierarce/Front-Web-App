@@ -27,9 +27,9 @@ function NavBar() {
         <Link className="NavBar-Sections-Item" to={"/bienes"}>
           Bienes disponibles
         </Link>
-        <Link className="NavBar-Sections-Item">Quienes somos</Link>
-        <Link className="NavBar-Sections-Item">Articulos</Link>
-        <Link className="NavBar-Sections-Item">Contactanos</Link>
+        <Link to={'quienes-somos'} className="NavBar-Sections-Item">Quienes somos</Link>
+        <Link to={'articulos'} className="NavBar-Sections-Item">Articulos</Link>
+        <Link to={'contactanos'} className="NavBar-Sections-Item">Contactanos</Link>
       </div>
       <div className="NavBar-Buttons">
         <Link to={'/eres-propietario'}>

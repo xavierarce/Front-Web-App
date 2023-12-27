@@ -1,4 +1,4 @@
-.eres-propietario-form {
+.contactanos-form {
   background-color: #ffffff;
   display: flex;
   align-items: flex-start;
@@ -11,15 +11,16 @@
   text-align: start;
   padding: 2rem;
   gap: 1rem;
+  /* background-color: #4062da; */
 }
 
-.eres-propietario-form-section {
+.contactanos-form-section {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.eres-propietario-form-message {
+.contactanos-form-message {
   width: 100%;
   height: 20em;
   padding: 10px;
@@ -33,6 +34,6 @@
 }
 
 /* Change the border color on focus for a subtle effect */
-.eres-propietario-form-message:focus {
+.contactanos-form-message:focus {
   border-color: rgba(0, 123, 255, 0.5); /* Semi-transparent blue color */
 }

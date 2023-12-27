@@ -3,7 +3,7 @@ import ImagesCuadruple from "../../components/ImagesCuadruple/ImagesCuadruple";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import "./Home.css";
 import { useState } from "react";
-import ASSETSFAKEDATA from "../../AssetsFakeData";
+import {ASSETSFAKEDATA} from "../../AssetsFakeData";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,7 +24,7 @@ function Home() {
         <h2 className="slogan">
           Encuentra tu hogar
           <br />
-          Sin Preocupaciones
+          Sin preocupaciones
         </h2>
         <SearchBar
           onSubmit={handleSearch}

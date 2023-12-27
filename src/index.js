@@ -9,6 +9,8 @@ import AssetList from "./routes/AssetList/AssetList";
 import AssetPage from "./routes/AssetPage/AssetPage";
 import EresPropietario from "./routes/EresPropietario/EresPropietario";
 import { AuthProvider } from "./Context/Login.context";
+import ArticulosPage from "./routes/ArticulosPage/ArticulosPage";
+import ContactanosPage from "./routes/ContactanosPage/ContactanosPage";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,9 @@ const router = createBrowserRouter([
       { path: "bienes", element: <AssetList /> },
       { path: "bienes/:id", element: <AssetPage /> },
       { path: "eres-propietario", element: <EresPropietario /> },
+      { path: "articulos", element: <ArticulosPage /> },
+      { path: "contactanos", element: <ContactanosPage /> },
+      { path: "quienes-somos", element: <ContactanosPage /> },
     ],
   },
 ]);

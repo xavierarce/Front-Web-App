@@ -1,12 +1,12 @@
 import { FaGoogle } from "react-icons/fa";
 import CustomButton from "../CustomButton/CustomButton";
 import FormInput from "../FormInput/FormInput";
-import "./Authenticate.css";
+import "./AuthenticatePopUp.css";
 import { IoCloseCircle } from "react-icons/io5";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/Login.context";
 
-const Authenticate = () => {
+const AuthenticatePopUp = () => {
   const { closeLogin, setLogIn } = useContext(AuthContext);
 
   const onSignInSubmit = async (e) => {
@@ -78,4 +78,4 @@ const Authenticate = () => {
   );
 };
 
-export default Authenticate;
+export default AuthenticatePopUp;

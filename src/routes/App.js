@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
 import "./App.css";
-import Authenticate from "../components/Authenticate/Authenticate";
 import { useContext } from "react";
 import { AuthContext } from "../Context/Login.context";
+import AuthenticatePopUp from "../components/AuthenticatePopUp/AuthenticatePopUp";
 
 function App() {
   const { authOpen } = useContext(AuthContext);
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      {authOpen && <Authenticate />}
+      {authOpen && <AuthenticatePopUp />}
       <Outlet />
     </div>
   );
