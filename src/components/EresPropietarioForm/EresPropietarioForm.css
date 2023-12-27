@@ -8,6 +8,7 @@
   border-radius: 20px;
   height: fit-content;
   width: 100%;
+  max-width: 100vw;
   text-align: start;
   padding: 2rem;
   gap: 1rem;
@@ -17,6 +18,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 100vw;
 }
 
 .eres-propietario-form-message {
@@ -30,9 +32,28 @@
   resize: none;
   transition: border-color 0.3s ease;
   outline: none;
+  max-width: 100vw;
 }
 
 /* Change the border color on focus for a subtle effect */
 .eres-propietario-form-message:focus {
   border-color: rgba(0, 123, 255, 0.5); /* Semi-transparent blue color */
+}
+
+@media only screen and (max-width: 800px) {
+  .eres-propietario-form {
+    max-width: 80%;
+    padding: 2rem;
+  }
+.top-eres-propietario{
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.eres-propietario-image{
+  max-height: 20vh;
+}
+.eres-propietario-form-message {
+  max-width: 90%;
+}
 }

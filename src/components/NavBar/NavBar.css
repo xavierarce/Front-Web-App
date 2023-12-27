@@ -39,5 +39,13 @@
   }
   .Nav-Sections{
     overflow-x: auto;
+    align-items: center;
+
   }
+
+  
+.NavBar-Logo {
+  cursor: pointer;
+  max-height: 2rem;
+}
 }

@@ -11,6 +11,9 @@
   text-align: start;
   padding: 2rem;
   gap: 1rem;
+  max-width: 99vw;
+
+
   /* background-color: #4062da; */
 }
 
@@ -18,6 +21,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 99%;
+
 }
 
 .contactanos-form-message {
@@ -31,9 +36,17 @@
   resize: none;
   transition: border-color 0.3s ease;
   outline: none;
+  max-width: 99%;
+
 }
 
 /* Change the border color on focus for a subtle effect */
 .contactanos-form-message:focus {
   border-color: rgba(0, 123, 255, 0.5); /* Semi-transparent blue color */
+}
+
+@media only screen and (max-width: 800px) {
+  .contactanos-form{
+    max-width: 70vw;
+  }
 }

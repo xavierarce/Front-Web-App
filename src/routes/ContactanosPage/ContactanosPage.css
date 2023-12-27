@@ -4,6 +4,7 @@
   text-align: start;
   gap: 2em;
   width: 80em;
+  max-width: 100vw;
 }
 
 .contact-page-title {
@@ -14,4 +15,12 @@
 
 .contact-page-subtitle {
   margin: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .contact-page {
+    max-width: 98%;
+    align-items: center;
+    text-align: center;
+  }
 }
