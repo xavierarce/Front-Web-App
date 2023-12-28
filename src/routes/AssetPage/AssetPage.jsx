@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import {ASSETSFAKEDATA} from "../../AssetsFakeData";
+import { ASSETSFAKEDATA } from "../../AssetsFakeData";
 import ImageGallery from "../../components/ImageGalley/ImageGallery";
 import "./AssetPage.css";
 import VisitForm from "../../components/VisitForm/VisitForm";
@@ -31,11 +31,13 @@ function AssetPage() {
         <h2 className="asset-page-top-title">
           {asset ? asset.title : "Asset not found"}
         </h2>
-          <div className="asset-page-top-favorito">
-            <CustomButton content={"Marcar"} pattern={"blue-small"} />
-            <AiFillStar size="1.5em" />
-          </div>
+        <div className="asset-page-top-favorito">
+          <CustomButton content={"Marcar"} pattern={"blue-small"} />
+          <AiFillStar size="1.5em" />
+        </div>
+        <div className="asset-page-share-button">
           <CustomButton content={"Compartir🔗"} pattern={"blue-small"} />
+        </div>
       </div>
       <ImageGallery images={FakeImages} />
       <div className="asset-page-description-section">
