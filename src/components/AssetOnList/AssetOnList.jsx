@@ -1,24 +1,28 @@
 import "./AssetOnlIst.css";
 import WifiIcon from "../../assets/icons/wifi-svgrepo-com.svg";
 import CustomButton from "../CustomButton/CustomButton";
-import { useNavigate } from "react-router-dom";
+import { Link,} from "react-router-dom";
+import { useContext } from "react";
+import { AssetsContext } from "../../Context/Assets.context";
 
-function AssetOnList({id, title, address, description, value, imgUrl }) {
-  const navigate =useNavigate()
-  
-  function navigateTo (){
-    navigate(`${id}`)
-  } 
+function AssetOnList({ asset }) {
+  const { title, address, value, imageURL, id } = asset;
+  const { selectedAsset, setSelectedAsset } = useContext(AssetsContext);
+
+  function onPreview() {
+    setSelectedAsset(asset);
+  }
 
   return (
-    <div className="asset-on-list">
+    <div
+      className={`asset-on-list ${
+        selectedAsset && id === selectedAsset.id ? "asset-active" : ""
+      }`}
+    >
       <div className="asset-on-list-description">
-        <div className="asset-on-list-title-description">
-          <div className="asset-on-list-title-address">
-            <b className="asset-on-list-title">{title}</b>
-            <p className="asset-on-list-address">{address}</p>
-          </div>
-          <p className="asset-on-list-description-text">{description} </p>
+        <div className="asset-on-list-title-address">
+          <b className="asset-on-list-title">{title}</b>
+          <p className="asset-on-list-address">{address}</p>
         </div>
         <div className="icons">
           {Array.from({ length: 10 }).map((_, index) => (
@@ -34,10 +38,24 @@ function AssetOnList({id, title, address, description, value, imgUrl }) {
           <div>
             <b>{value}</b>
           </div>
-          <CustomButton pattern={"blue"} content={"Detalles"} onButtonClick={navigateTo}/>
+          <div className="asset-breve-button">
+            <CustomButton
+              pattern={"white"}
+              content={"Muestra"}
+              onButtonClick={onPreview}
+            />
+          </div>
+          <Link to={`${id}`}>
+            <CustomButton
+              pattern={"blue"}
+              content={"Ir a al bien"}
+            />
+          </Link>
         </div>
       </div>
-      <img className="asset-on-list-image" alt={imgUrl} src={imgUrl} />
+      <div className="asset-on-list-image-container">
+        <img className="asset-on-list-image" alt={imageURL} src={imageURL} />
+      </div>
     </div>
   );
 }

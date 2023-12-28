@@ -1,0 +1,36 @@
+.asset-list-page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin: 0;
+}
+
+.asset-list-and-map {
+  align-items: flex-start;
+  display: flex;
+  gap: 1em;
+  max-height: 80vh;
+  max-width: 80vw;
+}
+
+.asset-list-page-container{
+  width: 70%;
+}
+
+.asset-list-description-container {
+  /* background-color: aqua; */
+  height: 50vh;
+  width: 50%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .asset-list-description-container {
+    display: none;
+  }
+  .asset-list-page-container {
+    overflow-y: none;
+    width: 100%;
+    /* background-color: aquamarine; */
+  }
+}

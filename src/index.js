@@ -5,13 +5,14 @@ import App from "./routes/App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./routes/home/Home";
-import AssetList from "./routes/AssetList/AssetList";
+import AssetListPage from "./routes/AssetListPage/AssetListPage";
 import AssetPage from "./routes/AssetPage/AssetPage";
 import EresPropietario from "./routes/EresPropietario/EresPropietario";
 import { AuthProvider } from "./Context/Login.context";
 import ArticulosPage from "./routes/ArticulosPage/ArticulosPage";
 import ContactanosPage from "./routes/ContactanosPage/ContactanosPage";
 import QuienesSomosPage from "./routes/QuienesSomosPage/QuienesSomosPage";
+import { AssetsProvider } from "./Context/Assets.context";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "bienes", element: <AssetList /> },
+      { path: "bienes", element: <AssetListPage /> },
       { path: "bienes/:id", element: <AssetPage /> },
       { path: "eres-propietario", element: <EresPropietario /> },
       { path: "articulos", element: <ArticulosPage /> },
@@ -32,9 +33,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <AssetsProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </AssetsProvider>
   </React.StrictMode>
 );
 

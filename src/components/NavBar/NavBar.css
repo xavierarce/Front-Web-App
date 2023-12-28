@@ -7,6 +7,7 @@
   border-bottom: 2px solid var(--main-custom-blue); /* Add this line */
   max-width: 100vw;
   min-width: 100%;
+  background-color: var(--main-custom-blue-80);
 }
 
 .NavBar-Logo {

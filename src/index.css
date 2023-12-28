@@ -17,5 +17,6 @@ code {
 :root {
   --main-custom-blue: #0020ff;
   --main-custom-blue-50: rgba(0, 32, 255, 0.5);
+  --main-custom-blue-80: rgba(0, 32, 255, 0.15);
   --main-custom-blue-pastel: #4163db;
 }

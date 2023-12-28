@@ -1,11 +1,10 @@
 .asset-on-list {
-  align-items: flex-start;
-  border: 3px solid;
-  border-color: #d9d9d9;
+  align-items: center;
+  border: 3px solid #d9d9d9;
   display: inline-flex;
-  gap: 38px;
-  padding: 19px 16px;
-  width: 45rem
+  max-height: 15em;
+  height: 15em;
+  width: 100%;
 }
 
 .asset-on-list-description {
@@ -13,57 +12,41 @@
   display: flex;
   flex-direction: column;
   gap: 9px;
-  width: 100%;
-}
-
-.asset-on-list-title-description {
-  align-items: flex-start;
-  align-self: stretch;
-  display: flex;
-  flex: 0 0 auto;
-  flex-direction: column;
-  width: 100%;
+  max-width: 60%;
+  justify-content: space-between;
+  width: 60%;
+  height: 90%;
+  /* background-color: green; */
 }
 
 .asset-on-list-title-address {
-  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 0.2rem;
+  max-width: 100%;
+  gap: 0.4em;
+  max-height: 7em;
 }
 
 .asset-on-list-title {
   color: #000000;
   font-family: "Inter-SemiBold", Helvetica;
   font-size: 24px;
-  font-weight: 600;
   letter-spacing: 0.96px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width:22rem; /* Set a fixed or max-width as needed */
+  max-width: 100%;
 }
 
 .asset-on-list-address {
   color: #000000;
-  font-family: "Inter-Medium", Helvetica;
-  font-size: 15px;
-  font-weight: 500;
-  margin: 0;
-}
-
-.asset-on-list-description-text {
-  color: #000000;
-  font-family: "Inter-Light", Helvetica;
-  font-size: 12px;
-  font-weight: 300;
-  height: 2rem;
-  letter-spacing: 0.24px;
-  line-height: 14.4px;
-  text-align: start;
+  font-family: "Inter-SemiBold", Helvetica;
+  white-space: nowrap;
   overflow: hidden;
+  text-align: start;
   text-overflow: ellipsis;
+  max-width: 100%;
+  margin: 0;
 }
 
 .icons {
@@ -78,16 +61,34 @@
   height: 20px;
 }
 
-.asset-on-list-image {
-  height: 15em;
-  object-fit: cover;
-  position: relative;
-  width: 25rem;
+.asset-on-list-image-container {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  height: 100%;
+  width: 40%;
 }
 
-.asset-on-list-buttons{
+.asset-on-list-image {
+  height: 90%;
+  object-fit: cover;
+  width: 90%;
+}
+
+.asset-on-list-buttons {
   display: inline-flex;
   gap: 1rem;
   align-items: center;
   padding: 0 1rem 0rem 1rem;
+}
+
+.asset-active {
+  background-color: var(--main-custom-blue-80);
+}
+
+@media only screen and (max-width: 1000px) {
+  .asset-breve-button {
+    display: none;
+    
+  }
 }

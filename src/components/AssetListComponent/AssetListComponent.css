@@ -1,24 +1,6 @@
-.asset-list-page {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  justify-content: center;
-  padding: 0px 30px;
-  position: relative;
-}
-
-.asset-list-and-map {
-  align-items: flex-start;
-  display: flex;
-  gap: 30px;
-  position: relative;
-}
-
 .asset-list-container {
   overflow-y: scroll;
-  height: 40rem;
-  width: 50rem;
+  max-height: 80vh;
 }
 
 .asset-list-container::-webkit-scrollbar-track {
@@ -34,3 +16,5 @@
 .asset-list-container ::-webkit-scrollbar-thumb {
   background-color: #000000;
 }
+
+
