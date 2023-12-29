@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
 import "./App.css";
 import { useContext } from "react";
@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      <ScrollRestoration/>
       {authOpen && <AuthenticatePopUp />}
       <Outlet />
     </div>

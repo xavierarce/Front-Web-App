@@ -7,7 +7,7 @@ function ApartmentCard({ asset }) {
   const { id, title, city, address, imageURL } = asset;
   
   return (
-    <Link className='apartment-card-Link'  to={`/bienes/${id}`}>
+    <Link className='apartment-card-Link'  to={`/bienes/${id}`} >
       <div className="apartment-card">
         <img className="apartment-card-image" alt="Rectangle" src={imageURL} />
         <div className="apartment-card-title">{title}</div>
