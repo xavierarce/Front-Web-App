@@ -14,13 +14,15 @@ import ContactanosPage from "./routes/ContactanosPage/ContactanosPage";
 import QuienesSomosPage from "./routes/QuienesSomosPage/QuienesSomosPage";
 import { AssetsProvider } from "./Context/Assets.context";
 import UserInterface from "./routes/UserInterface/UserInterface";
+import TusDatos from "./routes/TusDatos/TusDatos";
+import FavoritosSection from "./routes/Favoritos/Favoritos";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <App />,
     children: [
-      { path: "/", element: <Home /> },
+      { path: "", element: <Home /> },
       { path: "bienes", element: <AssetListPage /> },
       { path: "bienes/:id", element: <AssetPage /> },
       { path: "eres-propietario", element: <EresPropietario /> },
@@ -32,9 +34,9 @@ const router = createBrowserRouter([
   {
     path: "/cuenta",
     element: <UserInterface />,
-    children: [
-      // { path: "espacio", element: <Espacio /> },
-    ],
+    children:[
+      {path:'', element:<TusDatos/>},{path:'favoritos', element:<FavoritosSection/>}
+    ]
   },
 ]);
 

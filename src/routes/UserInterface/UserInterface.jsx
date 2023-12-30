@@ -1,11 +1,17 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
+import PanelUsuario from "../../components/PanelUsuario/PanelUsuario";
+
+import './UserInterface.css'
 
 function UserInterface() {
   return (
-    <div>
+    <div className="App">
       <NavBar />
-      <Outlet/>
+      <div className="user-inferface">
+        <PanelUsuario/>
+        <Outlet/>
+      </div>
     </div>
   );
 }

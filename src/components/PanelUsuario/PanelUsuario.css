@@ -1,0 +1,43 @@
+.panel-usuario-container {
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid;
+  padding: 8px;
+  width: 20em;
+  height: fit-content;
+}
+.link-panel-ususario{
+  text-decoration: none;
+  color: black;
+}
+
+.panel-usuario-list {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.panel-usuario-item {
+  font-family: var(--main-font);
+  font-size: 14px;
+  border-radius: 12px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  line-height: 23px;
+  height: 40px;
+  margin: 0;
+  padding: 8px 16px;
+  position: relative;
+  border: 1px solid rgb(231, 238, 240);
+  background: rgb(243, 247, 248);
+}
+
+
+.activeItem{ 
+  background-color: blue;
+  color: white;
+}
