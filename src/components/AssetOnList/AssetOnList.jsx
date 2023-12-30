@@ -41,7 +41,7 @@ function AssetOnList({ asset }) {
           <div className="asset-breve-button">
             <CustomButton
               pattern={"white"}
-              content={"Muestra"}
+              content={"Ficha Tecnica"}
               onButtonClick={onPreview}
             />
           </div>

@@ -1,0 +1,31 @@
+.asset-page-descripcion-container {
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-color: #00000066;
+  border-radius: 2%;
+  position: relative;
+  width: 60rem;
+  padding: 1rem;
+}
+
+.asset-page-title {
+  color: #000000;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-size: 2em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.asset-page-description {
+  color: #000000;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-size: 17px;
+  text-align: start;
+}
+@media only screen and (max-width: 800px) {
+  .asset-page-descripcion-container {
+    width: 90vw;
+  }
+}
