@@ -1,0 +1,56 @@
+/* LoginDropdown.css */
+
+.login-dropdown-ul {
+  margin: 0;
+  padding: 0;
+}
+
+.login-dropdown-li {
+  position: relative;
+  display: inline-block; /* Make sure it's inline-block to contain the dropdown */
+}
+
+.login-dropdown-list {
+  z-index: 1; /* Bring to front*/
+  background-color: var(--main-custom-blue-navigation-80);
+  border-radius: 0px 0px 12px 12px;
+  position: absolute;
+  top: 100%; /* Position it below the button */
+  right: 0px;
+  opacity: 0;
+  padding: 8px 24px;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease 0s, transform 0s ease 0s, visibility 0s ease 0s;
+  /* width: fit-content; Ensure the dropdown is at least as wide as the button */
+  width: 15em;
+}
+
+.login-dropdown-li:hover .login-dropdown-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.login-dropdown-items {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  margin: 0px;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 11px 24px 11px 10px;
+}
+
+.login-dropdown-text {
+  color: black;
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.8px;
+  overflow: hidden;
+  padding-bottom: 8px;
+  text-align: left;
+  text-overflow: ellipsis;
+  max-width: 242px;
+}

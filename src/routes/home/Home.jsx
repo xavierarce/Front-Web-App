@@ -27,7 +27,7 @@ function Home() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
-      <h2 style={{ margin: 0, fontSize: "2rem" }}>Nuevos bienes en lista!</h2>
+      <h2 className="home-images-title">Nuestros nuevos bienes</h2>
       <ImagesCuadruple assets={ASSETSFAKEDATA} />
       <div className="home-page-description">
         <div className="home-description-text">

@@ -19,4 +19,8 @@ code {
   --main-custom-blue-50: rgba(0, 32, 255, 0.5);
   --main-custom-blue-80: rgba(0, 32, 255, 0.15);
   --main-custom-blue-pastel: #4163db;
+  --main-custom-blue-pastel-50: rgba(65, 99, 219, 0.8);
+  --main-font: "Newsreader-Regular", Helvetica;
+  --main-custom-blue-navigation: #ccd5f5;
+  --main-custom-blue-navigation-80: rgba(204, 213, 245, 0.8);
 }

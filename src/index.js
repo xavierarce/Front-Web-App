@@ -13,6 +13,7 @@ import ArticulosPage from "./routes/ArticulosPage/ArticulosPage";
 import ContactanosPage from "./routes/ContactanosPage/ContactanosPage";
 import QuienesSomosPage from "./routes/QuienesSomosPage/QuienesSomosPage";
 import { AssetsProvider } from "./Context/Assets.context";
+import UserInterface from "./routes/UserInterface/UserInterface";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,13 @@ const router = createBrowserRouter([
       { path: "articulos", element: <ArticulosPage /> },
       { path: "contactanos", element: <ContactanosPage /> },
       { path: "quienes-somos", element: <QuienesSomosPage /> },
+    ],
+  },
+  {
+    path: "/cuenta",
+    element: <UserInterface />,
+    children: [
+      // { path: "espacio", element: <Espacio /> },
     ],
   },
 ]);

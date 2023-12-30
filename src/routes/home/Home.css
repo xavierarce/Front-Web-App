@@ -14,15 +14,22 @@
 
 .slogan {
   color: #000000;
-  font-family: "Newsreader-Regular", Helvetica;
+  font-family: var(--main-font);
   font-size: 3rem;
   font-weight: normal;
   letter-spacing: 1;
   margin: 0;
 }
+
+.home-images-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;;
+}
+
 .home-page-description-title {
   color: var(--main-custom-blue-pastel);
-
 }
 .home-page-description {
   display: flex;
@@ -34,7 +41,6 @@
 
 .home-description-text {
   width: 45%;
-
 }
 
 .home-page-steps {
@@ -79,12 +85,11 @@
     max-width: 99%;
     gap: 1rem;
   }
-  .home-description-text{
+  .home-description-text {
     width: 80%;
   }
 
-  .home-page-steps{
+  .home-page-steps {
     width: 50%;
   }
-  
 }
