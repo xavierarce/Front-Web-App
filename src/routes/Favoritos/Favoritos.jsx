@@ -6,7 +6,7 @@ const Favorites = ASSETSFAKEDATACOMPLETE.slice(0, 2);
 
 function FavoritosSection() {
   return (
-    <div className="user-outlet-section favoritos-section">
+    <div className=" favoritos-section">
       <h2 className="favoritos-page-title">Tus Favoritos</h2>
       <div className="favorito-page-favoritos-container">
 

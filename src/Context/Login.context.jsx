@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { FakeUser } from "../AssetsFakeData";
 
 export const AuthContext = createContext();
 
@@ -9,9 +10,9 @@ export const AuthProvider = ({ children }) => {
   const openLogin = () => setAuthOpen(true);
   const closeLogin = () => setAuthOpen(false);
   const setLogIn = () => {
-    const tryUser = { name: "Xavier" };
-    setcurrentUser(tryUser);
-    return tryUser;
+    setcurrentUser(FakeUser);
+    console.log(`${setcurrentUser.toString()}`);
+    return FakeUser;
   };
   const setLogOff = async () => await setcurrentUser(null);
 

@@ -5,7 +5,7 @@ import FormInput from "../../components/FormInput/FormInput";
 
 function TusDatos() {
   return (
-    <section className="user-outlet-section tus-datos-page">
+    <section className="tus-datos-page">
       <img className="tus-datos-foto" alt="Profile" src={FotoUsuario} />
       <div className="tus-datos-info-container">
         <header className="tus-datos-header">

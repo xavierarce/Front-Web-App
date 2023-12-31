@@ -2,14 +2,20 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/Login.context";
 import CustomButton from "../CustomButton/CustomButton";
 import "./LoginDropdown.css"; // Adjust the path based on your project structure
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function LoginDropdown() {
   const { openLogin, setLogOff, currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onLogOff = () => {
     setLogOff();
+    navigate("/");
     alert("Has cerrado sesión\n¡Vuelve Pronto!");
+  };
+
+  const onLogIn = () => {
+    openLogin();
   };
 
   return (
@@ -20,14 +26,10 @@ function LoginDropdown() {
             <CustomButton
               content={"Inicia Sesión"}
               pattern={"white"}
-              onButtonClick={openLogin}
+              onButtonClick={onLogIn}
             />
           ) : (
-            <CustomButton
-              content={`${currentUser.name}`}
-              pattern={"white"}
-              onButtonClick={onLogOff}
-            />
+            <CustomButton content={`${currentUser.name}`} pattern={"white"} />
           )}
           <ul className="login-dropdown-list animated">
             <li className="login-dropdown-text">
@@ -36,7 +38,7 @@ function LoginDropdown() {
               </span>
             </li>
             <hr />
-            <Link to={'/cuenta'} className="link-panel-ususario">
+            <Link to={"/cuenta"} className="link-panel-ususario">
               <li className="login-dropdown-items">Tu Espacio</li>
             </Link>
             <Link to={"/cuenta/favoritos"} className="link-panel-ususario">
@@ -45,9 +47,11 @@ function LoginDropdown() {
             <Link className="link-panel-ususario">
               <li className="login-dropdown-items">Soporte</li>
             </Link>
-            <Link className="link-panel-ususario">
-              <li className="login-dropdown-items">Cerrar Seción</li>
-            </Link>
+            {currentUser ? (
+              <li onClick={onLogOff} className="login-dropdown-items">
+                Cerrar Seción
+              </li>
+            ) : null}
           </ul>
         </li>
       </ul>

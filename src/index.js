@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./routes/App";
 import reportWebVitals from "./reportWebVitals";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
 import Home from "./routes/home/Home";
 import AssetListPage from "./routes/AssetListPage/AssetListPage";
 import AssetPage from "./routes/AssetPage/AssetPage";
 import EresPropietario from "./routes/EresPropietario/EresPropietario";
-import { AuthProvider } from "./Context/Login.context";
+import { AuthContext, AuthProvider } from "./Context/Login.context";
 import ArticulosPage from "./routes/ArticulosPage/ArticulosPage";
 import ContactanosPage from "./routes/ContactanosPage/ContactanosPage";
 import QuienesSomosPage from "./routes/QuienesSomosPage/QuienesSomosPage";
@@ -16,6 +16,22 @@ import { AssetsProvider } from "./Context/Assets.context";
 import UserInterface from "./routes/UserInterface/UserInterface";
 import TusDatos from "./routes/TusDatos/TusDatos";
 import FavoritosSection from "./routes/Favoritos/Favoritos";
+import VisitasPage from "./routes/VisitasPage/VisitasPage";
+import PreguntasPage from "./routes/Preguntas/PreguntasPage";
+
+const PrivateRoute = () => {
+  const { currentUser } = useContext(AuthContext);
+
+  // Check if the user is logged in
+  if (!currentUser) {
+    // Redirect to the home page if not logged in
+    alert('Necesitas Inciar Secion para acceder')
+    return <Navigate to="/" replace />;
+  }
+
+  // Render the UserInterface component if logged in
+  return <UserInterface />;
+};
 
 const router = createBrowserRouter([
   {
@@ -33,10 +49,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/cuenta",
-    element: <UserInterface />,
-    children:[
-      {path:'', element:<TusDatos/>},{path:'favoritos', element:<FavoritosSection/>}
-    ]
+    element: <PrivateRoute />,
+    children: [
+      { path: "", element: <TusDatos /> },
+      { path: "favoritos", element: <FavoritosSection /> },
+      { path: "visitas", element: <VisitasPage /> },
+      { path: "preguntas", element: <PreguntasPage /> },
+    ],
   },
 ]);
 
@@ -51,7 +70,4 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

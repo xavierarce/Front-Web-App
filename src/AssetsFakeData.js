@@ -1,11 +1,20 @@
+export const FakeUser = {
+  name: "Xavier Arce Carvajal",
+  nacionality: "Ecuador",
+  email: "xavier@gmai.com",
+  profession: "estudiante",
+  institution: "ESGI",
+};
+
 export const ASSETSFAKEDATACOMPLETE = [
-    {
+  {
     id: 1,
     title: "Casa Colonial en Quito",
     address: "Avenida Principal, Centro Histórico",
     owner: "Juan Pérez",
     apartamento: {
-      descripcion: "Encantadora casa colonial ubicada en el corazón del Centro Histórico de Quito. Con vistas a la Plaza Grande, esta residencia histórica cuenta con detalles arquitectónicos únicos y comodidades modernas.",
+      descripcion:
+        "Encantadora casa colonial ubicada en el corazón del Centro Histórico de Quito. Con vistas a la Plaza Grande, esta residencia histórica cuenta con detalles arquitectónicos únicos y comodidades modernas.",
       caracteristicas: {
         mascotas: true,
         fiestas: true,
@@ -22,7 +31,7 @@ export const ASSETSFAKEDATACOMPLETE = [
         guardiania: {
           "24_7": true,
           guardia_edificio: true,
-          urbanizacion: true
+          urbanizacion: true,
         },
         parqueadero: true,
         amoblado: true,
@@ -31,21 +40,21 @@ export const ASSETSFAKEDATACOMPLETE = [
           internet: true,
           sala: {
             tv: true,
-            comedor: true
+            comedor: true,
           },
           cocina: {
             nevera: true,
             tipo_cocina: "gas",
             num_estufas: 4,
             microondas: true,
-            extractor: true
+            extractor: true,
           },
           lavanderia: {
             secadora: true,
-            lavadora: true
-          }
-        }
-      }
+            lavadora: true,
+          },
+        },
+      },
     },
     value: "$450,000",
     imageURL: "https://api.slingacademy.com/public/sample-photos/1.jpeg",
@@ -56,7 +65,8 @@ export const ASSETSFAKEDATACOMPLETE = [
     address: "Malecón 2000",
     owner: "Ana Gómez",
     apartamento: {
-      descripcion: "Moderno apartamento de lujo en el Malecón 2000 de Guayaquil. Disfruta de vistas panorámicas al río Guayas y acceso cercano a restaurantes y entretenimiento.",
+      descripcion:
+        "Moderno apartamento de lujo en el Malecón 2000 de Guayaquil. Disfruta de vistas panorámicas al río Guayas y acceso cercano a restaurantes y entretenimiento.",
       caracteristicas: {
         mascotas: false,
         fiestas: true,
@@ -73,7 +83,7 @@ export const ASSETSFAKEDATACOMPLETE = [
         guardiania: {
           "24_7": true,
           guardia_edificio: true,
-          urbanizacion: true
+          urbanizacion: true,
         },
         parqueadero: true,
         amoblado: true,
@@ -82,21 +92,21 @@ export const ASSETSFAKEDATACOMPLETE = [
           internet: true,
           sala: {
             tv: true,
-            comedor: true
+            comedor: true,
           },
           cocina: {
             nevera: true,
             tipo_cocina: "inducción",
             num_estufas: 5,
             microondas: true,
-            extractor: true
+            extractor: true,
           },
           lavanderia: {
             secadora: true,
-            lavadora: true
-          }
-        }
-      }
+            lavadora: true,
+          },
+        },
+      },
     },
     value: "$800,000",
     imageURL: "https://api.slingacademy.com/public/sample-photos/2.jpeg",
@@ -107,7 +117,8 @@ export const ASSETSFAKEDATACOMPLETE = [
     address: "Calle de la Playa",
     owner: "Pedro Ramírez",
     apartamento: {
-      descripcion: "Relájate en esta encantadora casa de playa en Salinas. A pasos de la arena y el mar, esta propiedad ofrece la escapada perfecta con un estilo de vida costero.",
+      descripcion:
+        "Relájate en esta encantadora casa de playa en Salinas. A pasos de la arena y el mar, esta propiedad ofrece la escapada perfecta con un estilo de vida costero.",
       caracteristicas: {
         mascotas: true,
         fiestas: true,
@@ -124,7 +135,7 @@ export const ASSETSFAKEDATACOMPLETE = [
         guardiania: {
           "24_7": true,
           guardia_edificio: false,
-          urbanizacion: false
+          urbanizacion: false,
         },
         parqueadero: true,
         amoblado: true,
@@ -133,21 +144,21 @@ export const ASSETSFAKEDATACOMPLETE = [
           internet: true,
           sala: {
             tv: true,
-            comedor: true
+            comedor: true,
           },
           cocina: {
             nevera: true,
             tipo_cocina: "eléctrica",
             num_estufas: 3,
             microondas: true,
-            extractor: false
+            extractor: false,
           },
           lavanderia: {
             secadora: true,
-            lavadora: true
-          }
-        }
-      }
+            lavadora: true,
+          },
+        },
+      },
     },
     value: "$600,000",
     imageURL: "https://api.slingacademy.com/public/sample-photos/3.jpeg",
@@ -158,7 +169,8 @@ export const ASSETSFAKEDATACOMPLETE = [
     address: "Avenida de las Américas",
     owner: "María Fernández",
     apartamento: {
-      descripcion: "Elegante penthouse ubicado en la Avenida de las Américas en Cuenca. Disfruta de amplios espacios, acabados de alta calidad y vistas impresionantes de la ciudad.",
+      descripcion:
+        "Elegante penthouse ubicado en la Avenida de las Américas en Cuenca. Disfruta de amplios espacios, acabados de alta calidad y vistas impresionantes de la ciudad.",
       caracteristicas: {
         mascotas: false,
         fiestas: true,
@@ -175,7 +187,7 @@ export const ASSETSFAKEDATACOMPLETE = [
         guardiania: {
           "24_7": true,
           guardia_edificio: true,
-          urbanizacion: true
+          urbanizacion: true,
         },
         parqueadero: true,
         amoblado: true,
@@ -184,21 +196,21 @@ export const ASSETSFAKEDATACOMPLETE = [
           internet: true,
           sala: {
             tv: true,
-            comedor: true
+            comedor: true,
           },
           cocina: {
             nevera: true,
             tipo_cocina: "inducción",
             num_estufas: 4,
             microondas: true,
-            extractor: true
+            extractor: true,
           },
           lavanderia: {
             secadora: true,
-            lavadora: true
-          }
-        }
-      }
+            lavadora: true,
+          },
+        },
+      },
     },
     value: "$1,200,000",
     imageURL: "https://api.slingacademy.com/public/sample-photos/4.jpeg",
@@ -209,7 +221,8 @@ export const ASSETSFAKEDATACOMPLETE = [
     address: "Carretera Panamericana",
     owner: "Elena Navarro",
     apartamento: {
-      descripcion: "Experimenta la vida en una hacienda en las afueras de Loja. Rodeada de naturaleza, esta propiedad ofrece tranquilidad y comodidades modernas.",
+      descripcion:
+        "Experimenta la vida en una hacienda en las afueras de Loja. Rodeada de naturaleza, esta propiedad ofrece tranquilidad y comodidades modernas.",
       caracteristicas: {
         mascotas: true,
         fiestas: true,
@@ -226,7 +239,7 @@ export const ASSETSFAKEDATACOMPLETE = [
         guardiania: {
           "24_7": false,
           guardia_edificio: false,
-          urbanizacion: false
+          urbanizacion: false,
         },
         parqueadero: true,
         amoblado: true,
@@ -235,21 +248,21 @@ export const ASSETSFAKEDATACOMPLETE = [
           internet: true,
           sala: {
             tv: true,
-            comedor: true
+            comedor: true,
           },
           cocina: {
             nevera: true,
             tipo_cocina: "gas",
             num_estufas: 6,
             microondas: true,
-            extractor: true
+            extractor: true,
           },
           lavanderia: {
             secadora: true,
-            lavadora: true
-          }
-        }
-      }
+            lavadora: true,
+          },
+        },
+      },
     },
     value: "$2,500,000",
     imageURL: "https://api.slingacademy.com/public/sample-photos/5.jpeg",
@@ -260,7 +273,8 @@ export const ASSETSFAKEDATACOMPLETE = [
     address: "Ruta del Spondylus",
     owner: "Carlos López",
     apartamento: {
-      descripcion: "Condominio moderno en la Ruta del Spondylus en Manta. Disfruta de vistas al océano Pacífico y acceso a playas vírgenes y servicios exclusivos.",
+      descripcion:
+        "Condominio moderno en la Ruta del Spondylus en Manta. Disfruta de vistas al océano Pacífico y acceso a playas vírgenes y servicios exclusivos.",
       caracteristicas: {
         mascotas: false,
         fiestas: true,
@@ -277,7 +291,7 @@ export const ASSETSFAKEDATACOMPLETE = [
         guardiania: {
           "24_7": true,
           guardia_edificio: true,
-          urbanizacion: true
+          urbanizacion: true,
         },
         parqueadero: true,
         amoblado: true,
@@ -286,21 +300,21 @@ export const ASSETSFAKEDATACOMPLETE = [
           internet: true,
           sala: {
             tv: true,
-            comedor: true
+            comedor: true,
           },
           cocina: {
             nevera: true,
             tipo_cocina: "inducción",
             num_estufas: 2,
             microondas: true,
-            extractor: true
+            extractor: true,
           },
           lavanderia: {
             secadora: true,
-            lavadora: true
-          }
-        }
-      }
+            lavadora: true,
+          },
+        },
+      },
     },
     value: "$350,000",
     imageURL: "https://api.slingacademy.com/public/sample-photos/6.jpeg",
@@ -311,7 +325,8 @@ export const ASSETSFAKEDATACOMPLETE = [
     address: "Calle de los Libertadores",
     owner: "Isabel Torres",
     apartamento: {
-      descripcion: "Encantador apartamento histórico en Tulcán, Carchi. Restaurado con detalles auténticos, esta propiedad ofrece una experiencia única en un entorno tradicional.",
+      descripcion:
+        "Encantador apartamento histórico en Tulcán, Carchi. Restaurado con detalles auténticos, esta propiedad ofrece una experiencia única en un entorno tradicional.",
       caracteristicas: {
         mascotas: false,
         fiestas: false,
@@ -328,7 +343,7 @@ export const ASSETSFAKEDATACOMPLETE = [
         guardiania: {
           "24_7": false,
           guardia_edificio: false,
-          urbanizacion: false
+          urbanizacion: false,
         },
         parqueadero: true,
         amoblado: true,
@@ -337,21 +352,21 @@ export const ASSETSFAKEDATACOMPLETE = [
           internet: true,
           sala: {
             tv: true,
-            comedor: true
+            comedor: true,
           },
           cocina: {
             nevera: true,
             tipo_cocina: "eléctrica",
             num_estufas: 2,
             microondas: true,
-            extractor: false
+            extractor: false,
           },
           lavanderia: {
             secadora: false,
-            lavadora: false
-          }
-        }
-      }
+            lavadora: false,
+          },
+        },
+      },
     },
     value: "$180,000",
     imageURL: "https://api.slingacademy.com/public/sample-photos/7.jpeg",
@@ -362,7 +377,8 @@ export const ASSETSFAKEDATACOMPLETE = [
     address: "Camino a Chimborazo",
     owner: "Jorge Vargas",
     apartamento: {
-      descripcion: "Acogedora casa de montaña en el camino a Chimborazo en Riobamba. Disfruta de la serenidad de la naturaleza y la majestuosidad de los Andes.",
+      descripcion:
+        "Acogedora casa de montaña en el camino a Chimborazo en Riobamba. Disfruta de la serenidad de la naturaleza y la majestuosidad de los Andes.",
       caracteristicas: {
         mascotas: true,
         fiestas: true,
@@ -379,7 +395,7 @@ export const ASSETSFAKEDATACOMPLETE = [
         guardiania: {
           "24_7": false,
           guardia_edificio: false,
-          urbanizacion: false
+          urbanizacion: false,
         },
         parqueadero: true,
         amoblado: true,
@@ -388,26 +404,26 @@ export const ASSETSFAKEDATACOMPLETE = [
           internet: true,
           sala: {
             tv: true,
-            comedor: true
+            comedor: true,
           },
           cocina: {
             nevera: true,
             tipo_cocina: "gas",
             num_estufas: 4,
             microondas: true,
-            extractor: true
+            extractor: true,
           },
           lavanderia: {
             secadora: true,
-            lavadora: true
-          }
-        }
-      }
+            lavadora: true,
+          },
+        },
+      },
     },
     value: "$300,000",
     imageURL: "https://api.slingacademy.com/public/sample-photos/8.jpeg",
-  }
-]
+  },
+];
 export const ASSETSFAKEDATA = [
   {
     id: 1,
@@ -511,7 +527,6 @@ export const ASSETSFAKEDATA = [
   },
 ];
 
-
 export const ArticleSections = [
   {
     name: "Ciudadelas",
@@ -525,12 +540,10 @@ export const ArticleSections = [
   },
   {
     name: "Supermercados",
-    imgUrl:
-      "https://cdn-icons-png.flaticon.com/512/384/384999.png",
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/384/384999.png",
   },
   {
     name: "Procesos",
-    imgUrl:
-      "https://cdn-icons-png.flaticon.com/512/4149/4149678.png",
+    imgUrl: "https://cdn-icons-png.flaticon.com/512/4149/4149678.png",
   },
 ];
