@@ -2,11 +2,17 @@ import React from "react";
 import "./TusDatos.css";
 import FotoUsuario from "../../assets/Usuario foto.svg";
 import FormInput from "../../components/FormInput/FormInput";
+import UserInfoTag from "../../components/UserInfoTag/UserInfoTag";
+import { FakeUser } from "../../AssetsFakeData";
+
+console.log(FakeUser, "sd");
 
 function TusDatos() {
+  const { name, email, nacionality, profession, institution, phoneNumber, profilePic } =
+    FakeUser;
   return (
     <section className="tus-datos-page">
-      <img className="tus-datos-foto" alt="Profile" src={FotoUsuario} />
+      <img className="tus-datos-foto" alt="Profile" src={profilePic} />
       <div className="tus-datos-info-container">
         <header className="tus-datos-header">
           <h2 className="tus-datos-name">Xavier Arce Completo</h2>
@@ -18,37 +24,13 @@ function TusDatos() {
           </div>
           <div className="tus-datos-section-container">
             <h3 className="info-title">Coordenadas</h3>
-            <FormInput
-              label={"Email"}
-              type={"email"}
-              placeholder={"Email"}
-              divClassName={"Form-Input-Section"}
-              pattern={"text-input"}
-            />
-            <FormInput
-              label={"Telefono"}
-              type={"phone"}
-              placeholder={"Telefono"}
-              divClassName={"Form-Input-Section"}
-              pattern={"text-input"}
-            />
+            <UserInfoTag label={"Email"} display={email} />
+            <UserInfoTag label={"Telefono"} display={phoneNumber} />
           </div>
           <div className="tus-datos-section-container">
             <h3 className="info-title">Situación</h3>
-            <FormInput
-              label={"Profesion"}
-              type={"text"}
-              placeholder={"Profesion"}
-              divClassName={"Form-Input-Section"}
-              pattern={"text-input"}
-            />
-            <FormInput
-              label={"Institucion"}
-              type={"text"}
-              placeholder={"Institucion"}
-              divClassName={"Form-Input-Section"}
-              pattern={"text-input"}
-            />
+            <UserInfoTag label={'Profesión'} display={profession}/>
+            <UserInfoTag label={'Institucion'} display={institution}/>
           </div>
         </div>
       </div>

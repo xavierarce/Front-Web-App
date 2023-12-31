@@ -13,25 +13,13 @@ import ArticulosPage from "./routes/ArticulosPage/ArticulosPage";
 import ContactanosPage from "./routes/ContactanosPage/ContactanosPage";
 import QuienesSomosPage from "./routes/QuienesSomosPage/QuienesSomosPage";
 import { AssetsProvider } from "./Context/Assets.context";
-import UserInterface from "./routes/UserInterface/UserInterface";
 import TusDatos from "./routes/TusDatos/TusDatos";
 import FavoritosSection from "./routes/Favoritos/Favoritos";
 import VisitasPage from "./routes/VisitasPage/VisitasPage";
 import PreguntasPage from "./routes/Preguntas/PreguntasPage";
+import PrivateRoute from "./routes/PrivateRoute";
 
-const PrivateRoute = () => {
-  const { currentUser } = useContext(AuthContext);
 
-  // Check if the user is logged in
-  if (!currentUser) {
-    // Redirect to the home page if not logged in
-    alert('Necesitas Inciar Secion para acceder')
-    return <Navigate to="/" replace />;
-  }
-
-  // Render the UserInterface component if logged in
-  return <UserInterface />;
-};
 
 const router = createBrowserRouter([
   {

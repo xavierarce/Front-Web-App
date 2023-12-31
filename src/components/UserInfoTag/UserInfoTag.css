@@ -1,0 +1,20 @@
+.userinfotag-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.usertaginfo-input-box {
+border: 2px solid var(--main-custom-blue-pastel);
+border-radius: 10px;
+width: 90%;
+}
+.userinfotag-title {
+  font-weight: 700;
+  margin: 0;
+}
+
+.userinfotag-input-field {
+  margin: 0;
+  padding: 0.2rem;
+}
