@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./routes/App";
 import reportWebVitals from "./reportWebVitals";
-import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./routes/home/Home";
 import AssetListPage from "./routes/AssetListPage/AssetListPage";
 import AssetPage from "./routes/AssetPage/AssetPage";
 import EresPropietario from "./routes/EresPropietario/EresPropietario";
-import { AuthContext, AuthProvider } from "./Context/Login.context";
+import { AuthProvider } from "./Context/Login.context";
 import ArticulosPage from "./routes/ArticulosPage/ArticulosPage";
 import ContactanosPage from "./routes/ContactanosPage/ContactanosPage";
 import QuienesSomosPage from "./routes/QuienesSomosPage/QuienesSomosPage";
@@ -18,8 +18,9 @@ import FavoritosSection from "./routes/Favoritos/Favoritos";
 import VisitasPage from "./routes/VisitasPage/VisitasPage";
 import PreguntasPage from "./routes/Preguntas/PreguntasPage";
 import PrivateRoute from "./routes/PrivateRoute";
-
-
+import AgentPage from "./routes/AgentPage/AgentPage";
+import BienesPage from "./routes/BienesPage/BienesPage";
+import NewAssetPage from "./routes/NewAssetPage/NewAssetPage";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,16 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <TusDatos /> },
       { path: "favoritos", element: <FavoritosSection /> },
+      { path: "visitas", element: <VisitasPage /> },
+      { path: "preguntas", element: <PreguntasPage /> },
+    ],
+  },
+  {
+    path: "/agenciaadmin",
+    element: <AgentPage />,
+    children: [
+      { path: "", element: <BienesPage /> },
+      { path: "nuevobien", element: <NewAssetPage /> },
       { path: "visitas", element: <VisitasPage /> },
       { path: "preguntas", element: <PreguntasPage /> },
     ],

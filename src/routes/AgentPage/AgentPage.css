@@ -1,0 +1,7 @@
+.agentpage-outlet{
+  max-width: 90vw;
+  width: 86em;
+  border: 2px solid blue;
+  border-radius: 15px;
+  min-height: 30rem;
+}

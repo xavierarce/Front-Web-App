@@ -1,0 +1,18 @@
+.panelagencia-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80vw;
+  justify-content: center;
+}
+
+.panelagencia-item {
+  padding: 0.4rem 4rem;
+  border: 2px solid #4163db;
+  color: #4163db;
+  margin: 0;
+}
+
+.panel-item-active {
+  background-color: #4163db;
+  color: white;
+}

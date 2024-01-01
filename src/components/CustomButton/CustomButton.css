@@ -95,6 +95,25 @@
 }
 
 
+/*? red-small */
+.custom-button-red-small {
+  background-color: red;
+  margin: 3px;
+  border-radius: 8px;
+  max-height: fit-content;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.custom-button-text-red-small {
+  color: #fff;
+  font: 600 .6rem "Inter-SemiBold", Helvetica;
+  margin: 0;
+}
+
+
 /* !Media q */
 @media only screen and (max-width: 800px) {
   
