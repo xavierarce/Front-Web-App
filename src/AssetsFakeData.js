@@ -1,5 +1,5 @@
 export const FakeUser = {
-  role: 'superpowerstothis',
+  role: "superpowerstothis",
   name: "Xavier Arce Carvajal",
   nacionality: "Ecuador",
   email: "xavier@gmai.com",
@@ -27,14 +27,177 @@ export const FakeEditData = {
   ],
 };
 export const ownersData = [
-  { name: "Juan Pérez", phoneNumber: "123-456-7890" },
-  { name: "Ana Gómez", phoneNumber: "987-654-3210" },
-  { name: "Pedro Ramírez", phoneNumber: "555-555-5555" },
-  { name: "María Fernández", phoneNumber: "111-222-3333" },
-  { name: "Elena Navarro", phoneNumber: "444-444-4444" },
-  { name: "Carlos López", phoneNumber: "666-666-6666" },
-  { name: "Isabel Torres", phoneNumber: "777-777-7777" },
-  { name: "Jorge Vargas", phoneNumber: "888-888-8888" },
+  {
+    name: "Juan Pérez",
+    phoneNumber: "123-456-7890",
+    city: "Guayaquil",
+
+    assets: [
+      {
+        id: 1,
+        type: "casa",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Hermosa Casa de 2 Pisas",
+      },
+      {
+        id: 2,
+        type: "apartamento",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Apartamento de 2 Pisos",
+      },
+    ],
+  },
+  {
+    name: "Ana Gómez",
+    phoneNumber: "987-654-3210",
+    city: "Guayaquil",
+    assets: [
+      {
+        id: 1,
+        type: "casa",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Hermosa Casa de 2 Pisas",
+      },
+      {
+        id: 2,
+        type: "apartamento",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Apartamento de 2 Pisos",
+      },
+    ],
+  },
+  {
+    name: "Pedro Ramírez",
+    phoneNumber: "555-555-5555",
+    city: "Guayaquil",
+    assets: [
+      {
+        id: 1,
+        type: "casa",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Hermosa Casa de 2 Pisas",
+      },
+      {
+        id: 2,
+        type: "apartamento",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Apartamento de 2 Pisos",
+      },
+    ],
+  },
+  {
+    name: "María Fernández",
+    phoneNumber: "111-222-3333",
+    city: "Guayaquil",
+    assets: [
+      {
+        id: 1,
+        type: "casa",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Hermosa Casa de 2 Pisas",
+      },
+      {
+        id: 2,
+        type: "apartamento",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Apartamento de 2 Pisos",
+      },
+    ],
+  },
+  {
+    name: "Elena Navarro",
+    phoneNumber: "444-444-4444",
+    city: "Guayaquil",
+    assets: [
+      {
+        id: 1,
+        type: "casa",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Hermosa Casa de 2 Pisas",
+      },
+      {
+        id: 2,
+        type: "apartamento",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Apartamento de 2 Pisos",
+      },
+    ],
+  },
+  {
+    name: "Carlos López",
+    phoneNumber: "666-666-6666",
+    city: "Guayaquil",
+    assets: [
+      {
+        id: 1,
+        type: "casa",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Hermosa Casa de 2 Pisas",
+      },
+      {
+        id: 2,
+        type: "apartamento",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Apartamento de 2 Pisos",
+      },
+    ],
+  },
+  {
+    name: "Isabel Torres",
+    phoneNumber: "777-777-7777",
+    city: "Guayaquil",
+
+    assets: [
+      {
+        id: 1,
+        type: "casa",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Hermosa Casa de 2 Pisas",
+      },
+      {
+        id: 2,
+        type: "apartamento",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Apartamento de 2 Pisos",
+      },
+    ],
+  },
+  {
+    name: "Jorge Vargas",
+    phoneNumber: "888-888-8888",
+    city: "Guayaquil",
+
+    assets: [
+      {
+        id: 1,
+        type: "casa",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Hermosa Casa de 2 Pisas",
+      },
+      {
+        id: 2,
+        type: "apartamento",
+        city: "Guayaquil",
+        address: "Ceibos norte",
+        title: "Apartamento de 2 Pisos",
+      },
+    ],
+  },
 ];
 
 export const ASSETSFAKEDATACOMPLETE = [

@@ -5,10 +5,15 @@ import CustomButton from "../../../components/CustomButton/CustomButton";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import Usuario from "../../../assets/Usuario foto.svg";
 import "./PropietariosPage.css";
+import OwnerCard from "../../../components/OwnerCard/OwnerCard";
+import NewOwnerCard from "../../../components/NewOwnerCard/NewOwnerCard";
 
 const itemsPerPage = 5;
 
 function PropietariosPage() {
+  const [cardPop, setCardPop] = useState(false);
+  const [newOwnerPop, setNewOwnerPop] = useState(false);
+  const [ownerOnCard, setOwnerOnCard] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState(
@@ -24,6 +29,11 @@ function PropietariosPage() {
 
   const onSearchChange = (e) => setSearchInput(e.target.value);
 
+  const onEditViewOwner = (user) => {
+    setCardPop(true);
+    setOwnerOnCard(user);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -35,13 +45,27 @@ function PropietariosPage() {
     setFilteredOwners(newFilteredAssets);
     setSearchParams({ buscar: searchInput });
   };
-
+  console.log(ownerOnCard);
   return (
     <div className="agency-sub-page">
+      {cardPop && ownerOnCard && (
+        <OwnerCard
+          ownerOnCard={ownerOnCard}
+          setOwnerOnCard={setOwnerOnCard}
+          setCardPop={setCardPop}
+        />
+      )}
+      {newOwnerPop && <NewOwnerCard setNewOwnerPop={setNewOwnerPop} />}
       <h2 className="agency-sub-page-title">Propietarios</h2>
-      <Link to={"nuevobien"} className="añadir-button">
-        <CustomButton content={"Añadir"} pattern={"blue"} />
-      </Link>
+      <div className="añadir-button">
+        <CustomButton
+          onButtonClick={() => {
+            setNewOwnerPop(true);
+          }}
+          content={"Añadir"}
+          pattern={"blue"}
+        />
+      </div>
       <SearchBar onChange={onSearchChange} onSubmit={handleSubmit} />
       <div className="agency-sub-page-card-container">
         {ownersToDisplay.map((owner, index) => {
@@ -51,11 +75,16 @@ function PropietariosPage() {
               <div className="agencysub-card-description">
                 <h2 className="text-0-margin">{name}</h2>
                 <p className="text-0-margin"> Telefono: {phoneNumber}</p>
-                <p className="text-0-margin">Bienes DISPONIBLE</p>
-                <p className="text-0-margin">Bienes DISPONIBLE</p>
+                <p className="text-0-margin">Bienes:</p>
+                {owner.assets.map((asset, idx) => {
+                  return <p className="text-0-margin">{asset.title} - {asset.type.toUpperCase()}</p>;
+                })}
                 <div className="agencysub-boton-y-propietario">
-                  <CustomButton pattern={"blue"} content={"Editar"} />
-                  <CustomButton pattern={"white"} content={"Ver"} />
+                  <CustomButton
+                    pattern={"blue"}
+                    content={"Ver y Editar"}
+                    onButtonClick={() => onEditViewOwner(owner)}
+                  />
                 </div>
               </div>
               <img
