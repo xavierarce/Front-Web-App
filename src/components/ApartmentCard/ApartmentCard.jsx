@@ -3,7 +3,6 @@ import Location from "../../assets/icons/locationIcon.svg";
 import { Link } from "react-router-dom";
 
 function ApartmentCard({ asset }) {
-  console.log(asset);
   const { id, title, city, address, imageURL } = asset;
   
   return (

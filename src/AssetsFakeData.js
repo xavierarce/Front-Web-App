@@ -317,7 +317,7 @@ export const ASSETSFAKEDATACOMPLETE = [
       },
     },
     value: "$800,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/2.jpeg",
+    imageURL: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/207084539.jpg?k=2f74ce6d9f9dcc62c41f5321cfabf36dbcc0c8dcf136e520cd5f2026b887e716&o=&hp=1",
   },
   {
     id: 3,
@@ -376,7 +376,7 @@ export const ASSETSFAKEDATACOMPLETE = [
       },
     },
     value: "$600,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/3.jpeg",
+    imageURL: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/207084538.jpg?k=9e1101cfe18d1d4b59c68d020b6c462cee032cd2dcd4fae3b6816c067705fced&o=&hp=1",
   },
   {
     id: 4,
@@ -553,7 +553,7 @@ export const ASSETSFAKEDATACOMPLETE = [
       },
     },
     value: "$350,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/6.jpeg",
+    imageURL: "https://z.cdrst.com/foto/hotel-sf/9581/granderesp/apartamentos-ecuador-park-habitacion-11191565.jpg",
   },
   {
     id: 7,
@@ -683,7 +683,7 @@ export const ASSETSFAKEDATA = [
     description:
       "Encantadora casa colonial ubicada en el corazón del Centro Histórico de Quito. Con vistas a la Plaza Grande, esta residencia histórica cuenta con detalles arquitectónicos únicos y comodidades modernas.",
     value: "$450,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/1.jpeg",
+    imageURL: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/207084536.jpg?k=deb10a8e247184baa34a4c60ae50bc38e83e6426f1c82b54a929864c6fe95b65&o=&hp=1",
   },
   {
     id: 2,
@@ -693,7 +693,7 @@ export const ASSETSFAKEDATA = [
     description:
       "Moderno apartamento de lujo en el Malecón 2000 de Guayaquil. Disfruta de vistas panorámicas al río Guayas y acceso cercano a restaurantes y entretenimiento.",
     value: "$600,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/2.jpeg",
+    imageURL: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/207084539.jpg?k=2f74ce6d9f9dcc62c41f5321cfabf36dbcc0c8dcf136e520cd5f2026b887e716&o=&hp=1",
   },
   {
     id: 3,
@@ -703,7 +703,7 @@ export const ASSETSFAKEDATA = [
     description:
       "Relájate en esta encantadora casa de playa en Salinas. A pasos de la arena y el mar, esta propiedad ofrece la escapada perfecta con un estilo de vida costero.",
     value: "$750,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/3.jpeg",
+    imageURL: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/207084538.jpg?k=9e1101cfe18d1d4b59c68d020b6c462cee032cd2dcd4fae3b6816c067705fced&o=&hp=1",
   },
   {
     id: 4,
@@ -713,7 +713,7 @@ export const ASSETSFAKEDATA = [
     description:
       "Elegante penthouse ubicado en la Avenida de las Américas en Cuenca. Disfruta de amplios espacios, acabados de alta calidad y vistas impresionantes de la ciudad.",
     value: "$850,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/4.jpeg",
+    imageURL: "https://lh3.googleusercontent.com/rTS5HSjR2FiAmIeekZUd8Im2lF5cNcckzk8UYSVxlLjytp2MXtmxG2DenrMMrOebflERm0nlip3JbAO5pDqilXk=s350",
   },
   {
     id: 5,
@@ -723,7 +723,7 @@ export const ASSETSFAKEDATA = [
     description:
       "Experimenta la vida en una hacienda en las afueras de Loja. Rodeada de naturaleza, esta propiedad ofrece tranquilidad y comodidades modernas.",
     value: "$1,200,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/5.jpeg",
+    imageURL: "https://imgb.invia-travel.de/images/media5/2731/297947_8_2731_800_533_61803_VAId939Seq6IMGdbbbde3d0d6f732c6d01fa29261c5ca4_small.jpeg",
   },
   {
     id: 6,
@@ -733,7 +733,7 @@ export const ASSETSFAKEDATA = [
     description:
       "Condominio moderno en la Ruta del Spondylus en Manta. Disfruta de vistas al océano Pacífico y acceso a playas vírgenes y servicios exclusivos.",
     value: "$550,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/6.jpeg",
+    imageURL: "https://z.cdrst.com/foto/hotel-sf/9581/granderesp/apartamentos-ecuador-park-habitacion-11191565.jpg",
   },
   {
     id: 7,
@@ -743,7 +743,7 @@ export const ASSETSFAKEDATA = [
     description:
       "Encantador apartamento histórico en Tulcán, Carchi. Restaurado con detalles auténticos, esta propiedad ofrece una experiencia única en un entorno tradicional.",
     value: "$380,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/7.jpeg",
+    imageURL: "https://www.atrapalo.com/hoteles/picture/l/38/6/5/601745463.jpg",
   },
   {
     id: 8,
@@ -753,7 +753,7 @@ export const ASSETSFAKEDATA = [
     description:
       "Acogedora casa de montaña en el camino a Chimborazo en Riobamba. Disfruta de la serenidad de la naturaleza y la majestuosidad de los Andes.",
     value: "$500,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/8.jpeg",
+    imageURL: "https://x.cdrst.com/foto/hotel-sf/9581/granderesp/apartamentos-ecuador-park-habitacion-11191564.jpg",
   },
   {
     id: 9,
@@ -763,7 +763,7 @@ export const ASSETSFAKEDATA = [
     description:
       "Hermoso chalet en Baños, rodeado de cascadas y paisajes impresionantes. Ideal para aquellos que buscan aventuras en la naturaleza.",
     value: "$680,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/9.jpeg",
+    imageURL: "https://x.cdrst.com/foto/hotel-sf/9581/granderesp/apartamentos-ecuador-park-habitacion-111914f2.jpg",
   },
   {
     id: 10,
@@ -773,7 +773,7 @@ export const ASSETSFAKEDATA = [
     description:
       "Extensa finca en Santo Domingo de los Tsáchilas. Perfecta para actividades agrícolas y disfrutar de la tranquilidad del campo.",
     value: "$950,000",
-    imageURL: "https://api.slingacademy.com/public/sample-photos/10.jpeg",
+    imageURL: "https://www.atrapalo.com/hoteles/picture/l/38/6/5/601745469.jpg",
   },
 ];
 

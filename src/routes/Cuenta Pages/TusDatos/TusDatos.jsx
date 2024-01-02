@@ -3,7 +3,6 @@ import "./TusDatos.css";
 import { FakeUser } from "../../../AssetsFakeData";
 import UserInfoTag from "../../../components/UserInfoTag/UserInfoTag";
 
-console.log(FakeUser, "sd");
 
 function TusDatos() {
   const {
