@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import NavBarAgency from "../../components/NavBarAgency/NavBarAgency";
-import PanelAgencia from "../../components/PanelAgencia/PanelAgencia";
 import "./AgentPage.css";
+import NavBarAgency from "../../../components/NavBarAgency/NavBarAgency";
+import PanelAgencia from "../../../components/PanelAgencia/PanelAgencia";
 
 
 function AgentPage() {

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import CustomButton from "../../components/CustomButton/CustomButton";
-import FormInput from "../../components/FormInput/FormInput";
 import "./NewAssetPage.css";
 import { useState } from "react";
+import CustomButton from "../../../components/CustomButton/CustomButton";
+import FormInput from "../../../components/FormInput/FormInput";
 
 function NewAssetPage() {
   const [nbBoxes, setNbBoxes] = useState(1);

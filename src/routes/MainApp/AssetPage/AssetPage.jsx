@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
-import { ASSETSFAKEDATA, ASSETSFAKEDATACOMPLETE } from "../../AssetsFakeData";
-import ImageGallery from "../../components/ImageGalley/ImageGallery";
 import "./AssetPage.css";
-import VisitForm from "../../components/VisitForm/VisitForm";
-import QuestionPopUp from "../../components/QuestionPopUp/QuestionPopUp";
 import { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
-import CustomButton from "../../components/CustomButton/CustomButton";
-import AssetDescription from "../../components/AssetDescription/AssetDesccription";
+import { ASSETSFAKEDATA, ASSETSFAKEDATACOMPLETE } from "../../../AssetsFakeData";
+import CustomButton from "../../../components/CustomButton/CustomButton";
+import ImageGallery from "../../../components/ImageGalley/ImageGallery";
+import AssetDescription from "../../../components/AssetDescription/AssetDesccription";
+import VisitForm from "../../../components/VisitForm/VisitForm";
+import QuestionPopUp from "../../../components/QuestionPopUp/QuestionPopUp";
 
 const FakeImages = ASSETSFAKEDATA.map((asset, idx) => {
   return asset.imageURL;

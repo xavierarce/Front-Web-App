@@ -1,4 +1,4 @@
-import ContactanosForm from "../../components/ContactanosForm/ContactanosForm";
+import ContactanosForm from "../../../components/ContactanosForm/ContactanosForm";
 import "./ContactanosPage.css";
 
 function ContactanosPage() {

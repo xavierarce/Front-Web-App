@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
-import { ASSETSFAKEDATACOMPLETE } from "../../AssetsFakeData";
-import CustomButton from "../../components/CustomButton/CustomButton";
 import "./VisitasPage.css";
+import { ASSETSFAKEDATACOMPLETE } from "../../../AssetsFakeData";
+import CustomButton from "../../../components/CustomButton/CustomButton";
 
 const Favorites = ASSETSFAKEDATACOMPLETE.slice(5, 7);
 

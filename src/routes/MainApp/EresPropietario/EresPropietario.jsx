@@ -1,5 +1,5 @@
+import EresPropietarioForm from "../../../components/EresPropietarioForm/EresPropietarioForm";
 import "./EresPropietario.css";
-import EresPropietarioForm from "../../components/EresPropietarioForm/EresPropietarioForm";
 
 function EresPropietario() {
   return (

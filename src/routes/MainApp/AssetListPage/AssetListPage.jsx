@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import { ASSETSFAKEDATA } from "../../AssetsFakeData";
 import "./AssetListPage.css";
-import AssetListComponent from "../../components/AssetListComponent/AssetListComponent";
-import SelectedItem from "../../components/SelectedItem/SelectedItem";
+import { ASSETSFAKEDATA } from "../../../AssetsFakeData";
+import SearchBar from "../../../components/SearchBar/SearchBar";
+import AssetListComponent from "../../../components/AssetListComponent/AssetListComponent";
+import SelectedItem from "../../../components/SelectedItem/SelectedItem";
 
 function AssetListPage() {
   const [searchParams, setSearchParams] = useSearchParams();

@@ -1,5 +1,5 @@
-import CustomButton from "../../components/CustomButton/CustomButton";
-import "./PreguntasPage.css";
+import CustomButton from "../../../components/CustomButton/CustomButton";
+import "./QuestionsPageUser.css";
 
 const Conversations = [
   {
@@ -20,7 +20,7 @@ const Conversations = [
   // Add more conversation titles and last messages as needed
 ];
 
-function QuestionsPage() {
+function QuestionsPageUser() {
   return (
     <div className="favoritos-section">
       <h2 className="favoritos-page-title">Tus preguntas</h2>
@@ -49,4 +49,4 @@ function QuestionsPage() {
   );
 }
 
-export default QuestionsPage;
+export default QuestionsPageUser;

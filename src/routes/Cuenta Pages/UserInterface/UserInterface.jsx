@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "../../components/NavBar/NavBar";
-import PanelUsuario from "../../components/PanelUsuario/PanelUsuario";
+import NavBar from "../../../components/NavBar/NavBar";
+import PanelUsuario from "../../../components/PanelUsuario/PanelUsuario";
 
 import "./UserInterface.css";
 

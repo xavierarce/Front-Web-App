@@ -1,4 +1,4 @@
-import { ArticleSections } from "../../AssetsFakeData";
+import { ArticleSections } from "../../../AssetsFakeData";
 import "./ArticulosPage.css";
 
 function ArticulosPage() {

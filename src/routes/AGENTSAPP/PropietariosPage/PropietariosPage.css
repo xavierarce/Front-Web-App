@@ -1,0 +1,28 @@
+.agency-sub-page-card-owner{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid gray;
+  width: 90%;
+  padding: 0.1rem  .3rem ;
+  margin: 0;
+  justify-content: space-between;
+  height: fit-content;
+}
+
+.agencysub-image-owner{
+  height: 7rem;
+  width: 7rem;
+  object-fit: contain;
+  background-color: grey;
+  align-self: center;
+}
+
+.text-0-margin{
+  margin: 0 ;
+}
+.agencysub-card-description{
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

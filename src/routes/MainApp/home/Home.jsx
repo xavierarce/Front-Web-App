@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import ImagesCuadruple from "../../components/ImagesCuadruple/ImagesCuadruple";
-import SearchBar from "../../components/SearchBar/SearchBar";
 import "./Home.css";
 import { useState } from "react";
-import { ASSETSFAKEDATA } from "../../AssetsFakeData";
+import SearchBar from "../../../components/SearchBar/SearchBar";
+import { ASSETSFAKEDATA } from "../../../AssetsFakeData";
+import ImagesCuadruple from "../../../components/ImagesCuadruple/ImagesCuadruple";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");

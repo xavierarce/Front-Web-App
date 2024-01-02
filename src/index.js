@@ -4,23 +4,24 @@ import "./index.css";
 import App from "./routes/App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Home from "./routes/home/Home";
-import AssetListPage from "./routes/AssetListPage/AssetListPage";
-import AssetPage from "./routes/AssetPage/AssetPage";
-import EresPropietario from "./routes/EresPropietario/EresPropietario";
 import { AuthProvider } from "./Context/Login.context";
-import ArticulosPage from "./routes/ArticulosPage/ArticulosPage";
-import ContactanosPage from "./routes/ContactanosPage/ContactanosPage";
-import QuienesSomosPage from "./routes/QuienesSomosPage/QuienesSomosPage";
 import { AssetsProvider } from "./Context/Assets.context";
-import TusDatos from "./routes/TusDatos/TusDatos";
-import FavoritosSection from "./routes/Favoritos/Favoritos";
-import VisitasPage from "./routes/VisitasPage/VisitasPage";
-import PreguntasPage from "./routes/Preguntas/PreguntasPage";
-import PrivateRoute from "./routes/PrivateRoute";
-import AgentPage from "./routes/AgentPage/AgentPage";
-import BienesPage from "./routes/BienesPage/BienesPage";
-import NewAssetPage from "./routes/NewAssetPage/NewAssetPage";
+import TusDatos from "./routes/Cuenta Pages/TusDatos/TusDatos";
+import VisitasPage from "./routes/Cuenta Pages/VisitasPage/VisitasPage";
+import QuestionsPageUser from "./routes/Cuenta Pages/QuestionsPageUser/QuestionsPage";
+import PrivateRouteCuenta from "./routes/Cuenta Pages/PrivateRouteCuenta PrivateRouteCuenta";
+import FavoritosSection from "./routes/Cuenta Pages/FavoritosSection/FavoritosSection";
+import AssetListPage from "./routes/MainApp/AssetListPage/AssetListPage";
+import AssetPage from "./routes/MainApp/AssetPage/AssetPage";
+import EresPropietario from "./routes/MainApp/EresPropietario/EresPropietario";
+import ArticulosPage from "./routes/MainApp/ArticulosPage/ArticulosPage";
+import ContactanosPage from "./routes/MainApp/ContactanosPage/ContactanosPage";
+import QuienesSomosPage from "./routes/MainApp/QuienesSomosPage/QuienesSomosPage";
+import Home from "./routes/MainApp/home/Home";
+import PropietariosPage from "./routes/AGENTSAPP/PropietariosPage/PropietariosPage";
+import BienesPage from "./routes/AGENTSAPP/BienesPage/BienesPage";
+import NewAssetPage from "./routes/AGENTSAPP/NewAssetPage/NewAssetPage";
+import AgentPage from "./routes/AGENTSAPP/AgentPage/AgentPage";
 
 const router = createBrowserRouter([
   {
@@ -38,12 +39,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/cuenta",
-    element: <PrivateRoute />,
+    element: <PrivateRouteCuenta />,
     children: [
       { path: "", element: <TusDatos /> },
       { path: "favoritos", element: <FavoritosSection /> },
       { path: "visitas", element: <VisitasPage /> },
-      { path: "preguntas", element: <PreguntasPage /> },
+      { path: "preguntas", element: <QuestionsPageUser /> },
     ],
   },
   {
@@ -51,9 +52,9 @@ const router = createBrowserRouter([
     element: <AgentPage />,
     children: [
       { path: "", element: <BienesPage /> },
-      { path: "nuevobien", element: <NewAssetPage /> },
+      { path: "nuevobien", element: <NewAssetPage /> }, // Nested under BienesPage
+      { path: "propietarios", element: <PropietariosPage /> },
       { path: "visitas", element: <VisitasPage /> },
-      { path: "preguntas", element: <PreguntasPage /> },
     ],
   },
 ]);

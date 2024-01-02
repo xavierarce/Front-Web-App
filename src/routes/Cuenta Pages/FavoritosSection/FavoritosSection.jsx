@@ -1,5 +1,5 @@
-import "./Favoritos.css";
-import { ASSETSFAKEDATACOMPLETE } from "../../AssetsFakeData";
+import "./FavoritosSection.css";
+import { ASSETSFAKEDATACOMPLETE } from "../../../AssetsFakeData";
 
 const Favorites = ASSETSFAKEDATACOMPLETE.slice(0, 2);
 
