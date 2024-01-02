@@ -18,10 +18,10 @@ import ArticulosPage from "./routes/MainApp/ArticulosPage/ArticulosPage";
 import ContactanosPage from "./routes/MainApp/ContactanosPage/ContactanosPage";
 import QuienesSomosPage from "./routes/MainApp/QuienesSomosPage/QuienesSomosPage";
 import Home from "./routes/MainApp/home/Home";
-import PropietariosPage from "./routes/AGENTSAPP/PropietariosPage/PropietariosPage";
-import BienesPage from "./routes/AGENTSAPP/BienesPage/BienesPage";
-import NewAssetPage from "./routes/AGENTSAPP/NewAssetPage/NewAssetPage";
-import AgentPage from "./routes/AGENTSAPP/AgentPage/AgentPage";
+import PropietariosPage from "./routes/AGENTS APP/PropietariosPage/PropietariosPage";
+import BienesPage from "./routes/AGENTS APP/BienesPage/BienesPage";
+import NewAssetPage from "./routes/AGENTS APP/NewAssetPage/NewAssetPage";
+import AgentPage from "./routes/AGENTS APP/AgentPage/AgentPage";
 
 const router = createBrowserRouter([
   {
