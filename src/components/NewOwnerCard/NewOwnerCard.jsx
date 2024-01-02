@@ -3,7 +3,6 @@ import CustomButton from "../CustomButton/CustomButton";
 import "./NewOwnerCard.css";
 import { IoCloseCircle } from "react-icons/io5";
 import FormInput from "../FormInput/FormInput";
-import { FaAlignCenter } from "react-icons/fa";
 
 const DEFAULTOWNERFIELDS = {
   name: "",

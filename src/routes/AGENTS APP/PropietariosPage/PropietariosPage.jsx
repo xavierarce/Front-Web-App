@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import {  useSearchParams } from "react-router-dom";
 import { ownersData } from "../../../AssetsFakeData";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import SearchBar from "../../../components/SearchBar/SearchBar";
