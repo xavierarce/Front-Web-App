@@ -22,6 +22,7 @@ import PropietariosPage from "./routes/AGENTS APP/PropietariosPage/PropietariosP
 import BienesPage from "./routes/AGENTS APP/BienesPage/BienesPage";
 import NewAssetPage from "./routes/AGENTS APP/NewAssetPage/NewAssetPage";
 import AgentPage from "./routes/AGENTS APP/AgentPage/AgentPage";
+import EditAssetPage from "./routes/AGENTS APP/EditAssetPage.jsx/EditAssetPage";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
     element: <AgentPage />,
     children: [
       { path: "", element: <BienesPage /> },
+      { path: "bien/:id", element: <EditAssetPage /> },
       { path: "nuevobien", element: <NewAssetPage /> }, // Nested under BienesPage
       { path: "propietarios", element: <PropietariosPage /> },
       { path: "visitas", element: <VisitasPage /> },

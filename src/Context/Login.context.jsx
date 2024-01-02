@@ -15,7 +15,10 @@ export const AuthProvider = ({ children }) => {
     return FakeUser;
   };
   const setLogOff = async () => await setcurrentUser(null);
-
+  const adminPrivilege = () => {
+    return currentUser && currentUser.role === 'superpowerstothis';
+  };
+  
   const value = {
     authOpen,
     openLogin,
@@ -23,6 +26,7 @@ export const AuthProvider = ({ children }) => {
     setLogIn,
     setLogOff,
     currentUser,
+    adminPrivilege
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

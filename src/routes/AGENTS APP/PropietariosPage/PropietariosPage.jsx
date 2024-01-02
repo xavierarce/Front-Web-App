@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import "./PropietariosPage.css";
-
-import  Usuario from '../../../assets/Usuario foto.svg'
-
 import { Link, useSearchParams } from "react-router-dom";
 import { ownersData } from "../../../AssetsFakeData";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import SearchBar from "../../../components/SearchBar/SearchBar";
+import Usuario from "../../../assets/Usuario foto.svg";
+import "./PropietariosPage.css";
 
 const itemsPerPage = 5;
 
@@ -18,33 +16,26 @@ function PropietariosPage() {
   );
   const [filteredOwners, setFilteredOwners] = useState(ownersData);
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
+  const handlePageChange = (newPage) => setCurrentPage(newPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
   const ownersToDisplay = filteredOwners.slice(startIndex, endIndex);
 
-  function onSearchChange(e) {
-    setSearchInput(e.target.value);
-  }
+  const onSearchChange = (e) => setSearchInput(e.target.value);
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Update the filter only when the search form is submitted
     const searchParamValue = searchInput.trim().toLowerCase();
-    const newFilteredAssets = ownersData.filter((owner) => {
-      return owner.name.toLowerCase().includes(searchParamValue);
-    });
+    const newFilteredAssets = ownersData.filter((owner) =>
+      owner.name.toLowerCase().includes(searchParamValue)
+    );
 
     setFilteredOwners(newFilteredAssets);
     setSearchParams({ buscar: searchInput });
-  }
+  };
 
-  console.log(ownersToDisplay);
   return (
     <div className="agency-sub-page">
       <h2 className="agency-sub-page-title">Propietarios</h2>
@@ -62,14 +53,16 @@ function PropietariosPage() {
                 <p className="text-0-margin"> Telefono: {phoneNumber}</p>
                 <p className="text-0-margin">Bienes DISPONIBLE</p>
                 <p className="text-0-margin">Bienes DISPONIBLE</p>
-                {/* <b>{value}</b> */}
                 <div className="agencysub-boton-y-propietario">
                   <CustomButton pattern={"blue"} content={"Editar"} />
                   <CustomButton pattern={"white"} content={"Ver"} />
-                  {/* <p>{owner}</p> */}
                 </div>
               </div>
-              <img className="agencysub-image-owner" alt={Usuario} src={Usuario} />
+              <img
+                className="agencysub-image-owner"
+                alt={Usuario}
+                src={Usuario}
+              />
             </div>
           );
         })}

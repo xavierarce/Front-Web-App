@@ -55,7 +55,7 @@ function BienesPage() {
       <SearchBar onChange={onSearchChange} onSubmit={handleSubmit} />
       <div className="agency-sub-page-card-container">
         {assetsToDisplay.map((asset, index) => {
-          const { title, address, value, imageURL, owner } = asset;
+          const { id, title, address, value, imageURL, owner } = asset;
           return (
             <div key={index} className="agency-sub-page-card">
               <div className="agencysub-card-description ">
@@ -63,8 +63,12 @@ function BienesPage() {
                 <p className="text-0-margin">{address}</p>
                 <b className="text-0-margin">{value}</b>
                 <div className="agencysub-boton-y-propietario">
-                  <CustomButton pattern={"blue"} content={"Editar"} />
-                  <CustomButton pattern={"white"} content={"Ver"} />
+                  <Link to={`bien/${id}`}>
+                    <CustomButton pattern={"blue"} content={"Editar"} />
+                  </Link>
+                  <Link target="_blank" to={`/bienes/${id}`}>
+                    <CustomButton pattern={"white"} content={"Ver"} />
+                  </Link>
                   <p>{owner}</p>
                 </div>
               </div>
