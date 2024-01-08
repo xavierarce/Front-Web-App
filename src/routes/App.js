@@ -4,14 +4,16 @@ import "./App.css";
 import { useContext } from "react";
 import { AuthContext } from "../Context/Login.context";
 import AuthenticatePopUp from "../components/AuthenticatePopUp/AuthenticatePopUp";
+import RegisterPopUp from "../components/RegisterPopUp/RegisterPopUp";
 
 function App() {
-  const { authOpen } = useContext(AuthContext);
+  const { authOpen , registerOpen} = useContext(AuthContext);
 
   return (
     <div className="App">
       <NavBar />
       <ScrollRestoration/>
+      {registerOpen && <RegisterPopUp />}
       {authOpen && <AuthenticatePopUp />}
       <Outlet />
     </div>

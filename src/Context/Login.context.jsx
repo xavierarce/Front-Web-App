@@ -5,8 +5,11 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [authOpen, setAuthOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
   const [currentUser, setcurrentUser] = useState(null);
 
+  const openRegister = () => setRegisterOpen(true);
+  const closeRegister = () => setRegisterOpen(false);
   const openLogin = () => setAuthOpen(true);
   const closeLogin = () => setAuthOpen(false);
   const setLogIn = () => {
@@ -16,9 +19,9 @@ export const AuthProvider = ({ children }) => {
   };
   const setLogOff = async () => await setcurrentUser(null);
   const adminPrivilege = () => {
-    return currentUser && currentUser.role === 'superpowerstothis';
+    return currentUser && currentUser.role === "superpowerstothis";
   };
-  
+
   const value = {
     authOpen,
     openLogin,
@@ -26,7 +29,10 @@ export const AuthProvider = ({ children }) => {
     setLogIn,
     setLogOff,
     currentUser,
-    adminPrivilege
+    adminPrivilege,
+    openRegister,
+    closeRegister,
+    registerOpen,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

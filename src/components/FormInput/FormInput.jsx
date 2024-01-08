@@ -1,6 +1,16 @@
 import "./FormInput.css";
 
-const FormInput = ({ divClassName,type, label, onChange, name, value, pattern ,placeholder}) => {
+const FormInput = ({
+  divClassName,
+  type,
+  label,
+  onChange,
+  name,
+  value,
+  pattern,
+  placeholder,
+  required
+}) => {
   return (
     <div className={divClassName}>
       <label>{label}</label>
@@ -11,6 +21,7 @@ const FormInput = ({ divClassName,type, label, onChange, name, value, pattern ,p
         name={name}
         value={value}
         placeholder={placeholder}
+        required={required} // Update here
       />
     </div>
   );
