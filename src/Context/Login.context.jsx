@@ -12,7 +12,10 @@ export const AuthProvider = ({ children }) => {
   const closeRegister = () => setRegisterOpen(false);
   const openLogin = () => setAuthOpen(true);
   const closeLogin = () => setAuthOpen(false);
-  const setLogOff = async () => await setCurrentUser(null);
+  const setLogOff =  () => {
+    setCurrentUser(null);
+    return localStorage.removeItem("hogar-seguro");
+  };
   const adminPrivilege = () => {
     return currentUser && currentUser.role === "agencyAdministrator";
   };

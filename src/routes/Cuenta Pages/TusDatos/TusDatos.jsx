@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./TusDatos.css";
 import { FakeUser } from "../../../AssetsFakeData";
 import UserInfoTag from "../../../components/UserInfoTag/UserInfoTag";
-
+import { AuthContext } from "../../../Context/Login.context";
 
 function TusDatos() {
+  const { currentUser } = useContext(AuthContext);
+  console.log(currentUser);
   const {
     name,
+    lastname,
     email,
-    nacionality,
+    nationality,
     profession,
     institution,
     phoneNumber,
     profilePic,
-  } = FakeUser;
+  } = currentUser;
   return (
     <section className="tus-datos-page">
       <img className="tus-datos-foto" alt="Profile" src={profilePic} />
       <div className="tus-datos-info-container">
         <header className="tus-datos-header">
-          <h2 className="tus-datos-name">{name}</h2>
-          <p className="tus-datos-nacionalidad">{nacionality}</p>
+          <h2 className="tus-datos-name">
+            {name} {lastname}
+          </h2>
+          <p className="tus-datos-nacionalidad">{nationality}</p>
         </header>
         <div className="tus-datos-datas-inputs-container">
           <div className="tus-datos-modificar-container">

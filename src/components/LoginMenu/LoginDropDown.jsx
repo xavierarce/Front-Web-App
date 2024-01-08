@@ -5,7 +5,8 @@ import "./LoginDropdown.css"; // Adjust the path based on your project structure
 import { Link, useNavigate } from "react-router-dom";
 
 function LoginDropdown() {
-  const { openLogin, setLogOff, currentUser , adminPrivilege} = useContext(AuthContext);
+  const { openLogin, setLogOff, currentUser, adminPrivilege } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   const onLogOff = () => {
@@ -15,7 +16,7 @@ function LoginDropdown() {
   };
 
   const goAdmin = () => {
-    navigate("/agenciaadmin");
+    navigate("");
   };
 
   const onLogIn = () => {
@@ -51,13 +52,13 @@ function LoginDropdown() {
             <Link className="link-panel-ususario">
               <li className="login-dropdown-items">Soporte</li>
             </Link>
-            {
-              adminPrivilege() ?  (
-              <li onClick={goAdmin} className="login-dropdown-items">
-                Administrador
-              </li>
-            ) : null
-            }
+            {adminPrivilege() ? (
+              <Link className="link-panel-ususario" to={'/agenciaadmin'}>
+                <li onClick={goAdmin} className="login-dropdown-items">
+                  Administrador
+                </li>
+              </Link>
+            ) : null}
             {currentUser ? (
               <li onClick={onLogOff} className="login-dropdown-items">
                 Cerrar Seción

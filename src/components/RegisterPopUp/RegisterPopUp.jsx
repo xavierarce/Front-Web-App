@@ -69,6 +69,8 @@ const RegisterPopUp = () => {
         return alert(
           "La contraseña debe tener al menos 8 caracteres de longitud y contener al menos una letra mayúscula, una letra minúscula y un número."
         );
+      if (error.message === "Número de teléfono debe tener 10 dígitos")
+        return alert(error.message);
       if (error.message === "Número de identificación debe tener 10 dígitos")
         return alert(error.message);
 

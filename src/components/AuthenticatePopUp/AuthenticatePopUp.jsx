@@ -13,12 +13,13 @@ const EmptyLoginValues = {
 };
 
 const AuthenticatePopUp = () => {
-  const { closeLogin, setCurrentUser,currentUser, openRegister } = useContext(AuthContext);
+  const { closeLogin, setCurrentUser, currentUser, openRegister } =
+    useContext(AuthContext);
   const [loginValues, setLoginValues] = useState(EmptyLoginValues);
   const { email, password } = loginValues;
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  console.log(currentUser,'ds',);
+  console.log(currentUser, "ds");
 
   const onSignInSubmit = async (e) => {
     e.preventDefault();
@@ -33,15 +34,17 @@ const AuthenticatePopUp = () => {
       });
 
       const data = await response.json();
-      console.log(data);
-      console.log(response);
       if (response.ok) {
-        setCurrentUser(data.userInfo)
-        localStorage.setItem('hogar-seguro',data.accessToken)      
-        closeLogin()
+        setCurrentUser(data.userInfo);
+        localStorage.setItem("hogar-seguro", data.accessToken);
+        closeLogin();
+      } else {
+        throw new Error(data.error);
       }
     } catch (error) {
-      console.log(error);
+      if (error.message === "Incorrect Credential")
+        return alert("Credenciales Incorrectas");
+      console.log(error.message);
     }
   };
 

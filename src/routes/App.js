@@ -13,31 +13,34 @@ function App() {
   useEffect(() => {
     const storedToken = localStorage.getItem("hogar-seguro");
     if (storedToken) {
-      try {
-        const verifyTokenRestart = async () => {
+      const verifyTokenRestart = async () => {
+        try {
           const response = await fetch("http://localhost:8000/restart", {
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${storedToken}`,
             },
           });
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          
+
           const data = await response.json();
-          
+
           if (response.ok) {
             return setCurrentUser(data);
           } else {
-            if (data.error.name === "TokenExpiredError") return localStorage.removeItem('hogar-seguro');
+            if (data.error.name === "TokenExpiredError")
+              return localStorage.removeItem("hogar-seguro");
           }
-        };
-        verifyTokenRestart();
-      } catch (error) {
-        console.error(error)
-      }
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      verifyTokenRestart();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
