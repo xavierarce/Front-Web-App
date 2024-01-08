@@ -13,10 +13,12 @@ const EmptyLoginValues = {
 };
 
 const AuthenticatePopUp = () => {
-  const { closeLogin, setLogIn, openRegister } = useContext(AuthContext);
+  const { closeLogin, setCurrentUser,currentUser, openRegister } = useContext(AuthContext);
   const [loginValues, setLoginValues] = useState(EmptyLoginValues);
   const { email, password } = loginValues;
   const [passwordVisible, setPasswordVisible] = useState(false);
+
+  console.log(currentUser,'ds',);
 
   const onSignInSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +35,11 @@ const AuthenticatePopUp = () => {
       const data = await response.json();
       console.log(data);
       console.log(response);
+      if (response.ok) {
+        setCurrentUser(data.userInfo)
+        localStorage.setItem('hogar-seguro',data.accessToken)      
+        closeLogin()
+      }
     } catch (error) {
       console.log(error);
     }
@@ -70,6 +77,15 @@ const AuthenticatePopUp = () => {
                 pattern={"text-input"}
               />
               <div className="passwordInput">
+                <FormInput
+                  label={"Contraseña"}
+                  type={!passwordVisible ? "password" : "text"}
+                  divClassName={"Form-Input-Section-Authenticate"}
+                  pattern={"text-input"}
+                  onChange={onInputChange}
+                  name={"password"}
+                  value={password}
+                />
                 <button
                   onClick={() => {
                     setPasswordVisible(!passwordVisible);
@@ -83,15 +99,6 @@ const AuthenticatePopUp = () => {
                     <MdOutlineVisibility size={25} color="blue" />
                   )}
                 </button>
-                <FormInput
-                  label={"Contraseña"}
-                  type={"password"}
-                  divClassName={"Form-Input-Section-Authenticate"}
-                  pattern={"text-input"}
-                  onChange={onInputChange}
-                  name={"password"}
-                  value={password}
-                />
               </div>
               <CustomButton content={"Ingresa"} pattern={"blue-small"} />
             </form>

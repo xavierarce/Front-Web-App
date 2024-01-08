@@ -11,12 +11,12 @@ import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
 const EmptyRegisterValues = {
   email: "",
   password: "",
-  ocupation: "",
+  occupation: "",
   name: "",
   lastname: "",
   phoneNumber: "",
   numberId: "",
-  nacionality: "",
+  nationality: "",
 };
 
 const RegisterPopUp = () => {
@@ -25,28 +25,61 @@ const RegisterPopUp = () => {
   const {
     email,
     password,
-    ocupation,
+    occupation,
     name,
     lastname,
     phoneNumber,
     numberId,
-    nacionality,
+    nationality,
   } = registerValues;
   const [passwordVisible, setPasswordVisible] = useState(false);
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    alert(JSON.stringify(registerValues));
-  };
-
-  const onInputChange = (e) => {
-    const { name, value } = e.target;
-    setRegisterValues({ ...registerValues, [name]: value });
-  };
 
   const handleReturn = () => {
     closeRegister();
     openLogin();
+  };
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:8000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          registerValues,
+        }),
+      });
+      const data = await response.json();
+      console.log(response);
+      console.log(data);
+      if (response.ok) {
+        alert("Cuenta creada! Ahora inicia secion");
+        handleReturn();
+      } else {
+        throw new Error(data.error);
+      }
+    } catch (error) {
+      if (error.message.includes("Missing required fields"))
+        return alert("Porfavor completa todos los campos");
+      if (error.message === "Invalid Email Format")
+        return alert("Porfavor Ingresa un email valido");
+      if (
+        error.message ===
+        "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit"
+      )
+        return alert(
+          "La contraseña debe tener al menos 8 caracteres de longitud y contener al menos una letra mayúscula, una letra minúscula y un número."
+        );
+      if (error.message === "Número de identificación debe tener 10 dígitos")
+        return alert(error.message);
+
+      console.log(error.message);
+    }
+  };
+
+  console.log(registerValues);
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setRegisterValues({ ...registerValues, [name]: value });
   };
 
   return (
@@ -110,8 +143,8 @@ const RegisterPopUp = () => {
                 <select
                   required
                   onChange={onInputChange}
-                  value={ocupation}
-                  name="ocupation"
+                  value={occupation}
+                  name="occupation"
                 >
                   <option value="" disabled>
                     Selecciona
@@ -119,11 +152,11 @@ const RegisterPopUp = () => {
                   <option value={"estudiante"} className="text-input">
                     Estudiante
                   </option>
-                  <option value={"Corredor"} className="text-input">
-                    Corredor
-                  </option>
                   <option value={"Ejecutivo"} className="text-input">
                     Ejecutivo
+                  </option>
+                  <option value={"Corredor"} className="text-input">
+                    Corredor
                   </option>
                 </select>
               </div>
@@ -176,8 +209,8 @@ const RegisterPopUp = () => {
                 divClassName={"Form-Input-Section-Authenticate"}
                 required={true}
                 onChange={onInputChange}
-                value={nacionality}
-                name={"nacionality"}
+                value={nationality}
+                name={"nationality"}
               />
               <CustomButton
                 content={"Registrarme"}
