@@ -23,6 +23,12 @@
 }
 
 
+.assetform-area-container{
+  display: flex;
+  gap: 1em;
+  width: 20em;
+}
+
 .NewAssetPage-textarea {
   width: 90%;
   height: 6rem;

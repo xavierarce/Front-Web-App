@@ -33,6 +33,34 @@ function NewAssetPage() {
       </div>
       <form className="NewAssetPage-info-container">
         <div className="NewAssetPage-info-titular">
+          <div>
+            <label className="Form-Input-Section">Tipo de bien</label>
+            <select className="text-input">
+              <option disabled>Selecciona un tipo de bien</option>
+              <option>Apartamento</option>
+              <option>Casa</option>
+              <option>Edificio</option>
+              <option>Terreno</option>
+            </select>
+          </div>
+          <div className="assetform-area-container">
+            <FormInput
+              onChange={onInputChange}
+              divClassName={"Form-Input-Section"}
+              pattern={"text-input"}
+              label={"Area del terreno"}
+              placeholder={"m2"}
+              name={"area.total"}
+            />
+            <FormInput
+              onChange={onInputChange}
+              divClassName={"Form-Input-Section"}
+              pattern={"text-input"}
+              label={"Area construida"}
+              placeholder={"m2"}
+              name={"area.covered"}
+            />
+          </div>
           <FormInput
             onChange={onInputChange}
             divClassName={"Form-Input-Section"}
@@ -49,14 +77,46 @@ function NewAssetPage() {
             label={"Propietario"}
             placeholder={"Nombre del Propietario"}
           />
-          <FormInput
-            onChange={onInputChange}
-            name={"value"}
-            divClassName={"Form-Input-Section"}
-            pattern={"text-input"}
-            label={"Valor"}
-            placeholder={"Valor"}
-          />
+          <div>
+            <label className="Form-Input-Section">
+              Vender, Alquilar, Ambos?
+            </label>
+            <select className="text-input">
+              <option disabled>Selecciona</option>
+              <option>Vender</option>
+              <option>Alquilar</option>
+              <option>Vender y Alquilar</option>
+            </select>
+          </div>
+          <div className="assetform-area-container">
+            <FormInput
+              onChange={onInputChange}
+              name={"operation.prince.selling"}
+              divClassName={"Form-Input-Section"}
+              pattern={"text-input"}
+              type={'number'}
+              label={"Valor de venta"}
+              placeholder={"$"}
+            />
+            <FormInput
+              onChange={onInputChange}
+              name={"operation.prince.rental"}
+              divClassName={"Form-Input-Section"}
+              pattern={"text-input"}
+              type={'number'}
+              label={"Valor de alquiler"}
+              placeholder={"$"}
+            />
+            <FormInput
+              onChange={onInputChange}
+              name={"operation.prince.charges"}
+              divClassName={"Form-Input-Section"}
+              pattern={"text-input"}
+              label={"Valor de alicuota"}
+              type={'number'}
+              placeholder={"$"}
+            />
+          </div>
           <FormInput
             onChange={onInputChange}
             name={"city"}

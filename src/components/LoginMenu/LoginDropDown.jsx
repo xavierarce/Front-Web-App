@@ -60,7 +60,7 @@ function LoginDropdown() {
               </Link>
             ) : null}
             {currentUser ? (
-              <li onClick={onLogOff} className="login-dropdown-items">
+              <li onClick={onLogOff} className=" login-dropdown-items">
                 Cerrar Seción
               </li>
             ) : null}

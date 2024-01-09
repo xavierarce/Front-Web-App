@@ -105,7 +105,7 @@ const AuthenticatePopUp = () => {
               </div>
               <CustomButton content={"Ingresa"} pattern={"blue-small"} />
             </form>
-            <div className="authenticate-signin-google">
+            {/* <div className="authenticate-signin-google">
               <b>O ingresa con Google</b>
               <CustomButton
                 content={
@@ -116,7 +116,7 @@ const AuthenticatePopUp = () => {
                 pattern={"blue"}
                 onButtonClick={onSignInSubmit}
               />
-            </div>
+            </div> */}
           </div>
           <div className="authenticate-register">
             <h2 className="authenticate-signin-title">No tienes cuenta?</h2>
