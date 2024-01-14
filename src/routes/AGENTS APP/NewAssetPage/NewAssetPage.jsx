@@ -6,51 +6,47 @@ import FormInput from "../../../components/FormInput/FormInput";
 
 const EmptyNewAsset = {
   type: "Selecciona un tipo de bien",
-  area: {
-    total: "",
-    covered: "",
-  },
+  totalArea: "",
+  coveredAera: "",
   title: "",
   owner: "",
-  operation: {
-    type: "Selecciona",
-    price: {
-      selling: "",
-      rental: "",
-      charges: "",
-    },
-  },
-  location: {
-    address: "",
-    zone: "",
-    city: "",
-  },
-  details: {
-    age: "",
-    rooms: "",
-    parking: "",
-    bathrooms: "",
-  },
-  characteristics: {
-    description: "",
-    keyPoints: "",
-  },
+  operationType: "Selecciona",
+  sellingValue: "",
+  rentalValue: "",
+  chargesValue: "",
+  address: "",
+  zone: "",
+  city: "",
+  age: "",
+  rooms: "",
+  parking: "",
+  bathrooms: "",
+  description: "",
+  keyPoints: "",
 };
 
 function NewAssetPage() {
+  const [files, setFiles] = useState([]);
   const [newAsset, setNewAsset] = useState(EmptyNewAsset);
   const {
     type,
-    area: { total, covered },
+    totalArea,
+    coveredArea,
     title,
     owner,
-    operation: {
-      type: operationType,
-      price: { selling, rental, charges },
-    },
-    location: { address, zone, city },
-    details: { age, rooms, parking, bathrooms },
-    characteristics: { description, keyPoints },
+    operationType,
+    sellingValue,
+    rentalValue,
+    chargesValue,
+    address,
+    zone,
+    city,
+    age,
+    rooms,
+    parking,
+    bathrooms,
+    description,
+    keyPoints,
   } = newAsset;
 
   console.log(newAsset);
@@ -90,8 +86,8 @@ function NewAssetPage() {
     const storedToken = localStorage.getItem("hogar-seguro");
     if (
       type === "Selecciona un tipo de bien" ||
-      total === undefined ||
-      covered === undefined ||
+      totalArea === undefined ||
+      coveredArea === undefined ||
       title === undefined ||
       owner === undefined ||
       operationType === "Selecciona" ||
@@ -106,19 +102,30 @@ function NewAssetPage() {
       keyPoints === undefined
     )
       return alert("Porfavor,completa los campos");
-    if (selling === undefined && rental === undefined)
+    if (sellingValue === undefined && rentalValue === undefined)
       return alert("Porfavor, ingresa un valor");
 
     if (storedToken) {
       try {
         alert(JSON.stringify(newAsset));
+
+        const formData = new FormData();
+        for (const key in newAsset) {
+          formData.append(key, newAsset[key]);
+        }
+
+        files.forEach((file) => {
+          formData.append("images", file);
+        });
+
+        console.log("ES ESTOOO", [...formData.entries()]);
+
         const response = await fetch("http://localhost:8000/asset", {
           method: "POST",
           headers: {
-            "Content-Type": "Application/json",
             authorization: `Bearer ${storedToken}`,
           },
-          body: JSON.stringify(newAsset),
+          body: formData,
         });
         const data = await response.json();
         console.log(response);
@@ -127,6 +134,11 @@ function NewAssetPage() {
         console.log(error);
       }
     }
+  };
+
+  const filesSelected = (event) => {
+    const selectedFiles = Array.from(event.target.files);
+    setFiles(selectedFiles);
   };
 
   return (
@@ -162,7 +174,8 @@ function NewAssetPage() {
               label={"Area del terreno"}
               type={"number"}
               placeholder={"m2"}
-              name={"area.total"}
+              name={"totalArea"}
+              value={totalArea}
             />
             <FormInput
               onChange={onInputChange}
@@ -171,7 +184,8 @@ function NewAssetPage() {
               label={"Area construida"}
               type={"number"}
               placeholder={"m2"}
-              name={"area.covered"}
+              name={"coveredArea"}
+              value={coveredArea}
             />
           </div>
           <FormInput
@@ -181,10 +195,12 @@ function NewAssetPage() {
             label={"Titulo"}
             placeholder={"Nombra el Bien"}
             name={"title"}
+            value={title}
           />
           <FormInput
             onChange={onInputChange}
             name={"owner"}
+            value={owner}
             divClassName={"Form-Input-Section"}
             pattern={"text-input"}
             label={"Propietario"}
@@ -197,7 +213,7 @@ function NewAssetPage() {
             <select
               onChange={onInputChange}
               value={operationType}
-              name="operation.type"
+              name="operationType"
               className="text-input"
             >
               <option>Selecciona</option>
@@ -209,7 +225,8 @@ function NewAssetPage() {
           <div className="assetform-area-container">
             <FormInput
               onChange={onInputChange}
-              name={"operation.price.selling"}
+              name={"sellingValue"}
+              value={sellingValue}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               type={"number"}
@@ -218,7 +235,8 @@ function NewAssetPage() {
             />
             <FormInput
               onChange={onInputChange}
-              name={"operation.price.rental"}
+              name={"rentalValue"}
+              value={rentalValue}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               type={"number"}
@@ -227,7 +245,8 @@ function NewAssetPage() {
             />
             <FormInput
               onChange={onInputChange}
-              name={"operation.price.charges"}
+              name={"chargesValue"}
+              value={chargesValue}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               label={"Valor de alicuota"}
@@ -238,7 +257,8 @@ function NewAssetPage() {
           <div className="assetform-area-container">
             <FormInput
               onChange={onInputChange}
-              name={"location.city"}
+              name={"city"}
+              value={city}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               label={"Ciudad"}
@@ -246,7 +266,8 @@ function NewAssetPage() {
             />
             <FormInput
               onChange={onInputChange}
-              name={"location.zone"}
+              name={"zone"}
+              value={zone}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               label={"Zona"}
@@ -255,7 +276,8 @@ function NewAssetPage() {
           </div>
           <FormInput
             onChange={onInputChange}
-            name={"location.address"}
+            name={"address"}
+            value={address}
             divClassName={"Form-Input-Section"}
             pattern={"text-input"}
             label={"Dirección"}
@@ -264,7 +286,8 @@ function NewAssetPage() {
           <div className="assetform-area-container">
             <FormInput
               onChange={onInputChange}
-              name={"details.age"}
+              name={"age"}
+              value={age}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               label={"Antiguedad"}
@@ -273,7 +296,8 @@ function NewAssetPage() {
             />
             <FormInput
               onChange={onInputChange}
-              name={"details.rooms"}
+              name={"rooms"}
+              value={rooms}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               label={"Cantidad de Cuartos"}
@@ -282,7 +306,8 @@ function NewAssetPage() {
             />
             <FormInput
               onChange={onInputChange}
-              name={"details.parking"}
+              name={"parking"}
+              value={parking}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               label={"Parqueos disponibles"}
@@ -291,7 +316,8 @@ function NewAssetPage() {
             />
             <FormInput
               onChange={onInputChange}
-              name={"details.bathrooms"}
+              name={"bathrooms"}
+              value={bathrooms}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               label={"Baños disponibles"}
@@ -303,7 +329,8 @@ function NewAssetPage() {
             <label>Descripción</label>
             <textarea
               onChange={onInputChange}
-              name="characteristics.description"
+              name="description"
+              value={description}
               className="NewAssetPage-textarea text-input"
               maxLength={1500}
             />
@@ -312,9 +339,20 @@ function NewAssetPage() {
             <label>Key Points</label>
             <textarea
               onChange={onInputChange}
-              name="characteristics.keyPoints"
+              name="keyPoints"
+              value={keyPoints}
               className="NewAssetPage-textarea text-input"
               maxLength={250}
+            />
+          </div>
+          <div className="Form-Input-Section">
+            <label>Fotos</label>
+            <input
+              onChange={filesSelected}
+              type="file"
+              accept="image/*"
+              className="text-input"
+              multiple
             />
           </div>
         </div>
