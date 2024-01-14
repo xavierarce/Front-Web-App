@@ -4,25 +4,16 @@
   flex-direction: column;
   gap: 2em;
   margin: 0;
-}
-
-.asset-list-and-map {
-  align-items: flex-start;
-  display: flex;
-  gap: 1em;
-  max-height: 80vh;
-  max-width: 80vw;
-}
-
-.asset-list-page-container{
-  width: 65%;
-}
-
-.asset-list-description-container {
+  width: 80rem;
+  max-width: 90vw;
   /* background-color: aqua; */
-  height: 50vh;
-  width: 35%;
 }
+
+.asset-list-page-container {
+  width: 100%;
+}
+
+
 
 @media only screen and (max-width: 1000px) {
   .asset-list-description-container {

@@ -20,8 +20,8 @@
 }
 
 .main-image {
-  height: 25rem;
-  object-fit: cover;
+  height: 30rem;
+  object-fit: contain;
   width: 50rem;
   max-width: 70vw;
 }

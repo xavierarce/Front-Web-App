@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./AssetListPage.css";
-import { ASSETSFAKEDATA } from "../../../AssetsFakeData";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import AssetListComponent from "../../../components/AssetListComponent/AssetListComponent";
-import SelectedItem from "../../../components/SelectedItem/SelectedItem";
 
 function AssetListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState(
     searchParams.get("buscar") || ""
   );
-  const [filteredAssets, setFilteredAssets] = useState(ASSETSFAKEDATA);
+  const [allAssets, setAllAssets] = useState([]);
+  const [filteredAssets, setFilteredAssets] = useState(allAssets);
 
   console.log(searchInput);
   function onSearchChange(e) {
@@ -23,7 +22,7 @@ function AssetListPage() {
 
     // Update the filter only when the search form is submitted
     const searchParamValue = searchInput.trim().toLowerCase();
-    const newFilteredAssets = ASSETSFAKEDATA.filter(
+    const newFilteredAssets = allAssets.filter(
       (asset) =>
         asset.title.toLowerCase().includes(searchParamValue) ||
         asset.description.toLowerCase().includes(searchParamValue)
@@ -33,6 +32,19 @@ function AssetListPage() {
     setSearchParams({ buscar: searchInput });
   }
 
+  useEffect(() => {
+    const getAssets = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/assets");
+        const data = await response.json();
+
+        setAllAssets(data.assets);
+        setFilteredAssets(data.assets);
+      } catch (error) {}
+    };
+    getAssets();
+  }, []);
+
   return (
     <div className="asset-list-page">
       <h2 className="slogan">Encuentra tu hogar, sin preocupaciones</h2>
@@ -41,13 +53,8 @@ function AssetListPage() {
         onChange={onSearchChange}
         onSubmit={handleSubmit}
       />
-      <div className="asset-list-and-map">
-        <div className="asset-list-page-container">
-          <AssetListComponent AvailableAssetList={filteredAssets} />
-        </div>
-        <div className="asset-list-description-container">
-          <SelectedItem />
-        </div>
+      <div className="asset-list-page-container">
+        <AssetListComponent AvailableAssetList={filteredAssets} />
       </div>
     </div>
   );

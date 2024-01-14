@@ -5,6 +5,12 @@
   max-height: 15em;
   height: 15em;
   width: 99%;
+  justify-content: space-between;
+}
+
+.asset-on-list:hover {
+  background-color: var(--main-custom-blue-80);
+
 }
 
 .asset-on-list-description {
@@ -18,6 +24,11 @@
   width: 60%;
   height: 90%;
   /* background-color: green; */
+}
+
+.asset-on-list-caracs {
+  display: inline-flex;
+  gap: 1rem;
 }
 
 .asset-on-list-title-address {
@@ -67,7 +78,7 @@
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
   height: 100%;
-  width: 40%;
+  width: 30%;
 }
 
 .asset-on-list-image {
@@ -83,13 +94,8 @@
   padding: 0 1rem 0rem 1rem;
 }
 
-.asset-active {
-  background-color: var(--main-custom-blue-80);
-}
-
 @media only screen and (max-width: 1000px) {
   .asset-breve-button {
     display: none;
-    
   }
 }

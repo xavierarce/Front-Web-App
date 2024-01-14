@@ -23,7 +23,7 @@ const ImageGallery = ({ images }) => {
         <CustomButton content={"<"} pattern={"arrow"} onButtonClick={previousImage} />
         <img
           className="main-image"
-          src={images[currentImageIndex]}
+          src={images[currentImageIndex].imageUrl}
           alt={images[currentImageIndex]}
         />
         <CustomButton content={">"} pattern={"arrow"} onButtonClick={nextImage} />
@@ -33,7 +33,7 @@ const ImageGallery = ({ images }) => {
         {images.map((image, index) => (
           <img
             key={index}
-            src={image}
+            src={image.imageUrl}
             alt={`Thumbnail ${index + 1}`}
             className={`thumbnail ${
               index === currentImageIndex ? "thumbnail-active" : ""

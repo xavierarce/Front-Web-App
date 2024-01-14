@@ -56,13 +56,13 @@ const VisitForm = ({ onButtonClick }) => {
       </form>
       <div className="asset-page-question-endingbox">
         <p className="asset-page-question">Tienes una pregunta?</p>
-        {/* <a href="#QuestionPopUp"> */}
+        <a href="#QuestionPopUp">
         <CustomButton
           pattern={"blue-small"}
           content={"Consultanos!"}
           onButtonClick={onButtonClick}
         />
-        {/* </a> */}
+        </a>
       </div>
     </div>
   );

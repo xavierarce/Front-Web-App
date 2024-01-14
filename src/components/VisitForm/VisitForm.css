@@ -9,6 +9,7 @@
   flex-direction: column;
   width: fit-content;
   max-width: 15rem;
+  height: fit-content;
 }
 
 .asset-page-questions-form {
