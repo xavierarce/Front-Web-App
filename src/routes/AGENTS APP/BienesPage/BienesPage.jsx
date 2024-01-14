@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./BienesPage.css";
 
 import { Link, useSearchParams } from "react-router-dom";
-import { ASSETSFAKEDATACOMPLETE } from "../../../AssetsFakeData";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 
@@ -14,7 +13,10 @@ function BienesPage() {
   const [searchInput, setSearchInput] = useState(
     searchParams.get("buscar") || ""
   );
-  const [filteredAssets, setFilteredAssets] = useState(ASSETSFAKEDATACOMPLETE);
+  const [allAssets, setAllAssets] = useState([]);
+  const [filteredAssets, setFilteredAssets] = useState(allAssets);
+  console.log("fl", filteredAssets);
+  console.log("faa", allAssets);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -34,10 +36,11 @@ function BienesPage() {
 
     // Update the filter only when the search form is submitted
     const searchParamValue = searchInput.trim().toLowerCase();
-    const newFilteredAssets = ASSETSFAKEDATACOMPLETE.filter((asset) => {
+    const newFilteredAssets = allAssets.filter((asset) => {
       return (
         asset.title.toLowerCase().includes(searchParamValue) ||
-        asset.apartamento.descripcion.toLowerCase().includes(searchParamValue)
+        asset.location.city.toLowerCase().includes(searchParamValue) ||
+        asset.owner.toLowerCase().includes(searchParamValue)
       );
     });
 
@@ -45,7 +48,20 @@ function BienesPage() {
     setSearchParams({ buscar: searchInput });
   }
 
-  console.log(filteredAssets);
+  useEffect(() => {
+    const getAssets = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/assets");
+        const data = await response.json();
+
+        setAllAssets(data.assets);
+        setFilteredAssets(data.assets);
+      } catch (error) {}
+    };
+    getAssets();
+  }, []);
+
+  console.log("filtered", filteredAssets);
   return (
     <div className="agency-sub-page">
       <h2 className="agency-sub-page-title">Bienes</h2>
@@ -55,13 +71,21 @@ function BienesPage() {
       <SearchBar onChange={onSearchChange} onSubmit={handleSubmit} />
       <div className="agency-sub-page-card-container">
         {assetsToDisplay.map((asset, index) => {
-          const { id, title, address, value, imageURL, owner } = asset;
+          const { id, title, address, operation, images, owner } = asset;
+          const { selling, rental, charges } = operation.price;
+          const mainImage = images.find((image) => image.order === 0);
           return (
             <div key={index} className="agency-sub-page-card">
               <div className="agencysub-card-description ">
                 <h2 className="text-0-margin">{title}</h2>
                 <p className="text-0-margin">{address}</p>
-                <b className="text-0-margin">{value}</b>
+                <p className="text-0-margin">{operation.type}</p>
+                <b className="text-0-margin">
+                  Venta: ${selling} - Alquiler: ${rental}{" "}
+                </b>
+                {charges ? (
+                  <b className="text-0-margin">Alicuota ${charges}</b>
+                ) : null}
                 <div className="agencysub-boton-y-propietario">
                   <Link to={`bien/${id}`}>
                     <CustomButton pattern={"blue"} content={"Editar"} />
@@ -72,7 +96,11 @@ function BienesPage() {
                   <p>{owner}</p>
                 </div>
               </div>
-              <img className="agencysub-image" alt={title} src={imageURL} />
+              <img
+                className="agencysub-image"
+                alt={title}
+                src={mainImage.imageUrl}
+              />
             </div>
           );
         })}

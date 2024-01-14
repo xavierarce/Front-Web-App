@@ -120,7 +120,7 @@ function NewAssetPage() {
 
         console.log("ES ESTOOO", [...formData.entries()]);
 
-        const response = await fetch("http://localhost:8000/asset", {
+        const response = await fetch("http://localhost:8000/assets/registerAsset", {
           method: "POST",
           headers: {
             authorization: `Bearer ${storedToken}`,
