@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <Home /> },
       { path: "bienes", element: <AssetListPage /> },
-      { path: "bienes/:id", element: <AssetPage /> },
+      { path: "bienes/:name/:ucid", element: <AssetPage /> },
       { path: "eres-propietario", element: <EresPropietario /> },
       { path: "articulos", element: <ArticulosPage /> },
       { path: "contactanos", element: <ContactanosPage /> },
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
     element: <AgentPage />,
     children: [
       { path: "", element: <BienesPage /> },
-      { path: "bien/:id", element: <EditAssetPage /> },
+      { path: "bien/:name/:ucid", element: <EditAssetPage /> },
       { path: "nuevobien", element: <NewAssetPage /> }, // Nested under BienesPage
       { path: "propietarios", element: <PropietariosPage /> },
       { path: "visitas", element: <VisitasPage /> },

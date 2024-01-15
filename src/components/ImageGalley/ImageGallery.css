@@ -24,6 +24,8 @@
   object-fit: contain;
   width: 50rem;
   max-width: 70vw;
+  background-color: rgba(0, 0, 0, 0.1);
+  /* background-color: grey; */
 }
 
 .thumbnail-container {
@@ -40,6 +42,7 @@
   margin: 0 5px;
   cursor: pointer;
   border: none;
+  background-color: rgba(0, 0, 0,0.1  );
 }
 
 .thumbnail-active {
@@ -53,10 +56,10 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .main-image{
+  .main-image {
     max-height: 15em;
   }
-  .thumbnail{
+  .thumbnail {
     max-width: 20px;
     max-height: 20px;
   }

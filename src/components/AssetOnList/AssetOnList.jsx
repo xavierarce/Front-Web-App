@@ -3,7 +3,7 @@ import CustomButton from "../CustomButton/CustomButton";
 import { Link } from "react-router-dom";
 
 function AssetOnList({ asset }) {
-  const { title, location, details, value, images, id } = asset;
+  const { title, location, details, value, images, ucid } = asset;
 
   const mainImage = images.find((image) => image.order === 0);
 
@@ -27,18 +27,21 @@ function AssetOnList({ asset }) {
           <div>
             <b>{value}</b>
           </div>
-          <Link to={`${title.replace(/\s/g, "-")}`}>
+          <Link to={`${title.replace(/\s/g, "-")}/${ucid}`}>
             <CustomButton pattern={"blue"} content={"Ir a al bien"} />
           </Link>
         </div>
       </div>
-      <div className="asset-on-list-image-container">
+      <Link
+        className="asset-on-list-image-container"
+        to={`${title.replace(/\s/g, "-")}`}
+      >
         <img
           className="asset-on-list-image"
           alt={title}
           src={mainImage.imageUrl}
         />
-      </div>
+      </Link>
     </div>
   );
 }

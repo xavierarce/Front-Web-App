@@ -10,7 +10,6 @@
 
 .asset-on-list:hover {
   background-color: var(--main-custom-blue-80);
-
 }
 
 .asset-on-list-description {
@@ -83,6 +82,8 @@
 
 .asset-on-list-image {
   height: 90%;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
   object-fit: cover;
   width: 90%;
 }

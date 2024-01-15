@@ -71,7 +71,7 @@ function BienesPage() {
       <SearchBar onChange={onSearchChange} onSubmit={handleSubmit} />
       <div className="agency-sub-page-card-container">
         {assetsToDisplay.map((asset, index) => {
-          const { id, title, address, operation, images, owner } = asset;
+          const {  title, address, operation, images, owner,ucid } = asset;
           const { selling, rental, charges } = operation.price;
           const mainImage = images.find((image) => image.order === 0);
           return (
@@ -87,10 +87,10 @@ function BienesPage() {
                   <b className="text-0-margin">Alicuota ${charges}</b>
                 ) : null}
                 <div className="agencysub-boton-y-propietario">
-                  <Link to={`bien/${id}`}>
+                <Link to={`bien/${title.replace(/\s/g, "-")}/${ucid}`}>
                     <CustomButton pattern={"blue"} content={"Editar"} />
                   </Link>
-                  <Link target="_blank" to={`/bienes/${id}`}>
+                  <Link target="_blank" to={`/bienes/${title.replace(/\s/g, "-")}/${ucid}`}>
                     <CustomButton pattern={"white"} content={"Ver"} />
                   </Link>
                   <p>{owner}</p>

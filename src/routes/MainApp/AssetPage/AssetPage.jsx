@@ -14,17 +14,14 @@ function AssetPage() {
   const [currentAsset, setCurrentAsset] = useState();
 
   console.log(currentAsset);
-  const { id } = useParams();
-  const formattedId = id.replace(/-/g, " ");
-
-  console.log(id);
-  console.log(formattedId);
+  const { name , ucid } = useParams();
+  const formattedName = name.replace(/-/g, " ");
 
   useEffect(() => {
     const getAsset = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/assets/singleAsset?name=${formattedId}`
+          `http://localhost:8000/assets/singleAsset?name=${formattedName}&ucid=${ucid}`
         );
         const data = await response.json();
         if (response.ok) {

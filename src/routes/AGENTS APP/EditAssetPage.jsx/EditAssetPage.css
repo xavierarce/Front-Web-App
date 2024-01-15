@@ -1,4 +1,35 @@
-.NewAssetPage-textarea-container{
+.NewAssetPage-textarea-container {
   display: flex;
   flex-direction: column;
+}
+
+.image-to-edit-container {
+  display: flex;
+  max-height: 10rem;
+  width: 10rem;
+  border: 1px solid grey;
+  /* background-color: grey; */
+  object-fit: contain;
+  position: relative;
+}
+
+.image-to-edit-close {
+  position: absolute;
+  z-index: 10000;
+  right: 0;
+  cursor: pointer;
+}
+
+.image-to-edit {
+  max-height: 10rem;
+  height: 10rem;
+  width: 10rem;
+  object-fit: contain;
+}
+
+.edit-images-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /* padding: 2rem 0rem; */
 }

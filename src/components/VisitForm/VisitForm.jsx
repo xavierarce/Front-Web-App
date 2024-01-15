@@ -16,13 +16,13 @@ const VisitForm = ({ onButtonClick }) => {
 
   const onVisitRequest = (e) => {
     e.preventDefault();
-    if (!visitDate ) {
+    if (!visitDate) {
       alert("Porfavor selecciona una fecha de visita");
       return;
     }
-    if( new Date(visitDate) < new Date()){
+    if (new Date(visitDate) < new Date()) {
       alert("Porfavor selecciona una fecha valida");
-      return
+      return;
     }
     if (!currentUser) {
       openLogin();
@@ -41,13 +41,13 @@ const VisitForm = ({ onButtonClick }) => {
         <div className="asset-page-questions-container">
           <div className="asset-page-question-container">
             <label className="asset-page-question">
-              Selecciona una fecha para visitar!
+              Selecciona una fecha para visitar:
             </label>
             <DateInput onChange={onDateSelection} name={"visitDate"} />
           </div>
           <div className="asset-page-question-container">
             <label className="asset-page-question">
-              Cuando deseas mudarte?
+              ¿Cuándo te gustaría mudarte o ingresar?
             </label>
             <DateInput onChange={onDateSelection} name={"entryDate"} />
           </div>
@@ -55,13 +55,13 @@ const VisitForm = ({ onButtonClick }) => {
         <CustomButton content={"Solicitar Visita"} pattern={"blue-small"} />
       </form>
       <div className="asset-page-question-endingbox">
-        <p className="asset-page-question">Tienes una pregunta?</p>
+        <p className="asset-page-question">¿Tienes alguna pregunta?</p>
         <a href="#QuestionPopUp">
-        <CustomButton
-          pattern={"blue-small"}
-          content={"Consultanos!"}
-          onButtonClick={onButtonClick}
-        />
+          <CustomButton
+            pattern={"blue-small"}
+            content={"Consultanos!"}
+            onButtonClick={onButtonClick}
+          />
         </a>
       </div>
     </div>
