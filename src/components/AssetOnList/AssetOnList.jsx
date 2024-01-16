@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function AssetOnList({ asset }) {
   const { title, location, details, value, images, ucid } = asset;
 
-  const mainImage = images.find((image) => image.order === 0);
+  const mainImage = images.find((image) => image.order === 1);
 
   console.log(asset);
 

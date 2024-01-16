@@ -1,36 +1,55 @@
 // ImageGallery.js
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ImageGallery.css"; // Import the CSS file
 import CustomButton from "../CustomButton/CustomButton";
 
 const ImageGallery = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [sortedImages, setSortedImages] = useState([]);
+
+  useEffect(() => {
+    // Sort images based on the order property
+    const sortedImages = [...images].sort((a, b) => a.order - b.order);
+    setSortedImages(sortedImages);
+  }, [images]);
 
   const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % sortedImages.length);
   };
 
   const previousImage = () => {
     setCurrentImageIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      (prevIndex) => (prevIndex - 1 + sortedImages.length) % sortedImages.length
     );
   };
+
+  if (sortedImages.length === 0) {
+    return <h2>Loading</h2>; // or return a loading state or placeholder
+  }
 
   return (
     <div className="image-gallery-container">
       <div className="image-and-arrows">
-        <CustomButton content={"<"} pattern={"arrow"} onButtonClick={previousImage} />
+        <CustomButton
+          content={"<"}
+          pattern={"arrow"}
+          onButtonClick={previousImage}
+        />
         <img
           className="main-image"
-          src={images[currentImageIndex].imageUrl}
-          alt={images[currentImageIndex]}
+          src={sortedImages[currentImageIndex].imageUrl}
+          alt={sortedImages[currentImageIndex].imageUrl}
         />
-        <CustomButton content={">"} pattern={"arrow"} onButtonClick={nextImage} />
+        <CustomButton
+          content={">"}
+          pattern={"arrow"}
+          onButtonClick={nextImage}
+        />
       </div>
 
       <div className="thumbnail-container">
-        {images.map((image, index) => (
+        {sortedImages.map((image, index) => (
           <img
             key={index}
             src={image.imageUrl}

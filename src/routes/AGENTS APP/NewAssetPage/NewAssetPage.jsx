@@ -3,6 +3,7 @@ import "./NewAssetPage.css";
 import { useState } from "react";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import FormInput from "../../../components/FormInput/FormInput";
+import { IoCloseCircle } from "react-icons/io5";
 
 const EmptyNewAsset = {
   type: "Selecciona un tipo de bien",
@@ -27,6 +28,9 @@ const EmptyNewAsset = {
 
 function NewAssetPage() {
   const [files, setFiles] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
+
+  console.log(files);
   const [newAsset, setNewAsset] = useState(EmptyNewAsset);
   const {
     type,
@@ -120,13 +124,16 @@ function NewAssetPage() {
 
         console.log("ES ESTOOO", [...formData.entries()]);
 
-        const response = await fetch("http://localhost:8000/assets/registerAsset", {
-          method: "POST",
-          headers: {
-            authorization: `Bearer ${storedToken}`,
-          },
-          body: formData,
-        });
+        const response = await fetch(
+          "http://localhost:8000/assets/registerAsset",
+          {
+            method: "POST",
+            headers: {
+              authorization: `Bearer ${storedToken}`,
+            },
+            body: formData,
+          }
+        );
         const data = await response.json();
         console.log(response);
         console.log(data);
@@ -138,12 +145,38 @@ function NewAssetPage() {
 
   const filesSelected = (event) => {
     const selectedFiles = Array.from(event.target.files);
-    setFiles(selectedFiles);
+
+    // Update the state by adding the newly selected files to the existing files
+    setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
+
+    // Create image previews for the selected files
+    const previews = [];
+    selectedFiles.forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        previews.push(e.target.result);
+        setImagePreviews([...imagePreviews,...previews]);
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const onDeleteImage = (index) => {
+    const updatedFiles = [...files];
+    const updatedImagePreviews = [...imagePreviews];
+
+    // Remove the selected image and its preview
+    updatedFiles.splice(index, 1);
+    updatedImagePreviews.splice(index, 1);
+
+    // Update the state with the modified arrays
+    setFiles(updatedFiles);
+    setImagePreviews(updatedImagePreviews);
   };
 
   return (
     <div className="agency-sub-page NewAssetPage">
-      <h2 className="agency-sub-page-title">Bienes</h2>
+      <h2 className="agency-sub-page-title">Agragar nuevo bien</h2>
       <div className="cerrar-button-asset">
         <Link to={"/agenciaadmin"}>
           <CustomButton content={"Regresar"} pattern={"blue"} />
@@ -355,6 +388,27 @@ function NewAssetPage() {
               multiple
             />
           </div>
+          <h3>{imagePreviews.length} Imagenes Seleccionadas : </h3>
+          {imagePreviews.length > 0 && (
+            <div className="edit-images-container">
+              {imagePreviews.map((preview, index) => (
+                <div key={index} className="image-to-edit-container">
+                  <IoCloseCircle
+                    onClick={() => onDeleteImage(index)}
+                    className="image-to-edit-close"
+                    size="1rem"
+                    color="red"
+                  />
+                  <img
+                    key={index}
+                    className="image-previews-images"
+                    src={preview}
+                    alt={`Preview ${index + 1}`}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <CustomButton
           content={"Guardar Nuevo Bien"}

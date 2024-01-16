@@ -22,6 +22,17 @@
   width: 100%;
 }
 
+.image-previews{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-previews-images{
+  object-fit: contain;
+  height: 10rem;
+  width: 10rem;
+}
+
 
 .assetform-area-container{
   display: flex;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import FormInput from "../../../components/FormInput/FormInput";
 import { IoCloseCircle } from "react-icons/io5";
@@ -11,6 +11,10 @@ const EditAssetPage = () => {
   const { name, ucid } = useParams(); //Get ID
   const formattedName = name.replace(/-/g, " ");
   const [files, setFiles] = useState([]);
+
+  const [imagePreviews, setImagePreviews] = useState([]);
+
+  const navigate = useNavigate();
 
   const [currentAsset, setCurrentAsset] = useState();
 
@@ -27,7 +31,7 @@ const EditAssetPage = () => {
       } catch (error) {}
     };
     getAsset();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!currentAsset) {
@@ -118,14 +122,33 @@ const EditAssetPage = () => {
 
         const data = await response.json();
         console.log("respnse", response);
+        if (response.ok) {
+          alert("Bien Guardado!");
+          navigate(`/bienes/${title.replace(/\s/g, "-")}/${ucid}`);
+        }
         console.log(data);
       } catch (error) {}
     }
   };
 
+  console.log(files);
+  console.log(imagePreviews);
   const filesSelected = (event) => {
     const selectedFiles = Array.from(event.target.files);
-    setFiles(selectedFiles);
+
+    // Update the state by adding the newly selected files to the existing files
+    setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
+
+    // Create image previews for the selected files
+    const previews = [];
+    selectedFiles.forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        previews.push(e.target.result);
+        setImagePreviews([...imagePreviews, ...previews]);
+      };
+      reader.readAsDataURL(file);
+    });
   };
 
   const onDeleteImage = (img, idx) => {
@@ -137,6 +160,19 @@ const EditAssetPage = () => {
       );
       setCurrentAsset({ ...currentAsset, images: newImages });
     }
+  };
+
+  const onDeleteImageNew = (index) => {
+    const updatedFiles = [...files];
+    const updatedImagePreviews = [...imagePreviews];
+
+    // Remove the selected image and its preview
+    updatedFiles.splice(index, 1);
+    updatedImagePreviews.splice(index, 1);
+
+    // Update the state with the modified arrays
+    setFiles(updatedFiles);
+    setImagePreviews(updatedImagePreviews);
   };
 
   return (
@@ -343,17 +379,20 @@ const EditAssetPage = () => {
               maxLength={250}
             />
           </div>
-          <label>Fotos existentes</label>
+          <label>Fotos existentes (mínimo 2 img.)</label>
           <div className="edit-images-container">
             {images.map((img, idx) => {
               return (
                 <div key={idx} className="image-to-edit-container">
+                  {
+                    images.length>2?
                   <IoCloseCircle
                     onClick={() => onDeleteImage(img)}
                     className="image-to-edit-close"
                     size="1rem"
                     color="red"
-                  />
+                  />: null
+                  }
                   <img
                     className="image-to-edit"
                     alt={`${title}/${idx}`}
@@ -372,13 +411,35 @@ const EditAssetPage = () => {
               className="text-input"
               multiple
             />
+            <h3>{imagePreviews.length} Imagenes Nuevas Seleccionadas : </h3>
           </div>
-          <CustomButton
-            content={"Guardar Nuevo Bien"}
-            pattern={"blue"}
-            type={"submit"}
-          />
+          {imagePreviews.length > 0 && (
+            <div className="edit-images-container">
+              {imagePreviews.map((preview, index) => (
+                <div key={index} className="image-to-edit-container">
+                  <IoCloseCircle
+                    onClick={() => onDeleteImageNew(index)}
+                    className="image-to-edit-close"
+                    size="1rem"
+                    color="red"
+                  />
+                  {/* <p</p> */}
+                  <img
+                    key={index}
+                    className="image-previews-images"
+                    src={preview}
+                    alt={`Preview ${index + 1}`}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
+        <CustomButton
+          content={"Guardar Nuevo Bien"}
+          pattern={"blue"}
+          type={"submit"}
+        />
       </form>
     </div>
   );

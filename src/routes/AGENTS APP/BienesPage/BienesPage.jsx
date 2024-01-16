@@ -73,7 +73,7 @@ function BienesPage() {
         {assetsToDisplay.map((asset, index) => {
           const {  title, address, operation, images, owner,ucid } = asset;
           const { selling, rental, charges } = operation.price;
-          const mainImage = images.find((image) => image.order === 0);
+          const mainImage = images.find((image) => image.order === 1);
           return (
             <div key={index} className="agency-sub-page-card">
               <div className="agencysub-card-description ">
@@ -92,6 +92,9 @@ function BienesPage() {
                   </Link>
                   <Link target="_blank" to={`/bienes/${title.replace(/\s/g, "-")}/${ucid}`}>
                     <CustomButton pattern={"white"} content={"Ver"} />
+                  </Link>
+                  <Link to={`bien/ordenimagenes/${title.replace(/\s/g, "-")}/${ucid}`}>
+                    <CustomButton pattern={"blue"} content={"Modificar Order de Imagenes"} />
                   </Link>
                   <p>{owner}</p>
                 </div>

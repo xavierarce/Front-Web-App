@@ -23,6 +23,7 @@ import BienesPage from "./routes/AGENTS APP/BienesPage/BienesPage";
 import NewAssetPage from "./routes/AGENTS APP/NewAssetPage/NewAssetPage";
 import AgentPage from "./routes/AGENTS APP/AgentPage/AgentPage";
 import EditAssetPage from "./routes/AGENTS APP/EditAssetPage.jsx/EditAssetPage";
+import ImagesOrder from "./routes/AGENTS APP/ImagesOrder/ImagesOrder";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,7 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <BienesPage /> },
       { path: "bien/:name/:ucid", element: <EditAssetPage /> },
+      { path: "bien/ordenimagenes/:name/:ucid", element: <ImagesOrder /> },
       { path: "nuevobien", element: <NewAssetPage /> }, // Nested under BienesPage
       { path: "propietarios", element: <PropietariosPage /> },
       { path: "visitas", element: <VisitasPage /> },
