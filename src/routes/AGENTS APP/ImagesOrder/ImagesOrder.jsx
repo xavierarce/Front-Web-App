@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { destructureAssetToModify } from "../EditAssetPage.jsx/destructureFunctions";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./ImagesOrder.css";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import { getTokenHSLS } from "../../../API/LocalStorage";
@@ -9,8 +9,9 @@ function ImagesOrder() {
   const { name, ucid } = useParams(); //Get ID
   const formattedName = name.replace(/-/g, " ");
   const [missingNumbers, setMissingNumbers] = useState([]);
-
   const [currentImages, setCurrentImages] = useState();
+
+  const navigate = useNavigate();
 
   console.log("state es", currentImages);
 
@@ -22,7 +23,10 @@ function ImagesOrder() {
         );
         const data = await response.json();
         if (response.ok) {
-          setCurrentImages(destructureAssetToModify(data.asset).images);
+          const sortedImages = destructureAssetToModify(data.asset).images.sort(
+            (a, b) => a.order - b.order
+          );
+          setCurrentImages(sortedImages);
         }
       } catch (error) {}
     };
@@ -89,6 +93,8 @@ function ImagesOrder() {
         const data = await response.json();
         console.log(response);
         console.log(data);
+        alert("El order se ha guardado!");
+        return navigate('/agenciaadmin');
       } catch (error) {}
     }
   };

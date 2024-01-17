@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import "./AgentPage.css";
 import NavBarAgency from "../../../components/NavBarAgency/NavBarAgency";
 import PanelAgencia from "../../../components/PanelAgencia/PanelAgencia";
@@ -8,6 +8,7 @@ import { AuthContext } from "../../../Context/Login.context";
 function AgentPage() {
   const { setCurrentUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const storedToken = localStorage.getItem("hogar-seguro");
@@ -26,7 +27,7 @@ function AgentPage() {
 
           if (response.ok) {
             setCurrentUser(data);
-            return navigate("/agenciaadmin");
+            return navigate(location.pathname);
           } else {
             if (data.error.name === "TokenExpiredError")
               return localStorage.removeItem("hogar-seguro");

@@ -14,7 +14,7 @@ function AssetPage() {
   const [currentAsset, setCurrentAsset] = useState();
 
   console.log(currentAsset);
-  const { name , ucid } = useParams();
+  const { name, ucid } = useParams();
   const formattedName = name.replace(/-/g, " ");
 
   useEffect(() => {
@@ -32,11 +32,42 @@ function AssetPage() {
     getAsset();
   }, []);
 
+  useEffect(() => {
+    const getIsAssetFavorite = async () => {
+      const token = getTokenHSLS("hogar-seguro");
+      if (token) {
+        try {
+          const response = await fetch(
+            `http://localhost:8000/favorite/getIsFavorite?name=${formattedName}&ucid=${ucid}`,
+            {
+              headers: {
+                "Content-Type": "Application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          const data = await response.json();
+          if (data.isFavorite) {
+            return setIsAssetFavorite(true);
+          } else {
+            return setIsAssetFavorite(false);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    };
+    getIsAssetFavorite();
+  }, []);
+
   // Handle the case where the asset is not found
   if (!currentAsset) {
     return (
       <div className="asset-page">
-        <h2 className="asset-page-top-title">Asset not found</h2>
+        <div className="loading-spinner"></div>
+        <h2 className="asset-page-top-title">
+          Vuelve a buscar si toma mucho tiempo...
+        </h2>
       </div>
     );
   }
@@ -47,7 +78,7 @@ function AssetPage() {
       if (!isAssetFavorite) {
         try {
           const response = await fetch(
-            "http://localhost:8000/favorite/setFavorite",
+            `http://localhost:8000/favorite/addFavorite?name=${formattedName}&ucid=${ucid}`,
             {
               method: "POST",
               headers: {
@@ -60,14 +91,35 @@ function AssetPage() {
           const data = await response.json();
           console.log(data);
           console.log(response);
-          return setIsAssetFavorite(!isAssetFavorite);
+          return setIsAssetFavorite(true);
         } catch (error) {
           console.error(error);
         }
-        return alert("Inicia Sesion!");
       }
-      return setIsAssetFavorite(!isAssetFavorite);
+
+      if (isAssetFavorite) {
+        try {
+          const response = await fetch(
+            `http://localhost:8000/favorite/removeFavorite?name=${formattedName}&ucid=${ucid}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "Application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ assetTitle: currentAsset.title }),
+            }
+          );
+          const data = await response.json();
+          console.log(data);
+          console.log(response);
+          return setIsAssetFavorite(false);
+        } catch (error) {
+          console.error(error);
+        }
+      }
     }
+    return alert("Inicia Sesion!");
   };
 
   const { title, address, characteristics, images } = currentAsset;

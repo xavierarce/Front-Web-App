@@ -1,11 +1,12 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Context/Login.context";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import UserInterface from "./UserInterface/UserInterface";
 
 const PrivateRouteCuenta = () => {
   const { openLogin, currentUser, setCurrentUser } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const storedToken = localStorage.getItem("hogar-seguro");
@@ -24,7 +25,7 @@ const PrivateRouteCuenta = () => {
 
           if (response.ok) {
             setCurrentUser(data);
-            return navigate('/cuenta')
+            return navigate(location.pathname);
           } else {
             if (data.error.name === "TokenExpiredError")
               return localStorage.removeItem("hogar-seguro");
