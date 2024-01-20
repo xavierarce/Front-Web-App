@@ -3,31 +3,46 @@ import CustomButton from "../CustomButton/CustomButton";
 import DateInput from "../DateInput/DateInput";
 import "./VisitForm.css";
 import { AuthContext } from "../../Context/Login.context";
+import { getTokenHSLS } from "../../API/LocalStorage";
 
 const EmptyVisitForm = {
   visitDate: "",
   entryDate: "",
 };
 
-const VisitForm = ({ onButtonClick }) => {
+const VisitForm = ({ onButtonClick, assetInfo }) => {
   const [visitDates, setVisitDates] = useState(EmptyVisitForm);
   const { visitDate } = visitDates;
   const { currentUser, openLogin } = useContext(AuthContext);
 
-  const onVisitRequest = (e) => {
+  const onVisitRequest = async (e) => {
     e.preventDefault();
+    if (!currentUser) {
+      return openLogin();
+    }
     if (!visitDate) {
-      alert("Porfavor selecciona una fecha de visita");
-      return;
+      return alert("Porfavor selecciona una fecha de visita");
     }
     if (new Date(visitDate) < new Date()) {
-      alert("Porfavor selecciona una fecha valida");
-      return;
+      return alert("Porfavor selecciona una fecha valida");
     }
-    if (!currentUser) {
-      openLogin();
-      return;
+    const token = getTokenHSLS();
+    console.log(visitDate);
+    if (token) {
+      try {
+        const response = await fetch("http://localhost:8000/visit/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({visitDate, assetInfo}),
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {}
     }
+
     alert(`Perfecto! Has solicitado una visita el ${visitDate}`);
   };
   const onDateSelection = (e) => {

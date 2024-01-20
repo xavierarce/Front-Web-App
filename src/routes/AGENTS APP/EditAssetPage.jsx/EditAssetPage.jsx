@@ -9,7 +9,7 @@ import { destructureAssetToModify } from "./destructureFunctions";
 
 const EditAssetPage = () => {
   const { name, ucid } = useParams(); //Get ID
-  const formattedName = name.replace(/-/g, " ");
+  const formattedName = name.replace(/_/g, " ");
   const [files, setFiles] = useState([]);
 
   const [imagePreviews, setImagePreviews] = useState([]);

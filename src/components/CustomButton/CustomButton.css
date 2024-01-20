@@ -11,6 +11,19 @@
   color: #fff;
   font: 600 1rem/1.1em "Inter-SemiBold", Helvetica;
 }
+.custom-button-red {
+  background-color: red;
+  border-radius: 8px;
+  max-height: 48px;
+  padding: 0 1rem 0 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-button-text-red {
+  color: #fff;
+  font: 600 1rem/1.1em "Inter-SemiBold", Helvetica;
+}
 
 /*? Blue Small */
 .custom-button-blue-small {

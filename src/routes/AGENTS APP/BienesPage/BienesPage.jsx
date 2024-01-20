@@ -4,6 +4,8 @@ import "./BienesPage.css";
 import { Link, useSearchParams } from "react-router-dom";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import SearchBar from "../../../components/SearchBar/SearchBar";
+import { getTokenHSLS } from "../../../API/LocalStorage";
+import BienesPageCard from "../../../components/BienesPageCard/BienesPageCard";
 
 const itemsPerPage = 5;
 
@@ -15,8 +17,6 @@ function BienesPage() {
   );
   const [allAssets, setAllAssets] = useState([]);
   const [filteredAssets, setFilteredAssets] = useState(allAssets);
-  console.log("fl", filteredAssets);
-  console.log("faa", allAssets);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -37,6 +37,7 @@ function BienesPage() {
     // Update the filter only when the search form is submitted
     const searchParamValue = searchInput.trim().toLowerCase();
     const newFilteredAssets = allAssets.filter((asset) => {
+      console.log("FILTER", asset);
       return (
         asset.title.toLowerCase().includes(searchParamValue) ||
         asset.location.city.toLowerCase().includes(searchParamValue) ||
@@ -50,18 +51,24 @@ function BienesPage() {
 
   useEffect(() => {
     const getAssets = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/assets");
-        const data = await response.json();
+      const token = getTokenHSLS();
+      if (token) {
+        try {
+          const response = await fetch("http://localhost:8000/assets/agency", {
+            headers: { authorization: `Bearer ${token}` },
+          });
+          const data = await response.json();
 
-        setAllAssets(data.assets);
-        setFilteredAssets(data.assets);
-      } catch (error) {}
+          setAllAssets(data.assets);
+          setFilteredAssets(data.assets);
+        } catch (error) {
+          console.error(error);
+        }
+      }
     };
     getAssets();
   }, []);
 
-  console.log("filtered", filteredAssets);
   return (
     <div className="agency-sub-page">
       <h2 className="agency-sub-page-title">Bienes</h2>
@@ -70,43 +77,9 @@ function BienesPage() {
       </Link>
       <SearchBar onChange={onSearchChange} onSubmit={handleSubmit} />
       <div className="agency-sub-page-card-container">
-        {assetsToDisplay.map((asset, index) => {
-          const {  title, address, operation, images, owner,ucid } = asset;
-          const { selling, rental, charges } = operation.price;
-          const mainImage = images.find((image) => image.order === 1);
-          return (
-            <div key={index} className="agency-sub-page-card">
-              <div className="agencysub-card-description ">
-                <h2 className="text-0-margin">{title}</h2>
-                <p className="text-0-margin">{address}</p>
-                <p className="text-0-margin">{operation.type}</p>
-                <b className="text-0-margin">
-                  Venta: ${selling} - Alquiler: ${rental}{" "}
-                </b>
-                {charges ? (
-                  <b className="text-0-margin">Alicuota ${charges}</b>
-                ) : null}
-                <div className="agencysub-boton-y-propietario">
-                <Link to={`bien/${title.replace(/\s/g, "-")}/${ucid}`}>
-                    <CustomButton pattern={"blue"} content={"Editar"} />
-                  </Link>
-                  <Link target="_blank" to={`/bienes/${title.replace(/\s/g, "-")}/${ucid}`}>
-                    <CustomButton pattern={"white"} content={"Ver"} />
-                  </Link>
-                  <Link to={`bien/ordenimagenes/${title.replace(/\s/g, "-")}/${ucid}`}>
-                    <CustomButton pattern={"blue"} content={"Modificar Order de Imagenes"} />
-                  </Link>
-                  <p>{owner}</p>
-                </div>
-              </div>
-              <img
-                className="agencysub-image"
-                alt={title}
-                src={mainImage.imageUrl}
-              />
-            </div>
-          );
-        })}
+        {assetsToDisplay.map((asset, index) => (
+          <BienesPageCard key={index} asset={asset} />
+        ))}
       </div>
       <div className="pagination">
         {Array.from(

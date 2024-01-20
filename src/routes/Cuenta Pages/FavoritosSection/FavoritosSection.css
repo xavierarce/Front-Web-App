@@ -1,11 +1,11 @@
-.favoritos-section{
+.favoritos-section {
   display: flex;
   flex-direction: column;
   min-height: 70vh;
   align-items: center;
 }
 
-.favorito-page-card{
+.favorito-page-card {
   border: 2px solid blue;
   border-radius: 10px;
   display: inline-flex;
@@ -14,27 +14,32 @@
   padding: 1rem;
 }
 
-.favorito-page-card-description{
+.favorito-page-card-description {
   display: flex;
   flex-direction: column;
   text-align: start;
+  justify-content: space-between;
 }
 
-.favorito-page-img{
+.favorito-page-img {
   width: 12rem;
   height: 12rem;
   object-fit: cover;
 }
 
-.favoritos-page-title{
+.favoritos-page-title {
   /* margin: 0; */
   color: blue;
 }
 
-.favorito-page-favoritos-container{
+.favorito-page-favoritos-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   align-items: center;
+}
+
+.favorite-card-text{
+  margin: 0;
 }

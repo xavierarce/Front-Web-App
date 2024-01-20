@@ -1,48 +1,42 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/Login.context";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import UserInterface from "./UserInterface/UserInterface";
 
 const PrivateRouteCuenta = () => {
-  const { openLogin, currentUser, setCurrentUser } = useContext(AuthContext);
+  const { openLogin, currentUser } = useContext(AuthContext);
+  const [userOnInterface, setUserOnInterface] = useState();
+
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("hogar-seguro");
-    if (storedToken) {
-      const verifyTokenRestart = async () => {
-        try {
-          const response = await fetch("http://localhost:8000/restart", {
-            method: "GET",
+    const getUserData = async () => {
+      try {
+        const storedToken = localStorage.getItem("hogar-seguro");
+        if (storedToken) {
+          const response = await fetch("http://localhost:8000/cuenta/userinterface", {
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${storedToken}`,
             },
           });
-
           const data = await response.json();
-
+          console.log("data", data);
+          console.log("respnse", response);
           if (response.ok) {
-            setCurrentUser(data);
+            setUserOnInterface(data.user);
             return navigate(location.pathname);
-          } else {
-            if (data.error.name === "TokenExpiredError")
-              return localStorage.removeItem("hogar-seguro");
           }
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-        } catch (error) {
-          console.error(error);
         }
-      };
-      verifyTokenRestart();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUserData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Use useEffect to handle state updates outside of render
   useEffect(() => {
     if (!currentUser) {
       openLogin();
@@ -55,7 +49,7 @@ const PrivateRouteCuenta = () => {
   }
 
   // Render the UserInterface component if logged in
-  return <UserInterface />;
+  return <UserInterface userOnInterface={userOnInterface} />;
 };
 
 export default PrivateRouteCuenta;

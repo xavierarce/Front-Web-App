@@ -7,33 +7,39 @@
   max-width: 100vw;
 }
 
-.asset-page-top-container{
+.asset-page-top-container {
   align-items: center;
   display: flex;
   gap: 2rem;
   flex-direction: row;
 }
-.asset-page-top-favorito{
+.asset-page-top-favorito {
   align-items: center;
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
-.asset-page-top-title{
+.asset-page-top-title {
   margin-right: 0;
 }
 .asset-page-description-section {
   height: fit-content;
   display: flex;
   flex-direction: row;
-  width: fit-content;
+  width: 100%;
   gap: 4rem;
   max-width: 100vw;
+}
+
+.asset-page-address {
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.4rem;
 }
 
 .asset-page-descripcion-container {
@@ -46,6 +52,7 @@ html{
   position: relative;
   width: 60rem;
   padding: 1rem;
+  gap: 1em;
 }
 
 .asset-page-title {
@@ -58,34 +65,53 @@ html{
 
 .asset-page-description {
   color: #000000;
-  font-family: "Newsreader-Regular", Helvetica;
+  font-family: "Newsreader-Regular", Helvetica, sans-serif;
   font-size: 17px;
-  text-align: start;
-  white-space: pre;
+  line-height: 1.5;
+  text-align: justify;
+  white-space: pre-wrap; /* Preserve white spaces and wrap lines when necessary */
+  max-width: 100%; /* Adjust the maximum width as needed */
+  margin: 0;
 }
+
+.asset-page-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+  gap: 1rem;
+}
+
+.asset-page-detail-item {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
 @media only screen and (max-width: 800px) {
   .asset-page-descripcion-container {
     width: 90vw;
   }
 }
 
-
 @media only screen and (max-width: 800px) {
-  .asset-page-description-section{
+  .asset-page-description-section {
     display: flex;
-    flex-direction: column ;
+    flex-direction: column;
     align-items: center;
   }
 
-  .asset-page-top-container{
+  .asset-page-top-container {
     display: flex;
     flex-direction: column;
     gap: 0.2em;
   }
-  .asset-page-share-button{
+  .asset-page-share-button {
     display: none;
   }
-  .asset-page-top-title{
+  .asset-page-top-title {
     margin: 0;
   }
 }

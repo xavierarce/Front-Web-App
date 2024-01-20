@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./NewAssetPage.css";
 import { useState } from "react";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import FormInput from "../../../components/FormInput/FormInput";
 import { IoCloseCircle } from "react-icons/io5";
+import LoadingSpinner from "../../../components/LoadingSpiner/LoadingSpinner";
+import { validateAsset } from "./validationFunctions";
 
 const EmptyNewAsset = {
   type: "Selecciona un tipo de bien",
   totalArea: "",
-  coveredAera: "",
+  coveredArea: "",
   title: "",
   owner: "",
   operationType: "Selecciona",
@@ -29,8 +31,9 @@ const EmptyNewAsset = {
 function NewAssetPage() {
   const [files, setFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  console.log(files);
   const [newAsset, setNewAsset] = useState(EmptyNewAsset);
   const {
     type,
@@ -88,31 +91,22 @@ function NewAssetPage() {
   const onSaveNewAsset = async (e) => {
     e.preventDefault();
     const storedToken = localStorage.getItem("hogar-seguro");
-    if (
-      type === "Selecciona un tipo de bien" ||
-      totalArea === undefined ||
-      coveredArea === undefined ||
-      title === undefined ||
-      owner === undefined ||
-      operationType === "Selecciona" ||
-      address === undefined ||
-      zone === undefined ||
-      city === undefined ||
-      age === undefined ||
-      rooms === undefined ||
-      parking === undefined ||
-      bathrooms === undefined ||
-      description === undefined ||
-      keyPoints === undefined
-    )
-      return alert("Porfavor,completa los campos");
-    if (sellingValue === undefined && rentalValue === undefined)
-      return alert("Porfavor, ingresa un valor");
 
+    setIsLoading(true);
+    //Ckeck for completness
+    const validationError = validateAsset(newAsset);
+
+    if (validationError) {
+      setIsLoading(false);
+      return alert(validationError);
+    }
+
+    if (files.length < 2) {
+      setIsLoading(false);
+      return alert("Minimo 2 imagenes");
+    }
     if (storedToken) {
       try {
-        alert(JSON.stringify(newAsset));
-
         const formData = new FormData();
         for (const key in newAsset) {
           formData.append(key, newAsset[key]);
@@ -122,23 +116,18 @@ function NewAssetPage() {
           formData.append("images", file);
         });
 
-        console.log("ES ESTOOO", [...formData.entries()]);
-
-        const response = await fetch(
-          "http://localhost:8000/assets/registerAsset",
-          {
-            method: "POST",
-            headers: {
-              authorization: `Bearer ${storedToken}`,
-            },
-            body: formData,
-          }
-        );
-        const data = await response.json();
-        console.log(response);
-        console.log(data);
+        await fetch("http://localhost:8000/assets/registerAsset", {
+          method: "POST",
+          headers: {
+            authorization: `Bearer ${storedToken}`,
+          },
+          body: formData,
+        });
+        setIsLoading(false);
+        alert(JSON.stringify("Guardado!"));
+        navigate("/agenciaAdmin");
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
   };
@@ -155,7 +144,7 @@ function NewAssetPage() {
       const reader = new FileReader();
       reader.onload = (e) => {
         previews.push(e.target.result);
-        setImagePreviews([...imagePreviews,...previews]);
+        setImagePreviews([...imagePreviews, ...previews]);
       };
       reader.readAsDataURL(file);
     });
@@ -369,13 +358,13 @@ function NewAssetPage() {
             />
           </div>
           <div className="Form-Input-Section">
-            <label>Key Points</label>
+            <label>Puntos Clave</label>
             <textarea
               onChange={onInputChange}
               name="keyPoints"
               value={keyPoints}
               className="NewAssetPage-textarea text-input"
-              maxLength={250}
+              maxLength={1000}
             />
           </div>
           <div className="Form-Input-Section">
@@ -410,6 +399,7 @@ function NewAssetPage() {
             </div>
           )}
         </div>
+        {isLoading ? <LoadingSpinner /> : null}
         <CustomButton
           content={"Guardar Nuevo Bien"}
           pattern={"blue"}

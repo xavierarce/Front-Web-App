@@ -23,8 +23,11 @@ function LoginDropdown() {
     openLogin();
   };
 
-  return (
-    <div className="login-dropdown-div">
+  console.log('DROPDO USER df',currentUser);
+
+    
+    return (
+      <div className="login-dropdown-div">
       <ul className="login-dropdown-ul">
         <li className="login-dropdown-li">
           {!currentUser ? (
@@ -34,7 +37,7 @@ function LoginDropdown() {
               onButtonClick={onLogIn}
             />
           ) : (
-            <CustomButton content={`${currentUser.name}`} pattern={"white"} />
+            <CustomButton content={`${currentUser.name} `} pattern={"white"} />
           )}
           <ul className="login-dropdown-list animated">
             <li className="login-dropdown-text">

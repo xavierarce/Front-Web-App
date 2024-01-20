@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { destructureAssetToModify } from "../EditAssetPage.jsx/destructureFunctions";
 import { useNavigate, useParams } from "react-router-dom";
@@ -7,7 +8,7 @@ import { getTokenHSLS } from "../../../API/LocalStorage";
 
 function ImagesOrder() {
   const { name, ucid } = useParams(); //Get ID
-  const formattedName = name.replace(/-/g, " ");
+  const formattedName = name.replace(/_/g, " ");
   const [missingNumbers, setMissingNumbers] = useState([]);
   const [currentImages, setCurrentImages] = useState();
 

@@ -27,14 +27,14 @@ function AssetOnList({ asset }) {
           <div>
             <b>{value}</b>
           </div>
-          <Link to={`${title.replace(/\s/g, "-")}/${ucid}`}>
+          <Link to={`${title.replace(/\s/g, "_")}/${ucid}`}>
             <CustomButton pattern={"blue"} content={"Ir a al bien"} />
           </Link>
         </div>
       </div>
       <Link
         className="asset-on-list-image-container"
-        to={`${title.replace(/\s/g, "-")}`}
+        to={`${title.replace(/\s/g, "_")}/${ucid}`}
       >
         <img
           className="asset-on-list-image"

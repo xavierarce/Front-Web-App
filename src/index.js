@@ -21,9 +21,9 @@ import Home from "./routes/MainApp/home/Home";
 import PropietariosPage from "./routes/AGENTS APP/PropietariosPage/PropietariosPage";
 import BienesPage from "./routes/AGENTS APP/BienesPage/BienesPage";
 import NewAssetPage from "./routes/AGENTS APP/NewAssetPage/NewAssetPage";
-import AgentPage from "./routes/AGENTS APP/AgentPage/AgentPage";
 import EditAssetPage from "./routes/AGENTS APP/EditAssetPage.jsx/EditAssetPage";
 import ImagesOrder from "./routes/AGENTS APP/ImagesOrder/ImagesOrder";
+import AgentPrivateRoute from "./routes/AGENTS APP/AgentPrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/agenciaadmin",
-    element: <AgentPage />,
+    element: <AgentPrivateRoute />,
     children: [
       { path: "", element: <BienesPage /> },
       { path: "bien/:name/:ucid", element: <EditAssetPage /> },

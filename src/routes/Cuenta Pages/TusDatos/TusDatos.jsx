@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
 import "./TusDatos.css";
 import { FakeUser } from "../../../AssetsFakeData";
 import UserInfoTag from "../../../components/UserInfoTag/UserInfoTag";
 import { useOutletContext } from "react-router-dom";
+import CustomButton from "../../../components/CustomButton/CustomButton";
 
-function TusDatos() {
+const TusDatos = () => {
   const [userOnInterface] = useOutletContext();
 
   if (userOnInterface) {
@@ -16,7 +16,7 @@ function TusDatos() {
       occupation,
       institution,
       phoneNumber,
-      numberId
+      numberId,
     } = userOnInterface;
     const { profilePic } = FakeUser;
 
@@ -29,11 +29,11 @@ function TusDatos() {
               {name} {lastname}
             </h2>
             <p className="tus-datos-nacionalidad">{nationality}</p>
-            <p className="tus-datos-nacionalidad">ci.{numberId}</p>
+            <p className="tus-datos-nacionalidad">CI. {numberId}</p>
           </header>
           <div className="tus-datos-datas-inputs-container">
             <div className="tus-datos-modificar-container">
-              <button className="tus-datos-modificar">Modificar</button>
+              <CustomButton pattern={"blue-small"} content={"Modificar"} />
             </div>
             <div className="tus-datos-section-container">
               <h3 className="info-title">Coordenadas</h3>
@@ -52,6 +52,6 @@ function TusDatos() {
       </section>
     );
   }
-}
+};
 
 export default TusDatos;

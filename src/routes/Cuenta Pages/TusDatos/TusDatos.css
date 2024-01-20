@@ -53,12 +53,6 @@
 .tus-datos-modificar-container {
   text-align: end;
 }
-.tus-datos-modificar {
-  color: #4062da;
-  font-family: "Newsreader-Medium", Helvetica;
-  font-size: 10px;
-  font-weight: 500;
-}
 
 .info-container {
   display: flex;

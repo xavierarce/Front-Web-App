@@ -1,14 +1,11 @@
 import "./FavoritosSection.css";
-import { ASSETSFAKEDATACOMPLETE } from "../../../AssetsFakeData";
 import { useEffect, useState } from "react";
 import { getTokenHSLS } from "../../../API/LocalStorage";
-
-const Favorites = ASSETSFAKEDATACOMPLETE.slice(0, 1);
+import CustomButton from "../../../components/CustomButton/CustomButton";
+import { Link } from "react-router-dom";
 
 const FavoritosSection = () => {
   const [favoriteAssets, setFavoriteAssets] = useState([]);
-
-  console.log("1", favoriteAssets);
 
   useEffect(() => {
     const getFavorites = async () => {
@@ -54,18 +51,24 @@ const FavoritosSection = () => {
       <h2 className="favoritos-page-title">Tus Favoritos</h2>
       <div className="favorito-page-favoritos-container">
         {favoriteAssets.map((asset, idx) => {
-          console.log("3", asset);
+          const { title, ucid } = asset;
+          console.log(title, ucid,'dasd')
           const mainImage = asset.images.find((img) => img.order === 1);
           return (
             <div key={idx} className="favorito-page-card">
               <div className="favorito-page-card-description">
-                <h2>{asset.title}</h2>
-                <p>
+                <h2 className="favorite-card-text">{asset.title}</h2>
+                <p className="favorite-card-text">
                   <strong>{asset.location.city}</strong>,{" "}
                   {asset.location.address}
                 </p>
-                <b>Compra: ${asset.operation.price.selling} </b>
-                <b>Alquilar: ${asset.operation.price.rental}</b>
+                <div>
+                  <b>Compra: ${asset.operation.price.selling} </b>
+                  <b>Alquilar: ${asset.operation.price.rental}</b>
+                </div>
+                <Link to={`/bienes/${title.replace(/\s/g, "_")}/${ucid}`}>
+                  <CustomButton pattern={"blue"} content={"Ver"} />
+                </Link>
               </div>
               <img
                 className="favorito-page-img"

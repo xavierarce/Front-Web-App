@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from "react-router-dom";
 import "./AssetPage.css";
 import { useEffect, useState } from "react";
@@ -15,7 +16,8 @@ function AssetPage() {
 
   console.log(currentAsset);
   const { name, ucid } = useParams();
-  const formattedName = name.replace(/-/g, " ");
+  const formattedName = name.replace(/_/g, " ");
+  const assetInfo = { title: formattedName, ucid };
 
   useEffect(() => {
     const getAsset = async () => {
@@ -122,7 +124,9 @@ function AssetPage() {
     return alert("Inicia Sesion!");
   };
 
-  const { title, address, characteristics, images } = currentAsset;
+  const { title, location, area, details, characteristics, images } =
+    currentAsset;
+  console.log(details, area);
 
   console.log(characteristics.description);
 
@@ -151,14 +155,27 @@ function AssetPage() {
               />
             </div>
           </div>
-          <p className="asset-page-title">{address}</p>
+          <p className="asset-page-address">
+            {location.address}, {location.zone}, {location.city}
+          </p>
+          <div className="asset-page-details-container">
+            <b className="asset-page-detail-item">
+              Area Construida: {area.covered}m2
+            </b>
+            <b className="asset-page-detail-item">Area Total: {area.total}m2</b>
+            <b className="asset-page-detail-item">Baños: {details.bathrooms}</b>
+            <b className="asset-page-detail-item">Cuartos: {details.rooms}</b>
+            <b className="asset-page-detail-item">
+              Antiguedad: {details.age} {details.age > 1 ? "años" : "año"}
+            </b>
+          </div>
           <p className="asset-page-description">
             {characteristics.description}
           </p>
-          <b className="asset-page-description">¡Puntos Importantes!</b>
+          <h2 className="asset-page-title">¡Puntos Importantes!</h2>
           <p className="asset-page-description">{characteristics.keyPoints}</p>
         </div>
-        <VisitForm onButtonClick={onAskQuestion} />
+        <VisitForm onButtonClick={onAskQuestion} assetInfo={assetInfo} />
       </div>
       {openQuestion && <QuestionPopUp closeQuestion={onCloseQuestion} />}
     </div>
