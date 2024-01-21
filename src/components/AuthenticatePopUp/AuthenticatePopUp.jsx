@@ -6,6 +6,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/Login.context";
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
+import LoadingSpinner from "../LoadingSpiner/LoadingSpinner";
 
 const EmptyLoginValues = {
   email: "",
@@ -13,18 +14,21 @@ const EmptyLoginValues = {
 };
 
 const AuthenticatePopUp = () => {
-  const { closeLogin, setCurrentUser, currentUser, openRegister } =
+  const { closeLogin, setCurrentUser, openRegister } =
     useContext(AuthContext);
   const [loginValues, setLoginValues] = useState(EmptyLoginValues);
   const { email, password } = loginValues;
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  console.log(currentUser, "ds");
 
   const onSignInSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password)
+    setIsLoading(true);
+    if (!email || !password) {
+      setIsLoading(false);
       return alert("Porfavor, completa todos los campos");
+    }
 
     try {
       const response = await fetch("http://localhost:8000/login", {
@@ -37,11 +41,14 @@ const AuthenticatePopUp = () => {
       if (response.ok) {
         setCurrentUser(data.userInfo);
         localStorage.setItem("hogar-seguro", data.accessToken);
+        setIsLoading(false);
         closeLogin();
       } else {
+        setIsLoading(false);
         throw new Error(data.error);
       }
     } catch (error) {
+      setIsLoading(false);
       if (error.message === "Incorrect Credential")
         return alert("Credenciales Incorrectas");
       console.log(error.message);
@@ -105,6 +112,8 @@ const AuthenticatePopUp = () => {
               </div>
               <CustomButton content={"Ingresa"} pattern={"blue-small"} />
             </form>
+            {isLoading ? <LoadingSpinner /> : null}
+
             {/* <div className="authenticate-signin-google">
               <b>O ingresa con Google</b>
               <CustomButton
