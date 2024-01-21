@@ -1,12 +1,12 @@
 import ApartmentCard from "../ApartmentCard/ApartmentCard";
-import LoadingSpinner from "../LoadingSpiner/LoadingSpinner";
+import LoadingSpinerLocal from "../LoadingSpinerLocal/LoadingSpinerLocal";
 
 import "./ImagesCuadruple.css";
 
 function ImagesCuadruple({ assets }) {
 
   if (!assets) {
-    return <LoadingSpinner/>
+    return <LoadingSpinerLocal/>
   }
 
 
