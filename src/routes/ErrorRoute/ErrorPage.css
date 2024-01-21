@@ -1,0 +1,72 @@
+
+#error-page {
+  min-height: 100vh;
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(117,147,253,1) 50%, rgba(255,255,255,1) 100%);
+
+}
+
+.ErrorMessage {
+  color: white;
+}
+
+
+.btn-go-home {
+  margin: 15px auto;
+  width: 12rem;
+  padding: 1rem 1.2rem;
+  border: 2px solid var(--main-custom-blue);
+  border-radius: 100px;
+  font-weight: 400;
+  display: block;
+  color: var(--main-custom-blue);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 1rem;
+
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.btn-go-home:hover {
+  background-color: var(--main-custom-blue);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
+}
+
+.central-body {
+  padding: 17% 5% 10% 5%;
+  text-align: center;
+}
+
+
+.stars {
+  background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);
+  background-repeat: repeat;
+  background-size: contain;
+  background-position: left top;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .custom-navbar {
+    text-align: center;
+  }
+
+  .brand-logo img {
+    width: 120px;
+  }
+
+  .central-body {
+    padding-top: 25%;
+  }
+}

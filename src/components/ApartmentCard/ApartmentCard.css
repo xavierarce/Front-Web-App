@@ -20,12 +20,24 @@
   max-width: 20px;
 }
 
+.apartment-card-description{
+  margin: 0;
+}
+
 .apartment-card-image {
-  max-height: 13em;
+  height: 13em;
   border-radius: 5px;
   object-fit: cover;
   position: relative;
   width: 20em;
+  background-color: var(--main-custom-blue-80);
+}
+
+
+.apartment-card-description-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .apartment-card-title {

@@ -43,7 +43,7 @@ function EresPropietarioForm({ closeQuestion }) {
         divClassName={"Form-Input-Section"}
         placeholder={"Para poder contactarte"}
         name={"Email"}
-        pattern={"email"}
+        pattern={"text-input"}
         value={Email}
         onChange={onInputChange}
       />

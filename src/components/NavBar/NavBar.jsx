@@ -4,7 +4,7 @@ import "./NavBar.css";
 import HogarSeguro from "../../assets/Logo-Completo.svg";
 import LoginDropdown from "../LoginMenu/LoginDropDown";
 
-function NavBar() {
+const NavBar = () => {
   const navigate = useNavigate();
   const navigateHome = () => navigate("/");
 
@@ -23,9 +23,10 @@ function NavBar() {
         <Link to={"quienes-somos"} className="NavBar-Sections-Item">
           Quiénes somos
         </Link>
-        <Link to={"articulos"} className="NavBar-Sections-Item">
+        {/* //!Articulos page */}
+        {/* <Link to={"articulos"} className="NavBar-Sections-Item">
           Artículos
-        </Link>
+        </Link> */}
         <Link to={"contactanos"} className="NavBar-Sections-Item">
           Contáctanos
         </Link>
@@ -38,6 +39,6 @@ function NavBar() {
       </div>
     </div>
   );
-}
+};
 
 export default NavBar;

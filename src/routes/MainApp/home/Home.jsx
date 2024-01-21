@@ -1,18 +1,36 @@
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "../../../components/SearchBar/SearchBar";
-import { ASSETSFAKEDATA } from "../../../AssetsFakeData";
 import ImagesCuadruple from "../../../components/ImagesCuadruple/ImagesCuadruple";
 
-function Home() {
+const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [highlightedAssets, setHighlightedAssets] = useState();
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
     e.preventDefault();
     navigate(searchTerm === "" ? "/bienes" : `/bienes?buscar=${searchTerm}`);
   };
+
+  useEffect(() => {
+    const getAssets = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/assets/getHighlightedAssets"
+        );
+        const data = await response.json();
+        console.log('ADTA',data);
+        if (response.ok) {
+          setHighlightedAssets(data.assets);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getAssets();
+  }, []);
 
   return (
     <div className="home">
@@ -27,8 +45,8 @@ function Home() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
-      <h2 className="home-images-title">Nuestros nuevos bienes</h2>
-      <ImagesCuadruple assets={ASSETSFAKEDATA} />
+      <h2 className="home-images-title">Nuestros destacados</h2>
+      <ImagesCuadruple assets={highlightedAssets} />
       <div className="home-page-description">
         <div className="home-description-text">
           <h2 className="home-page-description-title">
@@ -58,6 +76,6 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

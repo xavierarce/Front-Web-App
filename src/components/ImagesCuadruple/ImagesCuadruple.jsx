@@ -1,8 +1,14 @@
 import ApartmentCard from "../ApartmentCard/ApartmentCard";
+import LoadingSpinner from "../LoadingSpiner/LoadingSpinner";
 
 import "./ImagesCuadruple.css";
 
 function ImagesCuadruple({ assets }) {
+
+  if (!assets) {
+    return <LoadingSpinner/>
+  }
+
 
   return (
     <div className="home-imagenes-container">

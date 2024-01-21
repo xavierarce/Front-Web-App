@@ -34,10 +34,7 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .NavBar {
-    /* max-width: 50vw; */
-    /* font-size: 0.1rem; */
-  }
+
   .Nav-Sections{
     overflow-x: auto;
     align-items: center;

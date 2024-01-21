@@ -1,21 +1,24 @@
 import "./AssetOnlIst.css";
 import CustomButton from "../CustomButton/CustomButton";
 import { Link } from "react-router-dom";
+import LocationIcon from "../../assets/icons/locationIcon.svg";
 
 function AssetOnList({ asset }) {
-  const { title, location, details, value, images, ucid } = asset;
-
+  const { title, location, details, operation, images, ucid } = asset;
   const mainImage = images.find((image) => image.order === 1);
-
-  console.log(asset);
 
   return (
     <div className="asset-on-list">
       <div className="asset-on-list-description">
         <div className="asset-on-list-title-address">
           <b className="asset-on-list-title">{title}</b>
-          <p className="asset-on-list-address">{location.city}</p>
-          <p className="asset-on-list-address">{location.address}</p>
+          <p className="asset-on-list-address">{location.city},</p>
+          <div className="apartment-card-ciudad">
+            <img className="icon-location" alt="icon-lupa" src={LocationIcon} />
+            <p className="asset-on-list-address">
+              {location.address}, {location.zone},{location.city}
+            </p>
+          </div>
         </div>
         <div className="asset-on-list-caracs">
           <b>Antiguedad: {details.age}</b>
@@ -24,9 +27,17 @@ function AssetOnList({ asset }) {
           <b>Baños: {details.bathrooms}</b>
         </div>
         <div className="asset-on-list-buttons">
-          <div>
-            <b>{value}</b>
-          </div>
+          <b>
+            {operation.price.selling && operation.price.selling > 0
+              ? `   Venta $${operation.price.selling}`
+              : null}
+            {operation.price.rental && operation.price.rental > 0
+              ? `   Alquiler $${operation.price.rental}`
+              : null}
+            {operation.price.charges && operation.price.charges > 0
+              ? `   Alicuota $${operation.price.charges}`
+              : null}
+          </b>
           <Link to={`${title.replace(/\s/g, "_")}/${ucid}`}>
             <CustomButton pattern={"blue"} content={"Ir a al bien"} />
           </Link>

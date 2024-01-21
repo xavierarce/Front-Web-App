@@ -1,13 +1,11 @@
 import { useLocation, Link } from "react-router-dom";
 import "./VisitasPage.css";
-import { ASSETSFAKEDATACOMPLETE } from "../../../AssetsFakeData";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import { useState, useEffect } from "react";
 import { getTokenHSLS } from "../../../API/LocalStorage";
 import { useContext } from "react";
 import { AuthContext } from "../../../Context/Login.context";
 
-const Favorites = ASSETSFAKEDATACOMPLETE.slice(5, 7);
 
 const VisitasPage = () => {
   const { currentUser } = useContext(AuthContext);
@@ -29,6 +27,7 @@ const VisitasPage = () => {
     };
 
     getScheduledVisits();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const location = useLocation();

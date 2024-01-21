@@ -12,8 +12,8 @@
 }
 
 .articulos-page-title{
-  /* color: var(--main-custom-blue); */
-  color: var(--main-custom-blue-pastel);
+  color: var(--main-custom-blue);
+  /* color: var(--main-custom-blue-pastel); */
   font-size: 3em;
   /* margin: 0; */
 

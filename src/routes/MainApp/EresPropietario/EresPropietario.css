@@ -24,7 +24,7 @@
 }
 
 .eres-porpietario-titulo {
-  color: #4062da;
+  color: var(--main-custom-blue);
   font-family: "Newsreader-Regular", Helvetica;
   font-size: 50px;
   font-weight: 400;

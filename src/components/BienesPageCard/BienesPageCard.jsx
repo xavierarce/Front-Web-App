@@ -62,9 +62,8 @@ const BienesPageCard = ({ asset }) => {
         <p className="text-0-margin">Propietario: {owner}</p>
         <p className="text-0-margin">{operation.type}</p>
         <b className="text-0-margin">
-          Venta: ${selling} - Alquiler: ${rental}{" "}
+          Venta: ${selling} - Alquiler: ${rental} - Alicuota: ${charges} 
         </b>
-        {charges ? <b className="text-0-margin">Alicuota ${charges}</b> : null}
         <div className="agencysub-boton-y-propietario">
           <Link to={`bien/${title.replace(/\s/g, "_")}/${ucid}`}>
             <CustomButton pattern={"blue"} content={"Editar"} />

@@ -61,8 +61,6 @@ const EditAssetPage = () => {
     images,
   } = currentAsset;
 
-  console.log(images);
-
   const onInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -86,11 +84,14 @@ const EditAssetPage = () => {
     });
   };
 
+  
   const onUpdateAsset = async (e) => {
     e.preventDefault();
+    console.log('VALORES',rental, selling,charges);
 
     const token = getTokenHSLS();
     if (token) {
+
       const formData = new FormData();
       for (const key in currentAsset) {
         if (Array.isArray(currentAsset[key])) {
@@ -106,6 +107,7 @@ const EditAssetPage = () => {
       files.forEach((file) => {
         formData.append("images", file);
       });
+
 
       try {
         const response = await fetch(
@@ -124,15 +126,13 @@ const EditAssetPage = () => {
         console.log("respnse", response);
         if (response.ok) {
           alert("Bien Guardado!");
-          navigate(`/bienes/${title.replace(/\s/g, "-")}/${ucid}`);
+          navigate(`/bienes/${title.replace(/\s/g, "_")}/${ucid}`);
         }
         console.log(data);
       } catch (error) {}
     }
   };
 
-  console.log(files);
-  console.log(imagePreviews);
   const filesSelected = (event) => {
     const selectedFiles = Array.from(event.target.files);
 
@@ -436,7 +436,7 @@ const EditAssetPage = () => {
           )}
         </div>
         <CustomButton
-          content={"Guardar Nuevo Bien"}
+          content={"Guardar modificación"}
           pattern={"blue"}
           type={"submit"}
         />

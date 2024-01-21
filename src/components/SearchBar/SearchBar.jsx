@@ -1,7 +1,7 @@
 import CustomButton from "../CustomButton/CustomButton";
 import "./SearchBar.css";
 
-function SearchBar({ onChange, onSubmit, value }) {
+function SearchBar({ onChange, onSubmit, value, placeholder }) {
   return (
     <form onSubmit={onSubmit}>
       <div className="search-bar">
@@ -12,14 +12,13 @@ function SearchBar({ onChange, onSubmit, value }) {
         />
         <input
           className="search-bar-input"
-          placeholder="Busca por ciudades (Guayaquil, Cuenca, Quito)"
+          placeholder={
+            placeholder || "Busca por ciudades (Guayaquil, Cuenca, Quito)"
+          }
           value={value}
           onChange={onChange}
         />
-        <CustomButton
-          pattern={"blue-small"}
-          content={"Buscar"}
-        />
+        <CustomButton pattern={"blue-small"} content={"Buscar"} />
       </div>
     </form>
   );

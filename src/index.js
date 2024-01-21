@@ -14,7 +14,7 @@ import FavoritosSection from "./routes/Cuenta Pages/FavoritosSection/FavoritosSe
 import AssetListPage from "./routes/MainApp/AssetListPage/AssetListPage";
 import AssetPage from "./routes/MainApp/AssetPage/AssetPage";
 import EresPropietario from "./routes/MainApp/EresPropietario/EresPropietario";
-import ArticulosPage from "./routes/MainApp/ArticulosPage/ArticulosPage";
+// import ArticulosPage from "./routes/MainApp/ArticulosPage/ArticulosPage";
 import ContactanosPage from "./routes/MainApp/ContactanosPage/ContactanosPage";
 import QuienesSomosPage from "./routes/MainApp/QuienesSomosPage/QuienesSomosPage";
 import Home from "./routes/MainApp/home/Home";
@@ -24,17 +24,19 @@ import NewAssetPage from "./routes/AGENTS APP/NewAssetPage/NewAssetPage";
 import EditAssetPage from "./routes/AGENTS APP/EditAssetPage.jsx/EditAssetPage";
 import ImagesOrder from "./routes/AGENTS APP/ImagesOrder/ImagesOrder";
 import AgentPrivateRoute from "./routes/AGENTS APP/AgentPrivateRoute";
+import ErrorPage from "./routes/ErrorRoute/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "", element: <Home /> },
       { path: "bienes", element: <AssetListPage /> },
       { path: "bienes/:name/:ucid", element: <AssetPage /> },
       { path: "eres-propietario", element: <EresPropietario /> },
-      { path: "articulos", element: <ArticulosPage /> },
+      // { path: "articulos", element: <ArticulosPage /> },
       { path: "contactanos", element: <ContactanosPage /> },
       { path: "quienes-somos", element: <QuienesSomosPage /> },
     ],
@@ -42,6 +44,7 @@ const router = createBrowserRouter([
   {
     path: "/cuenta",
     element: <PrivateRouteCuenta />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "", element: <TusDatos /> },
       { path: "favoritos", element: <FavoritosSection /> },
@@ -52,6 +55,7 @@ const router = createBrowserRouter([
   {
     path: "/agenciaadmin",
     element: <AgentPrivateRoute />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "", element: <BienesPage /> },
       { path: "bien/:name/:ucid", element: <EditAssetPage /> },

@@ -124,9 +124,9 @@ function AssetPage() {
     return alert("Inicia Sesion!");
   };
 
-  const { title, location, area, details, characteristics, images } =
+  const { title, operation, location, area, details, characteristics, images } =
     currentAsset;
-  console.log(details, area);
+  console.log(details, area, operation.price);
 
   console.log(characteristics.description);
 
@@ -158,6 +158,19 @@ function AssetPage() {
           <p className="asset-page-address">
             {location.address}, {location.zone}, {location.city}
           </p>
+
+          <p className="asset-page-address">
+            {operation.price.selling && operation.price.selling > 0
+              ? `   Venta $${operation.price.selling}`
+              : null}
+            {operation.price.rental && operation.price.rental > 0
+              ? `   Alquiler $${operation.price.rental}`
+              : null}
+            {operation.price.charges && operation.price.charges > 0
+              ? `   Alicuota $${operation.price.charges}`
+              : null}
+          </p>
+
           <div className="asset-page-details-container">
             <b className="asset-page-detail-item">
               Area Construida: {area.covered}m2
