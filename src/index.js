@@ -18,7 +18,7 @@ import EresPropietario from "./routes/MainApp/EresPropietario/EresPropietario";
 import ContactanosPage from "./routes/MainApp/ContactanosPage/ContactanosPage";
 import QuienesSomosPage from "./routes/MainApp/QuienesSomosPage/QuienesSomosPage";
 import Home from "./routes/MainApp/home/Home";
-import PropietariosPage from "./routes/AGENTS APP/PropietariosPage/PropietariosPage";
+// import PropietariosPage from "./routes/AGENTS APP/PropietariosPage/PropietariosPage";
 import BienesPage from "./routes/AGENTS APP/BienesPage/BienesPage";
 import NewAssetPage from "./routes/AGENTS APP/NewAssetPage/NewAssetPage";
 import EditAssetPage from "./routes/AGENTS APP/EditAssetPage.jsx/EditAssetPage";
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       { path: "bien/:name/:ucid", element: <EditAssetPage /> },
       { path: "bien/ordenimagenes/:name/:ucid", element: <ImagesOrder /> },
       { path: "nuevobien", element: <NewAssetPage /> }, // Nested under BienesPage
-      { path: "propietarios", element: <PropietariosPage /> },
+      // { path: "propietarios", element: <PropietariosPage /> },
       { path: "visitas", element: <VisitasPage /> },
     ],
   },

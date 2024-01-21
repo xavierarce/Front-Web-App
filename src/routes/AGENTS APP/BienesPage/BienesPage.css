@@ -52,3 +52,11 @@
   right: 5em;
 }
 
+
+.Agencysub-loading-spinner-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: aqua;
+}

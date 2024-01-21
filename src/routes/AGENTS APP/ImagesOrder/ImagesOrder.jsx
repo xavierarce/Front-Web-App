@@ -5,6 +5,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./ImagesOrder.css";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import { getTokenHSLS } from "../../../API/LocalStorage";
+import {
+  serverGetSingleAsset,
+  serverUpdateImagesOrder,
+} from "../../../API/serverFuncions";
 
 function ImagesOrder() {
   const { name, ucid } = useParams(); //Get ID
@@ -14,14 +18,10 @@ function ImagesOrder() {
 
   const navigate = useNavigate();
 
-  console.log("state es", currentImages);
-
   useEffect(() => {
     const getAsset = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:8000/assets/singleAsset?name=${formattedName}&ucid=${ucid}`
-        );
+        const response = await serverGetSingleAsset(formattedName, ucid);
         const data = await response.json();
         if (response.ok) {
           const sortedImages = destructureAssetToModify(data.asset).images.sort(
@@ -80,22 +80,9 @@ function ImagesOrder() {
           ({ imageUrl, ...rest }) => rest
         );
 
-        const response = await fetch(
-          "http://localhost:8000/assets/updateAssetImageOrder",
-          {
-            method: "POST",
-            headers: {
-              authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ ucid, updatedImages }),
-          }
-        );
-        const data = await response.json();
-        console.log(response);
-        console.log(data);
+        await serverUpdateImagesOrder(token, ucid, updatedImages);
         alert("El order se ha guardado!");
-        return navigate('/agenciaadmin');
+        return navigate("/agenciaadmin");
       } catch (error) {}
     }
   };

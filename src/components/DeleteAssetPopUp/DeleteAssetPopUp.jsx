@@ -3,7 +3,7 @@ import CustomButton from "../CustomButton/CustomButton";
 import "./DeleteAssetPopUp.css";
 import { IoCloseCircle } from "react-icons/io5";
 
-const DeleteAssetPopUp = ({ option, asset, close, deleteImage }) => {
+const DeleteAssetPopUp = ({ option, asset, close, deleteAsset }) => {
   return (
     <div className="ModalOverlay ">
       <div className="ModalOverlayX">
@@ -23,7 +23,7 @@ const DeleteAssetPopUp = ({ option, asset, close, deleteImage }) => {
             <CustomButton
               content={option}
               pattern={"red"}
-              onButtonClick={deleteImage}
+              onButtonClick={deleteAsset}
             />
           </div>
         </div>

@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import "./AssetListPage.css";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import AssetListComponent from "../../../components/AssetListComponent/AssetListComponent";
+import { serverGetAllAssets } from "../../../API/serverFuncions";
 
 function AssetListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -35,7 +36,7 @@ function AssetListPage() {
   useEffect(() => {
     const getAssets = async () => {
       try {
-        const response = await fetch("http://localhost:8000/assets");
+        const response = await serverGetAllAssets() ;
         const data = await response.json();
 
         setAllAssets(data.assets);

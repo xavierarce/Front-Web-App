@@ -6,6 +6,7 @@ import FormInput from "../../../components/FormInput/FormInput";
 import { IoCloseCircle } from "react-icons/io5";
 import LoadingSpinner from "../../../components/LoadingSpiner/LoadingSpinner";
 import { validateAsset } from "./validationFunctions";
+import { serverRegisterNewAsset } from "../../../API/serverFuncions";
 
 const EmptyNewAsset = {
   type: "Selecciona un tipo de bien",
@@ -14,9 +15,9 @@ const EmptyNewAsset = {
   title: "",
   owner: "",
   operationType: "Selecciona",
-  sellingValue: "",
-  rentalValue: "",
-  chargesValue: "",
+  sellingValue: "0",
+  rentalValue: "0",
+  chargesValue: "0",
   address: "",
   zone: "",
   city: "",
@@ -56,7 +57,6 @@ function NewAssetPage() {
     keyPoints,
   } = newAsset;
 
-  console.log(newAsset);
   const onInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -121,15 +121,9 @@ function NewAssetPage() {
           formData.append("images", file);
         });
 
-        await fetch("http://localhost:8000/assets/registerAsset", {
-          method: "POST",
-          headers: {
-            authorization: `Bearer ${storedToken}`,
-          },
-          body: formData,
-        });
+        await serverRegisterNewAsset(storedToken, formData);
         setIsLoading(false);
-        alert(JSON.stringify("Guardado!"));
+        alert("Guardado!");
         navigate("/agenciaAdmin");
       } catch (error) {
         console.error(error);
@@ -254,6 +248,7 @@ function NewAssetPage() {
               onChange={onInputChange}
               name={"sellingValue"}
               value={sellingValue}
+              minValue={0}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               type={"number"}
@@ -264,6 +259,7 @@ function NewAssetPage() {
               onChange={onInputChange}
               name={"rentalValue"}
               value={rentalValue}
+              minValue={0}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               type={"number"}
@@ -274,6 +270,7 @@ function NewAssetPage() {
               onChange={onInputChange}
               name={"chargesValue"}
               value={chargesValue}
+              minValue={0}
               divClassName={"Form-Input-Section"}
               pattern={"text-input"}
               label={"Valor de alicuota"}

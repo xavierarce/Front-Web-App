@@ -9,7 +9,9 @@ const FormInput = ({
   value,
   pattern,
   placeholder,
-  required
+  minValue,
+  defaultValue,
+  required,
 }) => {
   return (
     <div className={divClassName}>
@@ -18,7 +20,9 @@ const FormInput = ({
         type={type}
         className={`DateInput ${pattern}`}
         onChange={onChange}
+        min={minValue}
         name={name}
+        defaultValue={defaultValue}
         value={value}
         placeholder={placeholder}
         required={required} // Update here

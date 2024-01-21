@@ -4,7 +4,7 @@ import "./NavBarAgency.css";
 import HogarSeguro from "../../assets/Logo-Completo.svg";
 import LoginDropdown from "../LoginMenu/LoginDropDown";
 
-function NavBarAgency() {
+const NavBarAgency = () => {
   const navigate = useNavigate();
   const navigateHome = () => navigate("/");
 
@@ -25,6 +25,6 @@ function NavBarAgency() {
       </div>
     </div>
   );
-}
+};
 
 export default NavBarAgency;

@@ -5,36 +5,21 @@ import { Link } from "react-router-dom";
 import DeleteAssetPopUp from "../DeleteAssetPopUp/DeleteAssetPopUp";
 import { getTokenHSLS } from "../../API/LocalStorage";
 import LoadingSpinner from "../LoadingSpiner/LoadingSpinner";
+import { serverDeleteAsset } from "../../API/serverFuncions";
 
 const BienesPageCard = ({ asset }) => {
   const [confirmPopUp, setConfirmPopUp] = useState(null);
   const { title, location, operation, images, owner, ucid } = asset;
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { selling, rental, charges } = operation.price;
   const mainImage = images.find((image) => image.order === 1);
 
-  const deleteImage = async () => {
+  const deleteAsset = async () => {
     setIsLoading(true);
     const token = getTokenHSLS();
     if (token) {
       try {
-        const response = await fetch(
-          `http://localhost:8000/assets/deleteAsset/title/${encodeURIComponent(
-            title.replace(/\s/g, " ")
-          )}/ucid/${encodeURIComponent(ucid)}`,
-          {
-            method: "DELETE",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({
-              asset: {
-                title,
-                ucid,
-              },
-            }),
-          }
-        );
+        const response = await serverDeleteAsset(title, ucid, token);
         if (response.ok) {
           const data = await response.json();
           console.log("delete", data);
@@ -57,13 +42,13 @@ const BienesPageCard = ({ asset }) => {
   return (
     <div className="agency-sub-page-card">
       <div className="agencysub-card-description ">
-        <h2 className="text-0-margin">{title}</h2>
-        <p className="text-0-margin">{location.address}</p>
-        <p className="text-0-margin">Propietario: {owner}</p>
-        <p className="text-0-margin">{operation.type}</p>
-        <b className="text-0-margin">
-          Venta: ${selling} - Alquiler: ${rental} - Alicuota: ${charges} 
-        </b>
+          <h2 className="text-0-margin">{title}</h2>
+          <p className="text-0-margin">{location.address}</p>
+          <p className="text-0-margin">Propietario: {owner}</p>
+          <p className="text-0-margin">{operation.type}</p>
+          <b className="text-0-margin">
+            Venta: ${selling} - Alquiler: ${rental} - Alicuota: ${charges}
+          </b>
         <div className="agencysub-boton-y-propietario">
           <Link to={`bien/${title.replace(/\s/g, "_")}/${ucid}`}>
             <CustomButton pattern={"blue"} content={"Editar"} />
@@ -80,11 +65,11 @@ const BienesPageCard = ({ asset }) => {
               content={"Modificar Order de Imagenes"}
             />
           </Link>
-          <CustomButton
+          {/* <CustomButton
             pattern={"red-small"}
             content={"Desactivar"}
             onButtonClick={() => setConfirmPopUp({ option: "Desactivar" })}
-          />
+          /> */}
           <CustomButton
             pattern={"red-small"}
             content={"Eliminar"}
@@ -95,7 +80,7 @@ const BienesPageCard = ({ asset }) => {
               option={confirmPopUp.option}
               asset={asset}
               close={() => setConfirmPopUp(null)}
-              deleteImage={() => deleteImage()}
+              deleteAsset={() => deleteAsset()}
             />
           ) : null}
           {isLoading ? <LoadingSpinner /> : null}

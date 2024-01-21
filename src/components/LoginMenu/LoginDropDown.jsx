@@ -23,9 +23,6 @@ function LoginDropdown() {
     openLogin();
   };
 
-  console.log('DROPDO USER df',currentUser);
-
-    
     return (
       <div className="login-dropdown-div">
       <ul className="login-dropdown-ul">
@@ -52,9 +49,9 @@ function LoginDropdown() {
             <Link to={"/cuenta/favoritos"} className="link-panel-ususario">
               <li className="login-dropdown-items">Favoritos</li>
             </Link>
-            <Link className="link-panel-ususario">
+            {/* <Link className="link-panel-ususario">
               <li className="login-dropdown-items">Soporte</li>
-            </Link>
+            </Link> */}
             {adminPrivilege() ? (
               <Link className="link-panel-ususario" to={'/agenciaadmin'}>
                 <li onClick={goAdmin} className="login-dropdown-items">

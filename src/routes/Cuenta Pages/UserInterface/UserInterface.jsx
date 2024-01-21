@@ -4,16 +4,20 @@ import PanelUsuario from "../../../components/PanelUsuario/PanelUsuario";
 
 import "./UserInterface.css";
 
-const UserInterface = ({userOnInterface}) => {
-  console.log('USER INTERFEACE',userOnInterface);
-
+const UserInterface = ({ userOnInterface }) => {
   return (
     <div className="App">
       <NavBar />
       <div className="user-inferface">
         <PanelUsuario />
         <div className="user-outlet-section">
-          <Outlet context={[userOnInterface]} />
+          {userOnInterface ? (
+            <Outlet context={[userOnInterface]} />
+          ) : (
+            <div className="UserInterface-loading-spinner-container">
+              <div className="loading-spinner" />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import "./EditAssetPage.css";
 import { getTokenHSLS } from "../../../API/LocalStorage";
 import { destructureAssetToModify } from "./destructureFunctions";
+import { serverGetSingleAsset, serverUpdateAsset } from "../../../API/serverFuncions";
 
 const EditAssetPage = () => {
   const { name, ucid } = useParams(); //Get ID
@@ -21,9 +22,7 @@ const EditAssetPage = () => {
   useEffect(() => {
     const getAsset = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:8000/assets/singleAsset?name=${formattedName}&ucid=${ucid}`
-        );
+        const response =  await serverGetSingleAsset(formattedName, ucid)
         const data = await response.json();
         if (response.ok) {
           setCurrentAsset(destructureAssetToModify(data.asset));
@@ -84,14 +83,12 @@ const EditAssetPage = () => {
     });
   };
 
-  
   const onUpdateAsset = async (e) => {
     e.preventDefault();
-    console.log('VALORES',rental, selling,charges);
+    console.log("VALORES", rental, selling, charges);
 
     const token = getTokenHSLS();
     if (token) {
-
       const formData = new FormData();
       for (const key in currentAsset) {
         if (Array.isArray(currentAsset[key])) {
@@ -108,22 +105,10 @@ const EditAssetPage = () => {
         formData.append("images", file);
       });
 
-
       try {
-        const response = await fetch(
-          "http://localhost:8000/assets/updateAsset",
-          {
-            method: "POST",
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-            body: formData,
-          }
-        );
-        console.log("ES ESTOOO", [...formData.entries()]);
+        const response = await serverUpdateAsset(token, formData);
 
         const data = await response.json();
-        console.log("respnse", response);
         if (response.ok) {
           alert("Bien Guardado!");
           navigate(`/bienes/${title.replace(/\s/g, "_")}/${ucid}`);
@@ -384,15 +369,14 @@ const EditAssetPage = () => {
             {images.map((img, idx) => {
               return (
                 <div key={idx} className="image-to-edit-container">
-                  {
-                    images.length>2?
-                  <IoCloseCircle
-                    onClick={() => onDeleteImage(img)}
-                    className="image-to-edit-close"
-                    size="1rem"
-                    color="red"
-                  />: null
-                  }
+                  {images.length > 2 ? (
+                    <IoCloseCircle
+                      onClick={() => onDeleteImage(img)}
+                      className="image-to-edit-close"
+                      size="1rem"
+                      color="red"
+                    />
+                  ) : null}
                   <img
                     className="image-to-edit"
                     alt={`${title}/${idx}`}

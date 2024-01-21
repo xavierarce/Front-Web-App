@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const ApartmentCard = ({ asset }) => {
   const { title, location, imageUrl, operation, ucid } = asset;
-  console.log(ucid);
 
   return (
     <Link

@@ -6,7 +6,7 @@ import { AuthContext } from "../Context/Login.context";
 import AuthenticatePopUp from "../components/AuthenticatePopUp/AuthenticatePopUp";
 import RegisterPopUp from "../components/RegisterPopUp/RegisterPopUp";
 
-function App() {
+const App=()=> {
   const { authOpen, registerOpen, currentUser } =
     useContext(AuthContext);
 

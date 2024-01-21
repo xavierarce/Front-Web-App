@@ -3,6 +3,7 @@ import "./Home.css";
 import { useEffect, useState } from "react";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import ImagesCuadruple from "../../../components/ImagesCuadruple/ImagesCuadruple";
+import {  serverGetHighlightedAssets } from "../../../API/serverFuncions";
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,14 +15,12 @@ const Home = () => {
     navigate(searchTerm === "" ? "/bienes" : `/bienes?buscar=${searchTerm}`);
   };
 
+  
   useEffect(() => {
     const getAssets = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:8000/assets/getHighlightedAssets"
-        );
+        const response = await serverGetHighlightedAssets()
         const data = await response.json();
-        console.log('ADTA',data);
         if (response.ok) {
           setHighlightedAssets(data.assets);
         }

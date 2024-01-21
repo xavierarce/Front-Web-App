@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/Login.context";
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
 import LoadingSpinner from "../LoadingSpiner/LoadingSpinner";
+import { serverRegisterUser } from "../../API/serverFuncions";
 
 const EmptyRegisterValues = {
   email: "",
@@ -23,7 +24,7 @@ const EmptyRegisterValues = {
 const RegisterPopUp = () => {
   const { closeRegister, openLogin } = useContext(AuthContext);
   const [registerValues, setRegisterValues] = useState(EmptyRegisterValues);
-  const [isLoading, setIsLoading]  = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const {
     email,
     password,
@@ -42,27 +43,19 @@ const RegisterPopUp = () => {
   };
   const handleRegister = async (e) => {
     e.preventDefault();
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:8000/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          registerValues,
-        }),
-      });
+      const response = await serverRegisterUser(registerValues);
       const data = await response.json();
-      console.log(response);
-      console.log(data);
       if (response.ok) {
         alert("Cuenta creada! Ahora inicia secion");
-        setIsLoading(false)
+        setIsLoading(false);
         handleReturn();
       } else {
         throw new Error(data.error);
       }
     } catch (error) {
-      setIsLoading(false)
+      setIsLoading(false);
       if (error.message.includes("Missing required fields"))
         return alert("Porfavor completa todos los campos");
       if (error.message === "Invalid Email Format")
@@ -224,7 +217,7 @@ const RegisterPopUp = () => {
                 onButtonClick={handleRegister}
               />
             </form>
-            {isLoading ? <LoadingSpinner /> : null }
+            {isLoading ? <LoadingSpinner /> : null}
           </div>
           {/* <div className="authenticate-register">
             <h2 className="authenticate-signin-title">

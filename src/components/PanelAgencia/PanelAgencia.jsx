@@ -16,7 +16,7 @@ function PanelAgencia() {
           Bienes
         </h2>
       </Link>
-      <Link className="link-panelagencia" to={'propietarios'}>
+      {/* <Link className="link-panelagencia" to={'propietarios'}>
         <h2
           className={`panelagencia-item ${
             location === "/agenciaadmin/propietarios"
@@ -35,7 +35,7 @@ function PanelAgencia() {
         >
           Preguntas
         </h2>
-      </Link>
+      </Link> */}
       <Link className="link-panelagencia">
         <h2
           className={`panelagencia-item ${
@@ -45,7 +45,7 @@ function PanelAgencia() {
           Visitas
         </h2>
       </Link>
-      <Link className="link-panelagencia">
+      {/* <Link className="link-panelagencia">
         <h2
           className={`panelagencia-item ${
             location === "/agenciaadmin/articulos" ? "panel-item-active" : null
@@ -71,7 +71,7 @@ function PanelAgencia() {
         >
           Agentes
         </h2>
-      </Link>
+      </Link> */}
     </div>
   );
 }

@@ -5,6 +5,8 @@ import LoadingSpinner from "../LoadingSpiner/LoadingSpinner";
 import "./VisitForm.css";
 import { AuthContext } from "../../Context/Login.context";
 import { getTokenHSLS } from "../../API/LocalStorage";
+import { serverScheduleVisit } from "../../API/serverFuncions";
+import { transformToNormalDate } from "./helpFuncions";
 
 const EmptyVisitForm = {
   visitDate: "",
@@ -33,21 +35,18 @@ const VisitForm = ({ onButtonClick, assetInfo }) => {
     if (token) {
       try {
         setIsLoading(true);
-        const response = await fetch("http://localhost:8000/visit/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ visitDates, assetInfo }),
-        });
-    
+        const response = await serverScheduleVisit(
+          token,
+          visitDates,
+          assetInfo
+        );
         const data = await response.json();
-    
+
         if (response.ok) {
           alert("Gracias! Nos contactaremos contigo!");
         } else if (data.message.includes("Tienes agendada una cita el")) {
-          alert(data.message);
+          const formattedDate = transformToNormalDate(data);
+          alert(`Tienes agendada una cita el ${formattedDate}`);
         } else {
           // Handle non-ok response
           console.error(`Failed to register visit. Status: ${response.status}`);

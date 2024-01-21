@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AgentPage from "./AgentPage/AgentPage";
+import { serverGetAgentCuenta } from "../../API/serverFuncions";
 
 const AgentPrivateRoute = () => {
   const [currentAgent, setCurrentAgent] = useState();
@@ -12,12 +13,7 @@ const AgentPrivateRoute = () => {
       try {
         const storedToken = localStorage.getItem("hogar-seguro");
         if (storedToken) {
-          const response = await fetch("http://localhost:8000/cuenta/agent", {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${storedToken}`,
-            },
-          });
+          const response = await serverGetAgentCuenta(storedToken)
           if (response.ok) {
             const data = await response.json();
             console.log(data.user.role);

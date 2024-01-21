@@ -9,8 +9,8 @@ export default function ErrorPage() {
   return (
     <div>
       <body id="error-page" class="nalo">
-        <div class="stars">
-          <div class="central-body">
+        <div className="stars">
+          <div className="central-body">
             <h2 className="ErrorMessage">
               <i>{error.statusText || error.message}</i>
               <br />

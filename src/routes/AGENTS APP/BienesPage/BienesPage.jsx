@@ -6,10 +6,11 @@ import CustomButton from "../../../components/CustomButton/CustomButton";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import { getTokenHSLS } from "../../../API/LocalStorage";
 import BienesPageCard from "../../../components/BienesPageCard/BienesPageCard";
+import { serverGetAgencyAssets } from "../../../API/serverFuncions";
 
 const itemsPerPage = 5;
 
-function BienesPage() {
+const BienesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState(
@@ -37,7 +38,6 @@ function BienesPage() {
     // Update the filter only when the search form is submitted
     const searchParamValue = searchInput.trim().toLowerCase();
     const newFilteredAssets = allAssets.filter((asset) => {
-      console.log("FILTER", asset);
       return (
         asset.title.toLowerCase().includes(searchParamValue) ||
         asset.location.city.toLowerCase().includes(searchParamValue) ||
@@ -54,9 +54,7 @@ function BienesPage() {
       const token = getTokenHSLS();
       if (token) {
         try {
-          const response = await fetch("http://localhost:8000/assets/agency", {
-            headers: { authorization: `Bearer ${token}` },
-          });
+          const response = await serverGetAgencyAssets(token);
           const data = await response.json();
 
           setAllAssets(data.assets);
@@ -77,9 +75,15 @@ function BienesPage() {
       </Link>
       <SearchBar onChange={onSearchChange} onSubmit={handleSubmit} />
       <div className="agency-sub-page-card-container">
-        {assetsToDisplay.map((asset, index) => (
-          <BienesPageCard key={index} asset={asset} />
-        ))}
+        {assetsToDisplay.length!==0 ? (
+          assetsToDisplay.map((asset, index) => (
+            <BienesPageCard key={index} asset={asset} />
+          ))
+        ) : (
+          <div className="UserInterface-loading-spinner-container">
+            <div className="loading-spinner" />
+          </div>
+        )}
       </div>
       <div className="pagination">
         {Array.from(
@@ -96,6 +100,6 @@ function BienesPage() {
       </div>
     </div>
   );
-}
+};
 
 export default BienesPage;

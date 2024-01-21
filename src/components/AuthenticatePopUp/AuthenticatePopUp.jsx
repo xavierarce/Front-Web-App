@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/Login.context";
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
 import LoadingSpinner from "../LoadingSpiner/LoadingSpinner";
+import { serverLoginUser } from "../../API/serverFuncions";
 
 const EmptyLoginValues = {
   email: "",
@@ -31,11 +32,7 @@ const AuthenticatePopUp = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await serverLoginUser(email,password)
 
       const data = await response.json();
       if (response.ok) {

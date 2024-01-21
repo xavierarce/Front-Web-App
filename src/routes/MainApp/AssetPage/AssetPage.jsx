@@ -8,6 +8,12 @@ import ImageGallery from "../../../components/ImageGalley/ImageGallery";
 import VisitForm from "../../../components/VisitForm/VisitForm";
 import QuestionPopUp from "../../../components/QuestionPopUp/QuestionPopUp";
 import { getTokenHSLS } from "../../../API/LocalStorage";
+import {
+  serverAddFavorite,
+  serverGetAssetIsFavorite,
+  serverGetSingleAsset,
+  serverRemoveFavorite,
+} from "../../../API/serverFuncions";
 
 function AssetPage() {
   const [openQuestion, setOpenQuestion] = useState(false);
@@ -22,9 +28,7 @@ function AssetPage() {
   useEffect(() => {
     const getAsset = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:8000/assets/singleAsset?name=${formattedName}&ucid=${ucid}`
-        );
+        const response = await serverGetSingleAsset(formattedName, ucid);
         const data = await response.json();
         if (response.ok) {
           setCurrentAsset(data.asset);
@@ -39,16 +43,13 @@ function AssetPage() {
       const token = getTokenHSLS("hogar-seguro");
       if (token) {
         try {
-          const response = await fetch(
-            `http://localhost:8000/favorite/getIsFavorite?name=${formattedName}&ucid=${ucid}`,
-            {
-              headers: {
-                "Content-Type": "Application/json",
-                Authorization: `Bearer ${token}`,
-              },
-            }
+          const response = await serverGetAssetIsFavorite(
+            formattedName,
+            ucid,
+            token
           );
           const data = await response.json();
+          console.log();
           if (data.isFavorite) {
             return setIsAssetFavorite(true);
           } else {
@@ -79,21 +80,15 @@ function AssetPage() {
     if (token) {
       if (!isAssetFavorite) {
         try {
-          const response = await fetch(
-            `http://localhost:8000/favorite/addFavorite?name=${formattedName}&ucid=${ucid}`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "Application/json",
-                Authorization: `Bearer ${token}`,
-              },
-              body: JSON.stringify({ assetTitle: currentAsset.title }),
-            }
+          const response = await serverAddFavorite(
+            formattedName,
+            ucid,
+            token,
+            currentAsset
           );
-          const data = await response.json();
-          console.log(data);
-          console.log(response);
-          return setIsAssetFavorite(true);
+          if (response.ok) {
+            return setIsAssetFavorite(true);
+          }
         } catch (error) {
           console.error(error);
         }
@@ -101,16 +96,11 @@ function AssetPage() {
 
       if (isAssetFavorite) {
         try {
-          const response = await fetch(
-            `http://localhost:8000/favorite/removeFavorite?name=${formattedName}&ucid=${ucid}`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "Application/json",
-                Authorization: `Bearer ${token}`,
-              },
-              body: JSON.stringify({ assetTitle: currentAsset.title }),
-            }
+          const response = await serverRemoveFavorite(
+            formattedName,
+            ucid,
+            token,
+            currentAsset
           );
           const data = await response.json();
           console.log(data);

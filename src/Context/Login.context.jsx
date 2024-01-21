@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { getTokenHSLS } from "../API/LocalStorage";
+import {  serverGetUserCuenta } from "../API/serverFuncions";
 
 export const AuthContext = createContext();
 
@@ -7,18 +8,13 @@ export const AuthProvider = ({ children }) => {
   const [authOpen, setAuthOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-
+  
   useEffect(() => {
     const getUserData = async () => {
       const storedToken = getTokenHSLS();
       if (storedToken) {
         try {
-          const response = await fetch("http://localhost:8000/cuenta/", {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${storedToken}`,
-            },
-          });
+          const response = await serverGetUserCuenta(storedToken)
           const data = await response.json();
           if (response.ok) {
             const user = data.user;
@@ -39,8 +35,6 @@ export const AuthProvider = ({ children }) => {
 
     getUserData();
   }, []);
-
-  console.log("Conetxt", currentUser);
 
   const openRegister = () => setRegisterOpen(true);
   const closeRegister = () => setRegisterOpen(false);
