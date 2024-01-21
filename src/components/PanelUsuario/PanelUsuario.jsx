@@ -16,9 +16,9 @@ function PanelUsuario() {
         <Link className="link-panel-ususario" to={"visitas"}>
           <li className={`panel-usuario-item ${location.pathname === '/cuenta/visitas' ? 'activeItem' : ''}`}>Visitas</li>
         </Link>
-        <Link className="link-panel-ususario" to={"preguntas"}>
+        {/* <Link className="link-panel-ususario" to={"preguntas"}>
           <li className={`panel-usuario-item ${location.pathname === '/cuenta/preguntas' ? 'activeItem' : ''}`}>Preguntas</li>
-        </Link>
+        </Link> */}
       </ul>
     </div>
   );

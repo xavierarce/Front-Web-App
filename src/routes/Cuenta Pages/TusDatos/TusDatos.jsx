@@ -1,8 +1,8 @@
 import "./TusDatos.css";
-import { FakeUser } from "../../../AssetsFakeData";
 import UserInfoTag from "../../../components/UserInfoTag/UserInfoTag";
 import { useOutletContext } from "react-router-dom";
 import CustomButton from "../../../components/CustomButton/CustomButton";
+import defaultProfilePic from '../../../assets/defaultProfilePic.svg'
 
 const TusDatos = () => {
   const [userOnInterface] = useOutletContext();
@@ -18,11 +18,10 @@ const TusDatos = () => {
       phoneNumber,
       numberId,
     } = userOnInterface;
-    const { profilePic } = FakeUser;
 
     return (
       <section className="tus-datos-page">
-        <img className="tus-datos-foto" alt="Profile" src={profilePic} />
+        <img className="tus-datos-foto" alt="Profile" src={defaultProfilePic} />
         <div className="tus-datos-info-container">
           <header className="tus-datos-header">
             <h2 className="tus-datos-name">

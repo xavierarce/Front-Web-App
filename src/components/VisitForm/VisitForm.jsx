@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import CustomButton from "../CustomButton/CustomButton";
 import DateInput from "../DateInput/DateInput";
+import LoadingSpinner from "../LoadingSpiner/LoadingSpinner";
 import "./VisitForm.css";
 import { AuthContext } from "../../Context/Login.context";
 import { getTokenHSLS } from "../../API/LocalStorage";
@@ -12,6 +13,7 @@ const EmptyVisitForm = {
 
 const VisitForm = ({ onButtonClick, assetInfo }) => {
   const [visitDates, setVisitDates] = useState(EmptyVisitForm);
+  const [isLoading, setIsLoading] = useState(false);
   const { visitDate } = visitDates;
   const { currentUser, openLogin } = useContext(AuthContext);
 
@@ -30,21 +32,34 @@ const VisitForm = ({ onButtonClick, assetInfo }) => {
     console.log(visitDate);
     if (token) {
       try {
+        setIsLoading(true);
         const response = await fetch("http://localhost:8000/visit/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({visitDate, assetInfo}),
+          body: JSON.stringify({ visitDates, assetInfo }),
         });
+    
         const data = await response.json();
-        console.log(data);
-      } catch (error) {}
+    
+        if (response.ok) {
+          alert("Gracias! Nos contactaremos contigo!");
+        } else if (data.message.includes("Tienes agendada una cita el")) {
+          alert(data.message);
+        } else {
+          // Handle non-ok response
+          console.error(`Failed to register visit. Status: ${response.status}`);
+        }
+      } catch (error) {
+        console.error("Error during visit registration:", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
-
-    alert(`Perfecto! Has solicitado una visita el ${visitDate}`);
   };
+
   const onDateSelection = (e) => {
     const { name, value } = e.target;
     setVisitDates({ ...visitDates, [name]: value });
@@ -55,6 +70,7 @@ const VisitForm = ({ onButtonClick, assetInfo }) => {
       <form className="asset-page-questions-form" onSubmit={onVisitRequest}>
         <div className="asset-page-questions-container">
           <div className="asset-page-question-container">
+            {isLoading ? <LoadingSpinner /> : null}
             <label className="asset-page-question">
               Selecciona una fecha para visitar:
             </label>
