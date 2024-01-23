@@ -20,7 +20,6 @@ function AssetPage() {
   const [isAssetFavorite, setIsAssetFavorite] = useState(false);
   const [currentAsset, setCurrentAsset] = useState();
 
-  console.log(currentAsset);
   const { name, ucid } = useParams();
   const formattedName = name.replace(/_/g, " ");
   const assetInfo = { title: formattedName, ucid };
@@ -49,7 +48,6 @@ function AssetPage() {
             token
           );
           const data = await response.json();
-          console.log();
           if (data.isFavorite) {
             return setIsAssetFavorite(true);
           } else {
@@ -96,15 +94,7 @@ function AssetPage() {
 
       if (isAssetFavorite) {
         try {
-          const response = await serverRemoveFavorite(
-            formattedName,
-            ucid,
-            token,
-            currentAsset
-          );
-          const data = await response.json();
-          console.log(data);
-          console.log(response);
+          await serverRemoveFavorite(formattedName, ucid, token, currentAsset);
           return setIsAssetFavorite(false);
         } catch (error) {
           console.error(error);
@@ -116,9 +106,6 @@ function AssetPage() {
 
   const { title, operation, location, area, details, characteristics, images } =
     currentAsset;
-  console.log(details, area, operation.price);
-
-  console.log(characteristics.description);
 
   const onAskQuestion = () => {
     setOpenQuestion(true);
