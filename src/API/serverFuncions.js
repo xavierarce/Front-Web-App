@@ -1,4 +1,4 @@
-export const serverAddress = process.env.SERVER_ADDRESS;
+export const serverAddress = "https://hogarsegurosvrfrankfurt.onrender.com";
 
 //! Authentication
 export const serverLoginUser = async (email, password) => {
