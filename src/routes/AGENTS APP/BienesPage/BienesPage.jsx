@@ -19,6 +19,9 @@ const BienesPage = () => {
   const [allAssets, setAllAssets] = useState([]);
   const [filteredAssets, setFilteredAssets] = useState(allAssets);
 
+
+
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };

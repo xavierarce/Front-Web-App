@@ -1,4 +1,5 @@
-export const serverAddress = "https://hogarsegurosvrfrankfurt.onrender.com";
+// export const serverAddress = "https://hogarsegurosvrfrankfurt.onrender.com";
+export const serverAddress = "http://localhost:8000";
 
 //! Authentication
 export const serverLoginUser = async (email, password) => {
@@ -54,8 +55,8 @@ export const serverGetHighlightedAssets = async () => {
   return await fetch(`${serverAddress}/assets/getHighlightedAssets`);
 };
 
-export const serverGetAllAssets = async () => {
-  return await fetch(`${serverAddress}/assets`);
+export const serverGetAllAssets = async (currentPage) => {
+  return await fetch(`${serverAddress}/assets?page=${currentPage}`);
 };
 
 export const serverGetSingleAsset = async (formattedName, ucid) => {

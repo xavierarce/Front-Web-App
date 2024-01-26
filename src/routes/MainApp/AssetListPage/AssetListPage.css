@@ -13,7 +13,40 @@
   width: 100%;
 }
 
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
 
+.search-bar-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.pagination-button {
+  padding: 8px 12px;
+  margin: 0 4px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.pagination-button:hover {
+  background-color: var(--main-custom-blue-80);
+}
+
+.pagination-button.active {
+  font-weight: bold;
+  color: white;
+  background-color: var(--main-custom-blue-pastel);
+}
+
+.pagination-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
 
 @media only screen and (max-width: 1000px) {
   .asset-list-description-container {

@@ -12,7 +12,7 @@ function AssetListComponent({ AvailableAssetList }) {
   }
 
   return (
-    <div className="asset-list-container">
+    <div>
       {AvailableAssetList.map((asset, idx) => {
         return <AssetOnList key={idx} asset={asset} />;
       })}
