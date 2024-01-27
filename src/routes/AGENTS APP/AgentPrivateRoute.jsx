@@ -16,7 +16,6 @@ const AgentPrivateRoute = () => {
           const response = await serverGetAgentCuenta(storedToken)
           if (response.ok) {
             const data = await response.json();
-            console.log(data.user.role);
             if (data.user.role !== "agentAdmin") {
               return navigate("/", { replace: true });
             }

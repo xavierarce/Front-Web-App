@@ -14,6 +14,7 @@ const AssetListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [noMatches, setNoMatches] = useState(false);
+  const [isLoading,setIsLoading] = useState(false)
 
   const onSearchChange = (e) => {
     setSearchInput(e.target.value);
@@ -30,6 +31,7 @@ const AssetListPage = () => {
 
   const fetchAssets = async (currentPage, searchQuery) => {
     setNoMatches(false);
+    setIsLoading(true)
     try {
       const response = await serverGetAllAssets(currentPage, searchQuery);
       const data = await response.json();
@@ -38,7 +40,9 @@ const AssetListPage = () => {
       }
       setAllAssets(data.assets);
       setTotalPages(data.totalPages);
+      setIsLoading(false)
     } catch (error) {
+      setIsLoading(false);
       console.error("Error fetching assets:", error);
     }
   };
@@ -79,7 +83,7 @@ const AssetListPage = () => {
       </div>
 
       <div className="asset-list-page-container">
-        <AssetListComponent AvailableAssetList={allAssets} noMatches={noMatches} />
+        <AssetListComponent AvailableAssetList={allAssets} noMatches={noMatches} isLoading={isLoading}/>
         <div className="pagination-container">
           {currentPage > 1 && (
             <button

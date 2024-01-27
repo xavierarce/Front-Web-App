@@ -5,8 +5,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import { getTokenHSLS } from "../../../API/LocalStorage";
-import BienesPageCard from "../../../components/BienesPageCard/BienesPageCard";
 import { serverGetAgencyAssets } from "../../../API/serverFuncions";
+import BienesPageAssetList from "../../../components/BienesPageAssetList/BienesPageAssetList";
 
 const BienesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,7 +16,8 @@ const BienesPage = () => {
   );
   const [allAssets, setAllAssets] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [noMatches, setNoMatches] = useState(false);
 
   const onSearchChange = (e) => {
     setSearchInput(e.target.value);
@@ -30,20 +31,31 @@ const BienesPage = () => {
   };
 
   useEffect(() => {
-    getAssets(currentPage, searchParams.get('buscar'));
+    getAssets(currentPage, searchParams.get("buscar"));
   }, [currentPage, searchParams]);
 
   const getAssets = async (currentPage, searchQuery) => {
+    setIsLoading(true);
+    setNoMatches(false);
     const token = getTokenHSLS();
     if (token) {
       try {
-        const response = await serverGetAgencyAssets(token,currentPage, searchQuery);
+        const response = await serverGetAgencyAssets(
+          token,
+          currentPage,
+          searchQuery
+        );
         const data = await response.json();
 
+        if (data.assets.length === 0) {
+          return setNoMatches(true);
+        }
         setAllAssets(data.assets);
         setTotalPages(data.totalPages);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
+        setIsLoading(false);
       }
     }
   };
@@ -80,39 +92,32 @@ const BienesPage = () => {
       </Link>
       <SearchBar onChange={onSearchChange} onSubmit={handleSubmit} />
       <div className="agency-sub-page-card-container">
-        {allAssets.length !== 0 ? (
-          allAssets.map((asset, index) => (
-            <BienesPageCard key={index} asset={asset} />
-          ))
-        ) : (
-          <div className="UserInterface-loading-spinner-container">
-            <div className="loading-spinner" />
-          </div>
-        )}
+        <BienesPageAssetList noMatches={noMatches} allAssets={allAssets} isLoading={isLoading} />
       </div>
       <div className="pagination-container">
-          {currentPage > 1 && (
-            <button
-              className="pagination-button"
-              onClick={() =>
-                setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))
-              }
-            >
-              Anterior
-            </button>
-          )}
-          {renderPageButtons()}
-          {currentPage < totalPages && (
-            <button
-              className="pagination-button"
-              onClick={() =>
-                setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages))
-              }
-            >
-              Siguiente
-            </button>
-          )}
-        </div>    </div>
+        {currentPage > 1 && (
+          <button
+            className="pagination-button"
+            onClick={() =>
+              setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))
+            }
+          >
+            Anterior
+          </button>
+        )}
+        {renderPageButtons()}
+        {currentPage < totalPages && (
+          <button
+            className="pagination-button"
+            onClick={() =>
+              setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages))
+            }
+          >
+            Siguiente
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 

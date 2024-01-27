@@ -1,16 +1,21 @@
 import AssetOnList from "../AssetOnList/AssetOnList";
 import "./AssetListComponent.css";
 
-const AssetListComponent = ({ AvailableAssetList, noMatches }) => {
+const AssetListComponent = ({ AvailableAssetList, noMatches, isLoading }) => {
   if (noMatches) {
     return (
       <div>
-        <p>No hemos encontrado propiedades que coincidan con tu criterio de búsqueda.</p>
-        <p>¡Prueba con otro término o ajusta tus filtros para encontrar la propiedad perfecta para ti!</p>
+        <p>
+          No hemos encontrado propiedades que coincidan con tu criterio de
+          búsqueda.
+        </p>
+        <p>
+          ¡Prueba con otro término o ajusta tus filtros para encontrar la
+          propiedad perfecta para ti!
+        </p>
       </div>
     );
   }
-
 
   if (AvailableAssetList.length === 0) {
     return (
@@ -23,6 +28,12 @@ const AssetListComponent = ({ AvailableAssetList, noMatches }) => {
 
   return (
     <div>
+      {isLoading ? (
+        <div>
+          <div className="loading-spinner"></div>
+          <h2>Buscando...</h2>
+        </div>
+      ) : null}
       {AvailableAssetList.map((asset, idx) => {
         return <AssetOnList key={idx} asset={asset} />;
       })}

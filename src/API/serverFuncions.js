@@ -3,7 +3,7 @@ export const serverAddress = "https://hogarsegurosvr.onrender.com";
 
 //! Authentication
 export const serverLoginUser = async (email, password) => {
-  return await fetch(`${serverAddress}/login`, {
+  return await fetch(`${serverAddress}/user/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -11,7 +11,7 @@ export const serverLoginUser = async (email, password) => {
 };
 
 export const serverRegisterUser = async (registerValues) => {
-  return await fetch(`${serverAddress}/register`, {
+  return await fetch(`${serverAddress}/user/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

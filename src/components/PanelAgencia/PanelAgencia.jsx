@@ -3,7 +3,7 @@ import "./PanelAgencia.css";
 
 function PanelAgencia() {
   const location = useLocation().pathname;
-  console.log(location);
+  // console.log(location);
 
   return (
     <div className="panelagencia-container">
