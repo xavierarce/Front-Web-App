@@ -1,5 +1,5 @@
-// export const serverAddress = "https://hogarsegurosvrfrankfurt.onrender.com";
-export const serverAddress = "http://localhost:8000";
+export const serverAddress = "https://hogarsegurosvr.onrender.com";
+// export const serverAddress = "http://localhost:8000";
 
 //! Authentication
 export const serverLoginUser = async (email, password) => {
@@ -55,18 +55,21 @@ export const serverGetHighlightedAssets = async () => {
   return await fetch(`${serverAddress}/assets/getHighlightedAssets`);
 };
 
-export const serverGetAllAssets = async (currentPage) => {
-  return await fetch(`${serverAddress}/assets?page=${currentPage}`);
+export const serverGetAllAssets = async (currentPage, searchQuery) => {
+  return await fetch(
+    `${serverAddress}/assets?page=${currentPage}&search=${searchQuery}`
+  );
 };
 
 export const serverGetSingleAsset = async (formattedName, ucid) => {
+  console.log("hee");
   return await fetch(
     `${serverAddress}/assets/singleAsset?name=${formattedName}&ucid=${ucid}`
   );
 };
 
-export const serverGetAgencyAssets = async (token) => {
-  return await fetch(`${serverAddress}/assets/agency`, {
+export const serverGetAgencyAssets = async (token, currentPage,searchQuery) => {
+  return await fetch(`${serverAddress}/assets/agency?page=${currentPage}&search=${searchQuery}`, {
     headers: { authorization: `Bearer ${token}` },
   });
 };

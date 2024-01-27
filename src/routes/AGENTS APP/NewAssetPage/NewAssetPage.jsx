@@ -106,10 +106,6 @@ function NewAssetPage() {
       return alert("Minimo 2 imagenes");
     }
 
-    if (files.length >= 30) {
-      setIsLoading(false);
-      return alert("Maximo 30 imangenes");
-    }
     if (storedToken) {
       try {
         const formData = new FormData();

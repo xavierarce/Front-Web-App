@@ -1,20 +1,48 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { destructureAssetToModify } from "../EditAssetPage.jsx/destructureFunctions";
 import { useNavigate, useParams } from "react-router-dom";
+import { DndProvider, useDrag, useDrop } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import "./ImagesOrder.css";
 import CustomButton from "../../../components/CustomButton/CustomButton";
-import { getTokenHSLS } from "../../../API/LocalStorage";
 import {
   serverGetSingleAsset,
   serverUpdateImagesOrder,
 } from "../../../API/serverFuncions";
+import { getTokenHSLS } from "../../../API/LocalStorage";
 
-function ImagesOrder() {
-  const { name, ucid } = useParams(); //Get ID
+const ImageItem = ({ img, index, moveImage }) => {
+  const [, ref] = useDrag({
+    type: "IMAGE",
+    item: { index },
+  });
+
+  const [, drop] = useDrop({
+    accept: "IMAGE",
+    hover: (draggedItem) => {
+      if (draggedItem.index !== index) {
+        moveImage(draggedItem.index, index);
+        draggedItem.index = index;
+      }
+    },
+  });
+
+  return (
+    <div ref={(node) => ref(drop(node))} className="image-order-container">
+      <p style={{ margin: 0 }}>{index + 1}</p>
+      <img
+        className="image-to-order"
+        alt={`${img.imageName}`}
+        src={img.imageUrl}
+      />
+    </div>
+  );
+};
+
+const ImagesOrder = () => {
+  const { name, ucid } = useParams();
   const formattedName = name.replace(/_/g, " ");
-  const [missingNumbers, setMissingNumbers] = useState([]);
-  const [currentImages, setCurrentImages] = useState();
+  const [currentImages, setCurrentImages] = useState([]);
 
   const navigate = useNavigate();
 
@@ -22,142 +50,76 @@ function ImagesOrder() {
     const getAsset = async () => {
       try {
         const response = await serverGetSingleAsset(formattedName, ucid);
-        const data = await response.json();
+        console.log("API Response:", response);
+
         if (response.ok) {
-          const sortedImages = destructureAssetToModify(data.asset).images.sort(
+          const data = await response.json();
+          const sortedImages = data.asset.images.sort(
             (a, b) => a.order - b.order
           );
           setCurrentImages(sortedImages);
         }
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     };
+
     getAsset();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [formattedName, ucid]);
 
-  const updateMissingNumbers = () => {
-    if (!currentImages) {
-      return <h2>Cargando...</h2>;
-    }
-    const orders = currentImages.map((img) => img.order);
-    const minOrder = Math.min(...orders);
-    const maxOrder = Math.max(...orders);
-
-    const allNumbers = Array.from(
-      { length: maxOrder - minOrder + 1 },
-      (_, i) => i + minOrder
-    );
-    const missingNumbers = allNumbers.filter((num) => !orders.includes(num));
-
-    setMissingNumbers(missingNumbers);
-  };
-
-  useEffect(() => {
-    // Update missing numbers whenever currentImages changes
-    updateMissingNumbers();
-  }, [currentImages]);
-
-  if (!currentImages) {
-    return <h2>Cargando...</h2>;
-  }
-
-  // return false if not unique
-  const areOrdersUnique = () => {
-    const uniqueOrders = new Set(currentImages.map((img) => img.order));
-    if (uniqueOrders.size !== currentImages.length) {
-      return alert("El orden debe ser unico");
-    }
+  const moveImage = (fromIndex, toIndex) => {
+    const updatedImages = [...currentImages];
+    const [movedImage] = updatedImages.splice(fromIndex, 1);
+    updatedImages.splice(toIndex, 0, movedImage);
+    setCurrentImages(updatedImages);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    areOrdersUnique();
     const token = getTokenHSLS();
 
     if (token) {
       try {
         const updatedImages = currentImages.map(
-          ({ imageUrl, ...rest }) => rest
+          ({ imageUrl, ...rest }, index) => ({
+            ...rest,
+            order: index + 1,
+          })
         );
 
         await serverUpdateImagesOrder(token, ucid, updatedImages);
         alert("El order se ha guardado!");
         return navigate("/agenciaadmin");
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     }
-  };
-
-  const onOrderChange = (e, imgIndex) => {
-    const { value } = e.target;
-    // Ensure the new order is within the valid range
-    const newOrder = Math.min(
-      Math.max(parseInt(value, 10), 1),
-      currentImages.length
-    );
-
-    setCurrentImages((prevImages) => {
-      const updatedImages = [...prevImages];
-      updatedImages[imgIndex] = { ...updatedImages[imgIndex], order: newOrder };
-      return updatedImages;
-    });
   };
 
   return (
     <div className="agency-sub-page NewAssetPage">
-      <h2 className="agency-sub-page-title">Orden de imagenes</h2>
-      <p>
-        Porfavor, coloca en el numero en el orden que deseas que aparezcan las
-        imagenes. (Eg: 1,2,3,4)
-      </p>
-      <h2>{formattedName}</h2>
-      {missingNumbers.length > 0 && (
-        <div className="missing-numbers-container">
-          <p>Falta el numero: {missingNumbers.join(", ")}</p>
-        </div>
-      )}
-      <form onSubmit={handleSubmit}>
-        <div className="order-images-container">
-          {currentImages.map((img, idx) => {
-            const isOrderRepeated = currentImages.some(
-              (otherImg, otherIdx) =>
-                idx !== otherIdx && img.order === otherImg.order
-            );
-            const inputClass = isOrderRepeated
-              ? "text-input repeated"
-              : "text-input";
-
-            return (
-              <div key={idx} className="image-order-container">
-                <div>
-                  <label>Orden</label>
-                  <input
-                    required
-                    onChange={(e) => onOrderChange(e, idx)}
-                    value={img.order}
-                    name={img.imageName}
-                    type="number"
-                    className={inputClass}
-                    min={1}
-                    max={currentImages.length}
-                  />
-                </div>
-                <img
-                  className="image-to-order"
-                  alt={`${formattedName}/${idx}`}
-                  src={img.imageUrl}
-                />
-              </div>
-            );
-          })}
-        </div>
-        <CustomButton
-          content={"Guardar Orden"}
-          pattern={"blue"}
-          type={"submit"}
-        />
-      </form>
+      <h2 className="agency-sub-page-title">Orden de imágenes</h2>
+      <DndProvider backend={HTML5Backend}>
+        <form onSubmit={handleSubmit}>
+          <div className="order-images-container">
+            {currentImages.map((img, idx) => (
+              <ImageItem
+                key={idx}
+                img={img}
+                index={idx}
+                moveImage={moveImage}
+              />
+            ))}
+          </div>
+          <CustomButton
+            content={"Guardar Orden"}
+            pattern={"blue"}
+            type={"submit"}
+          />
+        </form>
+      </DndProvider>
     </div>
   );
-}
+};
 
 export default ImagesOrder;

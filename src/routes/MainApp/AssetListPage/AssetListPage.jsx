@@ -11,9 +11,9 @@ const AssetListPage = () => {
     searchParams.get("buscar") || ""
   );
   const [allAssets, setAllAssets] = useState([]);
-  const [filteredAssets, setFilteredAssets] = useState(allAssets);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [noMatches, setNoMatches] = useState(false);
 
   const onSearchChange = (e) => {
     setSearchInput(e.target.value);
@@ -21,31 +21,22 @@ const AssetListPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // Update the filter only when the search form is submitted
-    const searchParamValue = searchInput.trim().toLowerCase();
-    const newFilteredAssets = allAssets.filter((asset) => {
-      console.log(asset);
-      return (
-        asset.title.toLowerCase().includes(searchParamValue) ||
-        asset.characteristics.description.toLowerCase().includes(searchParamValue)
-      );
-    });
-
-    setFilteredAssets(newFilteredAssets);
     setSearchParams({ buscar: searchInput });
   };
 
   useEffect(() => {
-    fetchAssets(currentPage);
-  }, [currentPage]);
+    fetchAssets(currentPage, searchParams.get("buscar") || "");
+  }, [currentPage, searchParams]);
 
-  const fetchAssets = async (currentPage) => {
+  const fetchAssets = async (currentPage, searchQuery) => {
+    setNoMatches(false);
     try {
-      const response = await serverGetAllAssets(currentPage);
+      const response = await serverGetAllAssets(currentPage, searchQuery);
       const data = await response.json();
+      if (data.assets.length === 0) {
+        setNoMatches(true);
+      }
       setAllAssets(data.assets);
-      setFilteredAssets(data.assets);
       setTotalPages(data.totalPages);
     } catch (error) {
       console.error("Error fetching assets:", error);
@@ -88,7 +79,7 @@ const AssetListPage = () => {
       </div>
 
       <div className="asset-list-page-container">
-        <AssetListComponent AvailableAssetList={filteredAssets} />
+        <AssetListComponent AvailableAssetList={allAssets} noMatches={noMatches} />
         <div className="pagination-container">
           {currentPage > 1 && (
             <button

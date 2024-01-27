@@ -8,8 +8,6 @@ import { getTokenHSLS } from "../../../API/LocalStorage";
 import BienesPageCard from "../../../components/BienesPageCard/BienesPageCard";
 import { serverGetAgencyAssets } from "../../../API/serverFuncions";
 
-const itemsPerPage = 5;
-
 const BienesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -17,58 +15,62 @@ const BienesPage = () => {
     searchParams.get("buscar") || ""
   );
   const [allAssets, setAllAssets] = useState([]);
-  const [filteredAssets, setFilteredAssets] = useState(allAssets);
+  const [totalPages, setTotalPages] = useState(1);
 
 
-
-
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
+  const onSearchChange = (e) => {
+    setSearchInput(e.target.value);
   };
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  const assetsToDisplay = filteredAssets.slice(startIndex, endIndex);
-
-  function onSearchChange(e) {
-    setSearchInput(e.target.value);
-  }
-
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     // Update the filter only when the search form is submitted
-    const searchParamValue = searchInput.trim().toLowerCase();
-    const newFilteredAssets = allAssets.filter((asset) => {
-      return (
-        asset.title.toLowerCase().includes(searchParamValue) ||
-        asset.location.city.toLowerCase().includes(searchParamValue) ||
-        asset.owner.toLowerCase().includes(searchParamValue)
-      );
-    });
-
-    setFilteredAssets(newFilteredAssets);
     setSearchParams({ buscar: searchInput });
-  }
+  };
 
   useEffect(() => {
-    const getAssets = async () => {
-      const token = getTokenHSLS();
-      if (token) {
-        try {
-          const response = await serverGetAgencyAssets(token);
-          const data = await response.json();
+    getAssets(currentPage, searchParams.get('buscar'));
+  }, [currentPage, searchParams]);
 
-          setAllAssets(data.assets);
-          setFilteredAssets(data.assets);
-        } catch (error) {
-          console.error(error);
-        }
+  const getAssets = async (currentPage, searchQuery) => {
+    const token = getTokenHSLS();
+    if (token) {
+      try {
+        const response = await serverGetAgencyAssets(token,currentPage, searchQuery);
+        const data = await response.json();
+
+        setAllAssets(data.assets);
+        setTotalPages(data.totalPages);
+      } catch (error) {
+        console.error(error);
       }
-    };
-    getAssets();
-  }, []);
+    }
+  };
+
+  const renderPageButtons = () => {
+    const pageButtons = [];
+    const buttonsToShow = 5; // You can adjust this number based on your preference
+
+    for (
+      let i = Math.max(1, currentPage - Math.floor(buttonsToShow / 2));
+      i <= Math.min(totalPages, currentPage + Math.ceil(buttonsToShow / 2));
+      i++
+    ) {
+      pageButtons.push(
+        <button
+          className={`pagination-button ${i === currentPage ? "active" : ""}`}
+          key={i}
+          onClick={() => setCurrentPage(i)}
+          style={{ fontWeight: i === currentPage ? "bold" : "normal" }}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    return pageButtons;
+  };
 
   return (
     <div className="agency-sub-page">
@@ -78,8 +80,8 @@ const BienesPage = () => {
       </Link>
       <SearchBar onChange={onSearchChange} onSubmit={handleSubmit} />
       <div className="agency-sub-page-card-container">
-        {assetsToDisplay.length!==0 ? (
-          assetsToDisplay.map((asset, index) => (
+        {allAssets.length !== 0 ? (
+          allAssets.map((asset, index) => (
             <BienesPageCard key={index} asset={asset} />
           ))
         ) : (
@@ -88,20 +90,29 @@ const BienesPage = () => {
           </div>
         )}
       </div>
-      <div className="pagination">
-        {Array.from(
-          { length: Math.ceil(filteredAssets.length / itemsPerPage) },
-          (_, index) => (
-            <CustomButton
-              key={index}
-              pattern={`white ${currentPage === index + 1 ? "active" : null}`}
-              onButtonClick={() => handlePageChange(index + 1)}
-              content={index + 1}
-            />
-          )
-        )}
-      </div>
-    </div>
+      <div className="pagination-container">
+          {currentPage > 1 && (
+            <button
+              className="pagination-button"
+              onClick={() =>
+                setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))
+              }
+            >
+              Anterior
+            </button>
+          )}
+          {renderPageButtons()}
+          {currentPage < totalPages && (
+            <button
+              className="pagination-button"
+              onClick={() =>
+                setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages))
+              }
+            >
+              Siguiente
+            </button>
+          )}
+        </div>    </div>
   );
 };
 

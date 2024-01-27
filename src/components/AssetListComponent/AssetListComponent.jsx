@@ -1,7 +1,17 @@
 import AssetOnList from "../AssetOnList/AssetOnList";
 import "./AssetListComponent.css";
 
-function AssetListComponent({ AvailableAssetList }) {
+const AssetListComponent = ({ AvailableAssetList, noMatches }) => {
+  if (noMatches) {
+    return (
+      <div>
+        <p>No hemos encontrado propiedades que coincidan con tu criterio de búsqueda.</p>
+        <p>¡Prueba con otro término o ajusta tus filtros para encontrar la propiedad perfecta para ti!</p>
+      </div>
+    );
+  }
+
+
   if (AvailableAssetList.length === 0) {
     return (
       <div>
@@ -18,6 +28,6 @@ function AssetListComponent({ AvailableAssetList }) {
       })}
     </div>
   );
-}
+};
 
 export default AssetListComponent;
