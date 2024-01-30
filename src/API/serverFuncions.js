@@ -1,5 +1,5 @@
-export const serverAddress = "https://hogarsegurosvr.onrender.com";
-// export const serverAddress = "http://localhost:8000";
+// export const serverAddress = "https://hogarsegurosvr.onrender.com";
+export const serverAddress = "http://localhost:8000";
 
 //! Authentication
 export const serverLoginUser = async (email, password) => {
