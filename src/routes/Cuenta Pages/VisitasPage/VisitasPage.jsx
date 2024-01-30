@@ -76,7 +76,7 @@ const VisitasPage = () => {
                 <div className="favorito-page-card-description">
                   <h2>{title}</h2>
                   <b>
-                    Dirección: {location.address}, {location.city}
+                    Dirección: {location.address}, {location.zone}, {location.city}
                   </b>
                   <b>Fecha: {formattedDate}</b>
                   {/* <CustomButton
